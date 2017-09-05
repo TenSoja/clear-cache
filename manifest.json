@@ -2,7 +2,7 @@
   "name": "Clear Cache",
   "version": "3.0",
   "manifest_version": 2,
-  "description": "Add-on to clear browser cache with a single click or via the F9 key.",
+  "description": "Clear browser cache with a single click or via the F9 key.",
   "homepage_url": "https://github.com/TenSoja/clear-cache",
   "author": "TenSoja",
   "icons": {
@@ -30,5 +30,13 @@
   "permissions": [
     "browsingData",
     "notifications"
-  ]
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "F9"
+      },
+      "description": "Shortcut for Clear Cache"
+  }
+}
 }
