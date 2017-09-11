@@ -16,7 +16,7 @@
     ]
   },
   "options_ui": {
-	"page": "options/index.html",
+	"page": "options/options.html",
 	"browser_style": true
   },
   "browser_action": {
@@ -29,7 +29,8 @@
   },
   "permissions": [
     "browsingData",
-    "notifications"
+    "notifications",
+    "storage"
   ],
   "commands": {
     "_execute_browser_action": {
