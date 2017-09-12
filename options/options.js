@@ -21,12 +21,39 @@ function storeSettings() {
     notification
   });
 }
+/*
+Internationalization of options page works with
+https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/i18n
+*/
+
+function localizeOptions() {
+
+  function replace_i18n(obj, tag) {
+    let message = tag.replace(/__MSG_(\w+)__/g, function(match, v1) {
+        return v1 ? browser.i18n.getMessage(v1) : '';
+    });
+
+    if(message != tag) obj.innerHTML = message;
+  }
+
+    let data = document.querySelectorAll('[data-i18n]');
+
+    for (let index in data) if (data.hasOwnProperty(index)) {
+        let obj = data[index];
+        let tag = obj.getAttribute('data-i18n').toString();
+
+        replace_i18n(obj, tag);
+    }
+
+}
 
 /*
 Update the options UI with the settings values retrieved from storage,
 or the default settings if the stored settings are empty.
 */
 function updateUI(restoredSettings) {
+
+  localizeOptions();
 
   if (restoredSettings.reload === undefined || restoredSettings.reload === true) {
     document.querySelector("#reload").checked = true;

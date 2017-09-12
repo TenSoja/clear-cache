@@ -39,8 +39,8 @@ function clearCache(storedSettings) {
       browser.notifications.create({
         'type': 'basic',
         'iconUrl': browser.extension.getURL('icons/48.png'),
-        'title': 'Yeah!',
-        'message': 'Cache has been cleared.'
+        'title': browser.i18n.getMessage("notificationTitle"),
+        'message': browser.i18n.getMessage("notificationContent")
       }).then(function() {});
 
     }

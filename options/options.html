@@ -8,18 +8,18 @@
 
   <body>
 
-  <h2>Preferences</h2>
+  <h2 data-i18n="__MSG_preferencesHeader__">Preferences</h2>
 
     <section class="clear-options data-values">
 
-      <div class="title" >After clearing:</div>
+      <div class="title" data-i18n="__MSG_preferencesTitle__">After clearing:</div>
 
-      <label>Reload active tab<input type="checkbox" id="reload"/></label>
-      <label>Show notification<input type="checkbox" id="notification"/></label>
+      <label for="reload"><strong data-i18n="__MSG_reloadOption__">Reload active tab</strong><input type="checkbox" id="reload"/></label>
+      <label for="notification"><strong data-i18n="__MSG_notificationOption__">Show notification</strong><input type="checkbox" id="notification"/></label>
 
     </section>
 
-    <input type="button" value="Save preferences" id="save-button"/>
+    <button type="button" id="save-button" data-i18n="__MSG_saveButton__">Save preferences</button> 
 
     <script src="options.js"></script>
   </body>

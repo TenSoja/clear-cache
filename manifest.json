@@ -1,8 +1,8 @@
 {
-  "name": "Clear Cache",
+  "name": "__MSG_extensionName__",
   "version": "3.0",
   "manifest_version": 2,
-  "description": "Clear browser cache with a single click or via the F9 key.",
+  "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/TenSoja/clear-cache",
   "author": "TenSoja",
   "icons": {
@@ -10,34 +10,42 @@
     "96": "icons/broom.svg",
     "128": "icons/broom.svg"
   },
+
   "background": {
     "scripts": [
       "background.js"
     ]
   },
+
   "options_ui": {
 	"page": "options/options.html",
 	"browser_style": true
   },
+
   "browser_action": {
   	"default_icon": {
       "48": "icons/broom.svg",
       "96": "icons/broom.svg",
       "128": "icons/broom.svg"
     },
+
     "default_title": "Clear Cache"
   },
+
   "permissions": [
     "browsingData",
     "notifications",
     "storage"
   ],
+
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
         "default": "F9"
       },
       "description": "Shortcut for Clear Cache"
-  }
-}
+    }
+  },
+  
+  "default_locale": "en"
 }
