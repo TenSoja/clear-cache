@@ -33,7 +33,7 @@ function localizeOptions() {
         return v1 ? browser.i18n.getMessage(v1) : '';
     });
 
-    if(message != tag) obj.innerHTML = message;
+    if(message != tag) obj.textContent = message;
   }
 
     let data = document.querySelectorAll('[data-i18n]');
