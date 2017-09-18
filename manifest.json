@@ -6,6 +6,8 @@
   "homepage_url": "https://github.com/TenSoja/clear-cache",
   "author": "TenSoja",
   "icons": {
+    "16": "icons/broom.svg",
+    "32": "icons/broom.svg",
     "48": "icons/broom.svg",
     "96": "icons/broom.svg",
     "128": "icons/broom.svg"
@@ -23,12 +25,7 @@
   },
 
   "browser_action": {
-  	"default_icon": {
-      "48": "icons/broom.svg",
-      "96": "icons/broom.svg",
-      "128": "icons/broom.svg"
-    },
-
+  	"default_icon": "icons/broom.svg",
     "default_title": "Clear Cache"
   },
 
