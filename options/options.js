@@ -39,10 +39,10 @@ function localizeOptions() {
     let data = document.querySelectorAll('[data-i18n]');
 
     for (let index in data) if (data.hasOwnProperty(index)) {
-        let obj = data[index];
-        let tag = obj.getAttribute('data-i18n').toString();
+      let obj = data[index];
+      let tag = obj.getAttribute('data-i18n').toString();
 
-        replace_i18n(obj, tag);
+      replace_i18n(obj, tag);
     }
 
 }
