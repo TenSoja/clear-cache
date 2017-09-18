@@ -13,8 +13,13 @@ On startup, check whether we have stored settings.
 If we don't, then store the default settings.
 */
 function checkStoredSettings(storedSettings) {
-  if (!storedSettings.reload || !storedSettings.notification) {
+
+  if (storedSettings === null || storedSettings === undefined 
+    || storedSettings.notification === undefined 
+    || storedSettings.reload === undefined) {
+
     browser.storage.local.set(defaultSettings);
+
   }
 }
 
