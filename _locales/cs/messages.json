@@ -1,0 +1,46 @@
+{
+  "extensionName": {
+    "message": "Smazat cache prohlížeče",
+    "description": "Jméno rozšíření."
+  },
+
+  "extensionDescription": {
+    "message": "Smaže cache prohlížeče jedním clickem myši nebo klávesovou zkratkou F9.",
+    "description": "Popis rozšíření."
+  },
+
+  "notificationTitle": {
+    "message": "Hurááá!",
+    "description": "Titulek dialogu po úspěšném smazání cache."
+  },
+
+  "notificationContent": {
+    "message": "Cache byla smazána.",
+    "description": "Text dialogu po úspěšném smazání cache."
+  },
+
+    "preferencesHeader": {
+    "message": "Nastavení",
+    "description": "Nastavení."
+  },
+
+  "preferencesTitle": {
+    "message": "Po smazání cache:",
+    "description": "Titulek nastavení."
+  },
+
+  "reloadOption": {
+    "message": "Znovu nahrát aktivní panel",
+    "description": "Volba: znovu nahrát aktivní panel."
+  },
+
+  "notificationOption": {
+    "message": "Zobrazit notifikační dialog",
+    "description": "Volba: zobrazit notifikační dialog."
+  },
+
+  "saveButton": {
+    "message": "Uložit nastavení",
+    "description": "Volba: uložit nastavení."
+  }
+}
