@@ -1,0 +1,46 @@
+{
+  "extensionName": {
+    "message": "مَحوُ ذَاكِرَتِ التَّخزينِ المُؤقَت",
+    "description": "اِسمُ المُلحَق."
+  },
+
+  "extensionDescription": {
+    "message": "اِمحُ ذَاكِرَةَ التَّخزينِ المُؤقَت لِلمُتَصَفِح بِنَقَرةٍ وَاحِدَة أو عَبرَ المِفتاح F9.",
+    "description": "وَصفُ المُلحَق."
+  },
+
+  "notificationTitle": {
+    "message": "مَرحَا!",
+    "description": "عِنوانُ إشعارِ المَحو."
+  },
+
+  "notificationContent": {
+    "message": "لَقَد تَمَّ مَحوُ ذَاكِرَتِ التَّخزينِ المُؤقَت.",
+    "description": "تَحذيرُ المُستَخدِمِ بأنَّ ذَاكِرَتَ التَّخزينِ المُؤقَتِ قَد تَمَّ مَحوُها."
+  },
+
+    "preferencesHeader": {
+    "message": "التَّفضيلات",
+    "description": "قِسمُ التَّفضيلات."
+  },
+
+  "preferencesTitle": {
+    "message": "بَعدَ المَحو:",
+    "description": "عَرضُ الخِيَارَات."
+  },
+
+  "reloadOption": {
+    "message": "إعادَتُ تَحميلِ الألسِنَةِ النَّشِطَة.",
+    "description": "خِيارُ إعادَتِ تَحملِ الألسِنَة."
+  },
+
+  "notificationOption": {
+    "message": "عَرضُ إشعَار",
+    "description": "خِيارُ عَرضِ إشعَار."
+  },
+
+  "saveButton": {
+    "message": "حِفظُ التَّفضيلات",
+    "description": "زِرُّ حِفظِ التَّفضيلات"
+  }
+}
