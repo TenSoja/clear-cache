@@ -1,0 +1,46 @@
+{
+  "extensionName": {
+    "message": "Cache wissen",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Wis de browsercache met één muisklik of de F9-toets.",
+    "description": "Description of the extension."
+  },
+
+  "notificationTitle": {
+    "message": "Fantastisch!",
+    "description": "Title of the cleared notification."
+  },
+
+  "notificationContent": {
+    "message": "De cache is gewist.",
+    "description": "Warns the user that the cache has been cleaned."
+  },
+
+    "preferencesHeader": {
+    "message": "Instellingen",
+    "description": "Preferences section."
+  },
+
+  "preferencesTitle": {
+    "message": "Actie na het wissen:",
+    "description": "Show options."
+  },
+
+  "reloadOption": {
+    "message": "Actief tabblad herladen",
+    "description": "The reload tab option."
+  },
+
+  "notificationOption": {
+    "message": "Melding tonen",
+    "description": "The option to show the notification."
+  },
+
+  "saveButton": {
+    "message": "Instellingen opslaan",
+    "description": "Save button description."
+  }
+}
