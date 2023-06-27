@@ -1,7 +1,6 @@
 body {
   width: 25em;
   font-family: "Open Sans Light", sans-serif;
-  font-size: 0.9em;
   font-weight: 300;
 }
 
@@ -28,10 +27,15 @@ section.clear-options>select,
 label {
   display: block;
   padding: 0.2em 0;
+  margin-left: 1em;
 }
 
 label:hover {
   background-color: #EAEFF2;
+}
+
+label input {
+  padding: 0.2em 0;
 }
 
 .title {
