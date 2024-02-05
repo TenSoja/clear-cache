@@ -4,6 +4,22 @@ Store the currently selected settings using browser.storage.local.
 */
 function storeSettings() {
 
+  function getTypes() {
+    var dataTypes = [];
+    const checkboxes = document.querySelectorAll(".data-types [type=checkbox]");
+    for (var item of checkboxes) {
+      if (item.checked) {
+        dataTypes.push(item.getAttribute("data-type"));
+      }
+    }
+    return dataTypes;
+  }
+
+  const dataTypes = getTypes();
+  browser.storage.local.set({
+    dataTypes
+  });
+
   function getReload() {
     const reload = document.querySelector("#reload");
     return reload.checked;
@@ -63,6 +79,14 @@ function updateUI(restoredSettings) {
     document.querySelector("#notification").checked = true;
   }
 
+  const checkboxes = document.querySelectorAll(".data-types [type=checkbox]");
+  for (let item of checkboxes) {
+    if (restoredSettings.dataTypes.indexOf(item.getAttribute("data-type")) != -1) {
+      item.checked = true;
+    } else {
+      item.checked = false;
+    }
+  }
 }
 
 function onError(e) {
