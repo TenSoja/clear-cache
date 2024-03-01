@@ -62,7 +62,7 @@ function clearCache(storedSettings) {
           "type": "basic",
           "title": "Clear Cache",
           "message": "All data types have been disabled. Enable at least one data type in options",
-          "iconUrl": browser.extension.getURL('/icons/broom.svg')
+          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
         }).then(function() {});
       } else {
 
@@ -72,7 +72,7 @@ function clearCache(storedSettings) {
           "type": "basic",
           "title": "Clear Cache",
           "message": `Cleared ${dataTypesString}\n`,
-          "iconUrl": browser.extension.getURL('/icons/broom.svg')
+          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
         }).then(function() {});
       }
 
