@@ -42,5 +42,50 @@
   "saveButton": {
     "message": "Save preferences",
     "description": "Save button description."
+  },
+
+  "optionsTitle": {
+    "message": "Type of data to clear",
+    "description": "Title of types to clear"
+  },
+
+  "cacheOption": {
+    "message": "Cache",
+    "description": "Option of cache."
+  },
+
+  "dowloadOption": {
+    "message": "Downloads",
+    "description": "Option of download."
+  },
+
+  "passwordsOption": {
+    "message": "Passwords",
+    "description": "Option of password."
+  },
+
+  "historyOption": {
+    "message": "History",
+    "description": "Option of history."
+  },
+
+  "pluginOption": {
+    "message": "Plugin data",
+    "description": "Option of plugin."
+  },
+
+  "formOption": {
+    "message": "Form data",
+    "description": "Option of formulário."
+  },
+
+  "cookiesOption": {
+    "message": "Cookies",
+    "description": "Option of cookie."
+  },
+
+  "workerOption": {
+    "message": "Service Workers",
+    "description": "Option of service worker."
   }
 }

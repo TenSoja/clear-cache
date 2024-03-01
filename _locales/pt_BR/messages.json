@@ -42,5 +42,51 @@
   "saveButton": {
     "message": "Salvar preferências",
     "description": "Botão de salvar as preferências."
+  },
+
+  "optionsTitle": {
+    "message": "Tipos de dados para limpar",
+    "description": "Titulo do tipo de dados"
+  },
+
+  "cacheOption": {
+    "message": "Cache",
+    "description": "Opcão de cache."
+  },
+
+  "dowloadOption": {
+    "message": "Downloads",
+    "description": "Opcão de download."
+  },
+
+  "passwordsOption": {
+    "message": "Senhas",
+    "description": "Opcão de senha."
+  },
+
+  "historyOption": {
+    "message": "Histórico",
+    "description": "Opcão de histórico."
+  },
+
+  "pluginOption": {
+    "message": "Dados de plugins",
+    "description": "Opcão de plugin."
+  },
+
+  "formOption": {
+    "message": "Dados de formulários",
+    "description": "Opcão de formulário."
+  },
+
+  "cookiesOption": {
+    "message": "Cookies",
+    "description": "Opcão de cookie."
+  },
+
+  "workerOption": {
+    "message": "Service Workers",
+    "description": "Opcão de service worker."
   }
+
 }
