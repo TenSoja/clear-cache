@@ -54,7 +54,7 @@
     "description": "Option of cache."
   },
 
-  "dowloadOption": {
+  "downloadOption": {
     "message": "Downloads",
     "description": "Option of download."
   },
