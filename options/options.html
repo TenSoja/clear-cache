@@ -1,41 +1,77 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en"> 
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="options.css"/>
+    <link rel="stylesheet" href="options.css"> 
   </head>
 
   <body>
 
-  <h2 data-i18n="__MSG_preferencesHeader__">Preferences</h2>
+    <h2 data-i18n="__MSG_preferencesHeader__">Preferences</h2>
 
-    <section class="clear-options data-types">
-      <div class="title">__MSG_optionsTitle__:</div>
+    <fieldset class="clear-options data-types">
+      <legend data-i18n="__MSG_optionsTitle__">Options</legend>
 
-      <label>__MSG_cacheOption__<input type="checkbox" checked="true" data-type="cache"/></label>
-      <label>__dowloadOption__<input type="checkbox" data-type="downloads"/></label>
-      <label>__passwordsOption__<input type="checkbox" data-type="passwords"/></label>
-      <label>__historyOption__<input type="checkbox"  data-type="history"/></label>
-      <label>__MSG_pluginOption__<input type="checkbox" data-type="pluginData"/></label>
-      <label>__MSG_formOption__<input type="checkbox" data-type="formData"/></label>
-      <label>__MSG_cookiesOption__<input type="checkbox" data-type="cookies"/></label>
-      <label>__workerOption__<input type="checkbox" data-type="serviceWorkers"/></label>
+      <label for="cache">
+        <strong data-i18n="__MSG_cacheOption__">Cache</strong>
+        <input type="checkbox" id="cache" checked data-type="cache"/>
+      </label>
 
-    </section>
+      <label for="downloads">
+        <strong data-i18n="__MSG_downloadOption__">Downloads</strong>
+        <input type="checkbox" id="downloads" data-type="downloads"/>
+      </label>
 
-    <section class="clear-options data-values">
+      <label for="passwords">
+        <strong data-i18n="__MSG_passwordsOption__">Passwords</strong>
+        <input type="checkbox" id="passwords" data-type="passwords"/>
+      </label>
 
-      <div class="title" data-i18n="__MSG_preferencesTitle__">After clearing:</div>
+      <label for="history">
+        <strong data-i18n="__MSG_historyOption__">History</strong>
+        <input type="checkbox" id="history" data-type="history"/>
+      </label>
 
-      <label for="reload"><strong data-i18n="__MSG_reloadOption__">Reload active tab</strong><input type="checkbox" id="reload"/></label>
-      <label for="notification"><strong data-i18n="__MSG_notificationOption__">Show notification</strong><input type="checkbox" id="notification"/></label>
+      <label for="pluginData">
+        <strong data-i18n="__MSG_pluginOption__">Plugin Data</strong>
+        <input type="checkbox" id="pluginData" data-type="pluginData"/>
+      </label>
 
-    </section>
+      <label for="formData">
+        <strong data-i18n="__MSG_formOption__">Form Data</strong>
+        <input type="checkbox" id="formData" data-type="formData"/>
+      </label>
 
-    <button type="button" id="save-button" data-i18n="__MSG_saveButton__">Save preferences</button> 
+      <label for="cookies">
+        <strong data-i18n="__MSG_cookiesOption__">Cookies</strong>
+        <input type="checkbox" id="cookies" data-type="cookies"/>
+      </label>
 
-    <script src="options.js"></script>
+      <label for="serviceWorkers">
+        <strong data-i18n="__MSG_workerOption__">Service Workers</strong>
+        <input type="checkbox" id="serviceWorkers" data-type="serviceWorkers"/>
+      </label>
+
+    </fieldset>
+
+    <fieldset class="clear-options data-values">
+      <legend data-i18n="__MSG_preferencesTitle__">After clearing:</legend>
+
+      <label for="reload">
+        <strong data-i18n="__MSG_reloadOption__">Reload active tab</strong>
+        <input type="checkbox" id="reload"/>
+      </label>
+
+      <label for="notification">
+        <strong data-i18n="__MSG_notificationOption__">Show notification</strong>
+        <input type="checkbox" id="notification"/>
+      </label>
+
+    </fieldset>
+
+    <button type="button" id="save-button" data-i18n="__MSG_saveButton__">Save preferences</button>
+
+    <script src="options.js" defer></script>
+
   </body>
-
 </html>
