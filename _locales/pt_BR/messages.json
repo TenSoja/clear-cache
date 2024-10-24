@@ -5,88 +5,92 @@
   },
 
   "extensionDescription": {
-    "message": "Limpe a cache do navegador com um simples clique ou através da tecla F9.",
+    "message": "Limpe o cache do navegador com um único clique ou pela tecla F9.",
     "description": "Descrição da extensão."
   },
 
   "notificationTitle": {
-    "message": "Yeah!",
-    "description": "Título da notificação de clique."
+    "message": "Tudo certo!",
+    "description": "Título da notificação de limpeza."
   },
 
   "notificationContent": {
-    "message": "Cache foi limpa",
-    "description": "Avisa o usuário que a cache foi limpa."
+    "message": "O cache foi limpo.",
+    "description": "Informa ao usuário que o cache foi limpo."
   },
 
-    "preferencesHeader": {
+  "preferencesHeader": {
     "message": "Preferências",
-    "description": "Seção preferências."
+    "description": "Seção de preferências."
   },
 
   "preferencesTitle": {
-    "message": "Depois de limpar:",
-    "description": "Exibe as opções."
+    "message": "Após a limpeza:",
+    "description": "Mostra opções."
   },
 
   "reloadOption": {
-    "message": "Recarrega a aba atual",
-    "description": "Opção de recarregar a aba atual."
+    "message": "Recarregar aba ativa",
+    "description": "Opção de recarregar a aba."
   },
 
   "notificationOption": {
-    "message": "Exibir notificação",
-    "description": "A opção de exibir notificação."
+    "message": "Mostrar notificação",
+    "description": "Opção para mostrar a notificação."
   },
 
   "saveButton": {
     "message": "Salvar preferências",
-    "description": "Botão de salvar as preferências."
+    "description": "Descrição do botão de salvar."
   },
 
   "optionsTitle": {
-    "message": "Tipos de dados para limpar",
-    "description": "Titulo do tipo de dados"
+    "message": "Tipo de dados a serem limpos",
+    "description": "Título dos tipos a serem limpos."
   },
 
   "cacheOption": {
     "message": "Cache",
-    "description": "Opcão de cache."
+    "description": "Opção de cache."
   },
 
   "downloadOption": {
     "message": "Downloads",
-    "description": "Opcão de download."
+    "description": "Opção de downloads."
   },
 
   "passwordsOption": {
     "message": "Senhas",
-    "description": "Opcão de senha."
+    "description": "Opção de senhas."
   },
 
   "historyOption": {
     "message": "Histórico",
-    "description": "Opcão de histórico."
+    "description": "Opção de histórico."
   },
 
   "pluginOption": {
-    "message": "Dados de plugins",
-    "description": "Opcão de plugin."
+    "message": "Dados do plugin",
+    "description": "Opção de dados do plugin."
   },
 
   "formOption": {
-    "message": "Dados de formulários",
-    "description": "Opcão de formulário."
+    "message": "Dados do formulário",
+    "description": "Opção de dados do formulário."
   },
 
   "cookiesOption": {
     "message": "Cookies",
-    "description": "Opcão de cookie."
+    "description": "Opção de cookies."
   },
 
   "workerOption": {
     "message": "Service Workers",
-    "description": "Opcão de service worker."
-  }
+    "description": "Opção de service workers."
+  },
 
+  "preferencesSavedMessage": {
+    "message": "As preferências foram salvas com sucesso.",
+    "description": "Mensagem de notificação exibida após o usuário salvar as preferências."
+  }
 }

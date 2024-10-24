@@ -3,89 +3,83 @@
     "message": "Clear Cache",
     "description": "Name of the extension."
   },
-
   "extensionDescription": {
-    "message": "Clear browser cache with a single click or via the F9 key.",
+    "message": "Clear your browser cache with a single click or via the F9 key.",
     "description": "Description of the extension."
   },
-
+  
   "notificationTitle": {
-    "message": "Yeah!",
-    "description": "Title of the cleared notification."
+    "message": "Success!",
+    "description": "Title of the notification displayed after clearing cache."
   },
-
   "notificationContent": {
-    "message": "Cache has been cleared.",
-    "description": "Warns the user that the cache has been cleaned."
+    "message": "The cache has been successfully cleared.",
+    "description": "Informs the user that the cache has been cleared."
   },
-
-    "preferencesHeader": {
+  
+  "preferencesHeader": {
     "message": "Preferences",
-    "description": "Preferences section."
+    "description": "Header for the preferences section."
   },
-
   "preferencesTitle": {
     "message": "After clearing:",
-    "description": "Show options."
+    "description": "Title for the options displayed after clearing."
   },
-
+  
   "reloadOption": {
     "message": "Reload active tab",
-    "description": "The reload tab option."
+    "description": "Option to reload the currently active tab."
   },
-
   "notificationOption": {
     "message": "Show notification",
-    "description": "The option to show the notification."
+    "description": "Option to enable or disable notifications."
   },
-
+  
   "saveButton": {
     "message": "Save preferences",
-    "description": "Save button description."
+    "description": "Description of the save button."
   },
-
+  
   "optionsTitle": {
-    "message": "Type of data to clear",
-    "description": "Title of types to clear"
+    "message": "Types of data to clear",
+    "description": "Title for the types of data that can be cleared."
   },
-
+  
   "cacheOption": {
     "message": "Cache",
-    "description": "Option of cache."
+    "description": "Option to clear cache."
   },
-
   "downloadOption": {
     "message": "Downloads",
-    "description": "Option of download."
+    "description": "Option to clear downloads."
   },
-
   "passwordsOption": {
     "message": "Passwords",
-    "description": "Option of password."
+    "description": "Option to clear saved passwords."
   },
-
   "historyOption": {
     "message": "History",
-    "description": "Option of history."
+    "description": "Option to clear browsing history."
   },
-
   "pluginOption": {
     "message": "Plugin data",
-    "description": "Option of plugin."
+    "description": "Option to clear plugin data."
   },
-
   "formOption": {
     "message": "Form data",
-    "description": "Option of formulário."
+    "description": "Option to clear saved form data."
   },
-
   "cookiesOption": {
     "message": "Cookies",
-    "description": "Option of cookie."
+    "description": "Option to clear cookies."
   },
-
   "workerOption": {
     "message": "Service Workers",
-    "description": "Option of service worker."
+    "description": "Option to clear service worker data."
+  },
+  
+  "preferencesSavedMessage": {
+    "message": "Your preferences have been saved successfully.",
+    "description": "Message displayed after the user saves their preferences."
   }
 }

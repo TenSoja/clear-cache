@@ -1,46 +1,96 @@
 {
   "extensionName": {
-    "message": "Cache wissen",
-    "description": "Name of the extension."
+    "message": "Clear Cache",
+    "description": "Naam van de extensie."
   },
 
   "extensionDescription": {
-    "message": "Wis de browsercache met één muisklik of de F9-toets.",
-    "description": "Description of the extension."
+    "message": "Maak de browsercache leeg met één klik of via de F9-toets.",
+    "description": "Beschrijving van de extensie."
   },
 
   "notificationTitle": {
-    "message": "Fantastisch!",
-    "description": "Title of the cleared notification."
+    "message": "Ja!",
+    "description": "Titel van de meldingen over het wissen."
   },
 
   "notificationContent": {
     "message": "De cache is gewist.",
-    "description": "Warns the user that the cache has been cleaned."
+    "description": "Waarschuwt de gebruiker dat de cache is geleegd."
   },
 
-    "preferencesHeader": {
-    "message": "Instellingen",
-    "description": "Preferences section."
+  "preferencesHeader": {
+    "message": "Voorkeuren",
+    "description": "Sectie voor voorkeuren."
   },
 
   "preferencesTitle": {
-    "message": "Actie na het wissen:",
-    "description": "Show options."
+    "message": "Na het wissen:",
+    "description": "Toon opties."
   },
 
   "reloadOption": {
-    "message": "Actief tabblad herladen",
-    "description": "The reload tab option."
+    "message": "Herv laad actieve tabblad",
+    "description": "De optie om het tabblad opnieuw te laden."
   },
 
   "notificationOption": {
-    "message": "Melding tonen",
-    "description": "The option to show the notification."
+    "message": "Toon melding",
+    "description": "De optie om de melding te tonen."
   },
 
   "saveButton": {
-    "message": "Instellingen opslaan",
-    "description": "Save button description."
+    "message": "Voorkeuren opslaan",
+    "description": "Beschrijving van de opslaan-knop."
+  },
+
+  "optionsTitle": {
+    "message": "Type gegevens om te wissen",
+    "description": "Titel van de gegevens die gewist moeten worden."
+  },
+
+  "cacheOption": {
+    "message": "Cache",
+    "description": "Optie voor cache."
+  },
+
+  "downloadOption": {
+    "message": "Downloads",
+    "description": "Optie voor downloads."
+  },
+
+  "passwordsOption": {
+    "message": "Wachtwoorden",
+    "description": "Optie voor wachtwoorden."
+  },
+
+  "historyOption": {
+    "message": "Geschiedenis",
+    "description": "Optie voor geschiedenis."
+  },
+
+  "pluginOption": {
+    "message": "Plugin-gegevens",
+    "description": "Optie voor plugin-gegevens."
+  },
+
+  "formOption": {
+    "message": "Formuliergegevens",
+    "description": "Optie voor formuliergegevens."
+  },
+
+  "cookiesOption": {
+    "message": "Cookies",
+    "description": "Optie voor cookies."
+  },
+
+  "workerOption": {
+    "message": "Service Workers",
+    "description": "Optie voor service workers."
+  },
+
+  "preferencesSavedMessage": {
+    "message": "Voorkeuren zijn succesvol opgeslagen.",
+    "description": "Melding die wordt weergegeven nadat de gebruiker de voorkeuren opslaat."
   }
 }

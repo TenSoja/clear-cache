@@ -1,46 +1,96 @@
 {
   "extensionName": {
-    "message": "Smazat cache prohlížeče",
-    "description": "Jméno rozšíření."
+    "message": "Clear Cache",
+    "description": "Název rozšíření."
   },
 
   "extensionDescription": {
-    "message": "Smaže cache prohlížeče jedním clickem myši nebo klávesovou zkratkou F9.",
+    "message": "Vyčistěte mezipaměť prohlížeče jedním kliknutím nebo pomocí klávesy F9.",
     "description": "Popis rozšíření."
   },
 
   "notificationTitle": {
-    "message": "Hurááá!",
-    "description": "Titulek dialogu po úspěšném smazání cache."
+    "message": "Ano!",
+    "description": "Název oznámení o vyčištění."
   },
 
   "notificationContent": {
-    "message": "Cache byla smazána.",
-    "description": "Text dialogu po úspěšném smazání cache."
+    "message": "Mezipaměť byla vyčištěna.",
+    "description": "Upozorňuje uživatele, že mezipaměť byla vyčištěna."
   },
 
-    "preferencesHeader": {
+  "preferencesHeader": {
     "message": "Nastavení",
-    "description": "Nastavení."
+    "description": "Sekce nastavení."
   },
 
   "preferencesTitle": {
-    "message": "Po smazání cache:",
-    "description": "Titulek nastavení."
+    "message": "Po vyčištění:",
+    "description": "Zobrazit možnosti."
   },
 
   "reloadOption": {
-    "message": "Znovu nahrát aktivní panel",
-    "description": "Volba: znovu nahrát aktivní panel."
+    "message": "Znovu načíst aktivní kartu",
+    "description": "Možnost znovu načíst kartu."
   },
 
   "notificationOption": {
-    "message": "Zobrazit notifikační dialog",
-    "description": "Volba: zobrazit notifikační dialog."
+    "message": "Zobrazit oznámení",
+    "description": "Možnost zobrazit oznámení."
   },
 
   "saveButton": {
-    "message": "Uložit nastavení",
-    "description": "Volba: uložit nastavení."
+    "message": "Uložit preference",
+    "description": "Popis tlačítka pro uložení."
+  },
+
+  "optionsTitle": {
+    "message": "Typy dat k vyčištění",
+    "description": "Název typů dat k vyčištění."
+  },
+
+  "cacheOption": {
+    "message": "Mezipaměť",
+    "description": "Možnost mezipaměti."
+  },
+
+  "downloadOption": {
+    "message": "Stahování",
+    "description": "Možnost stahování."
+  },
+
+  "passwordsOption": {
+    "message": "Hesla",
+    "description": "Možnost hesel."
+  },
+
+  "historyOption": {
+    "message": "Historie",
+    "description": "Možnost historie."
+  },
+
+  "pluginOption": {
+    "message": "Data pluginů",
+    "description": "Možnost dat pluginů."
+  },
+
+  "formOption": {
+    "message": "Data formuláře",
+    "description": "Možnost dat formuláře."
+  },
+
+  "cookiesOption": {
+    "message": "Cookies",
+    "description": "Možnost cookies."
+  },
+
+  "workerOption": {
+    "message": "Služby pracovníků",
+    "description": "Možnost služeb pracovníků."
+  },
+
+  "preferencesSavedMessage": {
+    "message": "Nastavení byla úspěšně uložena.",
+    "description": "Oznámení zobrazené po uložení nastavení uživatelem."
   }
 }
