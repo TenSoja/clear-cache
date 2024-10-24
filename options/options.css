@@ -5,6 +5,8 @@ body {
   font-family: "Open Sans Light", sans-serif;
   font-weight: 300;
   line-height: 1.5;
+  background-color: white;
+  color: black;
 }
 
 h2 {
@@ -54,4 +56,28 @@ label:hover {
 
 #save-button:focus {
   outline: 3px solid #ADD8E6;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+  }
+
+  label:hover {
+    background-color: #444;
+  }
+
+  #save-button {
+    background-color: #3d7f3a;
+  }
+
+  #save-button:hover {
+    background-color: #366d33;
+  }
+
+  #save-button:focus {
+    outline: 3px solid #5da6d9;
+  }
 }
