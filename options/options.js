@@ -4,19 +4,27 @@ Store the currently selected settings using browser.storage.local.
 function storeSettings() {
   // Get the selected data types
   function getTypes() {
-      return Array.from(document.querySelectorAll(".data-types [type=checkbox]"))
-          .filter(item => item.checked)
-          .map(item => item.getAttribute("data-type"));
+    return Array.from(document.querySelectorAll(".data-types [type=checkbox]"))
+      .filter(item => item.checked)
+      .map(item => item.getAttribute("data-type"));
   }
 
   // Store all settings at once
   const settings = {
-      dataTypes: getTypes(),
-      reload: document.querySelector("#reload").checked,
-      notification: document.querySelector("#notification").checked
+    dataTypes: getTypes(),
+    reload: document.querySelector("#reload").checked,
+    notification: document.querySelector("#notification").checked
   };
 
-  browser.storage.local.set(settings);
+  browser.storage.local.set(settings).then(() => {
+    // Show notification after saving preferences
+    browser.notifications.create({
+      "type": "basic",
+      "title": browser.i18n.getMessage('extensionName'),
+      "message": browser.i18n.getMessage('preferencesSavedMessage'),
+      "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+    });
+  }).catch(onError);
 }
 
 /*
@@ -24,9 +32,9 @@ Internationalization of options page
 */
 function localizeOptions() {
   document.querySelectorAll('[data-i18n]').forEach(obj => {
-      const tag = obj.getAttribute('data-i18n').toString();
-      const message = tag.replace(/__MSG_(\w+)__/g, (_, v1) => v1 ? browser.i18n.getMessage(v1) : '');
-      if (message !== tag) obj.textContent = message;
+      const tag = obj.getAttribute('data-i18n');
+      const message = browser.i18n.getMessage(tag.replace('__MSG_', ''));
+      if (message) obj.textContent = message;
   });
 }
 
@@ -44,7 +52,7 @@ function updateUI(restoredSettings) {
   // Update checkboxes for data types
   const checkboxes = document.querySelectorAll(".data-types [type=checkbox]");
   checkboxes.forEach(item => {
-      item.checked = restoredSettings.dataTypes?.includes(item.getAttribute("data-type")) || false;
+    item.checked = restoredSettings.dataTypes?.includes(item.getAttribute("data-type")) || false;
   });
 }
 
