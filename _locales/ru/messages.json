@@ -1,0 +1,85 @@
+{
+  "extensionName": {
+    "message": "Clear Cache",
+    "description": "Название расришения."
+  },
+  "extensionDescription": {
+    "message": "Очистите кэш Вашего браузера кликом или нажатием клавиши F9.",
+    "description": "Описание расширения."
+  },
+
+  "notificationTitle": {
+    "message": "Успех!",
+    "description": "Заголовок уведомления после очистки кэша."
+  },
+  "notificationContent": {
+    "message": "Кэш успешно очищен.",
+    "description": "Информирует пользователя о том, что кэш успешно очищен."
+  },
+
+  "preferencesHeader": {
+    "message": "Настройки",
+    "description": "Заголовок раздела \"Настройки\"."
+  },
+  "preferencesTitle": {
+    "message": "После очистки:",
+    "description": "Заголовок раздела \"После очистки\""
+  },
+
+  "reloadOption": {
+    "message": "Перезагрузить активную вкладку",
+    "description": "Опция перезагрузки текущей вкладки."
+  },
+  "notificationOption": {
+    "message": "Показать уведомления",
+    "description": "Опция для показа/скрытия уведомлений."
+  },
+
+  "saveButton": {
+    "message": "Сохранить настройки",
+    "description": "Текст кнопки сохранения настроек."
+  },
+
+  "optionsTitle": {
+    "message": "Тип данных для очистки",
+    "description": "Заголовок для типа данных для очистки."
+  },
+
+  "cacheOption": {
+    "message": "Кэш",
+    "description": "Опция для очистки кэша."
+  },
+  "downloadOption": {
+    "message": "Загрузки",
+    "description": "Опция для очистки загрузок."
+  },
+  "passwordsOption": {
+    "message": "Пароли",
+    "description": "Опция для очистки сохранённых парелей."
+  },
+  "historyOption": {
+    "message": "История",
+    "description": "Опция для очистки истории браузера."
+  },
+  "pluginOption": {
+    "message": "Данные расширений",
+    "description": "Опция для очистки данных расширений."
+  },
+  "formOption": {
+    "message": "Данные форм",
+    "description": "Опция для очистки сохранённых данных форм."
+  },
+  "cookiesOption": {
+    "message": "Файлы куки",
+    "description": "Опция для очистки файлов куки."
+  },
+  "workerOption": {
+    "message": "Сервис-воркеры",
+    "description": "Опция для очистки данных сервис-воркеров."
+  },
+
+  "preferencesSavedMessage": {
+    "message": "Настроки успешно сохранены.",
+    "description": "Сообщение, выводящееся после сохранения настроек."
+  }
+}
