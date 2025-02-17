@@ -89,6 +89,16 @@
     "description": "Optie voor service workers."
   },
 
+  "localStorageOption": {
+    "message": "Lokale opslag",
+    "description": "Optie om Lokale opslag te wissen"
+  },
+
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "Optie om IndexedDB te wissen"
+  },
+
   "preferencesSavedMessage": {
     "message": "Voorkeuren zijn succesvol opgeslagen.",
     "description": "Melding die wordt weergegeven nadat de gebruiker de voorkeuren opslaat."

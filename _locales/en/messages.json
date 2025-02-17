@@ -3,6 +3,7 @@
     "message": "Clear Cache",
     "description": "Name of the extension."
   },
+
   "extensionDescription": {
     "message": "Clear your browser cache with a single click or via the F9 key.",
     "description": "Description of the extension."
@@ -12,6 +13,7 @@
     "message": "Success!",
     "description": "Title of the notification displayed after clearing cache."
   },
+  
   "notificationContent": {
     "message": "The cache has been successfully cleared.",
     "description": "Informs the user that the cache has been cleared."
@@ -21,6 +23,7 @@
     "message": "Preferences",
     "description": "Header for the preferences section."
   },
+
   "preferencesTitle": {
     "message": "After clearing:",
     "description": "Title for the options displayed after clearing."
@@ -30,6 +33,7 @@
     "message": "Reload active tab",
     "description": "Option to reload the currently active tab."
   },
+
   "notificationOption": {
     "message": "Show notification",
     "description": "Option to enable or disable notifications."
@@ -49,33 +53,50 @@
     "message": "Cache",
     "description": "Option to clear cache."
   },
+
   "downloadOption": {
     "message": "Downloads",
     "description": "Option to clear downloads."
   },
+
   "passwordsOption": {
     "message": "Passwords",
     "description": "Option to clear saved passwords."
   },
+
   "historyOption": {
     "message": "History",
     "description": "Option to clear browsing history."
   },
+
   "pluginOption": {
     "message": "Plugin data",
     "description": "Option to clear plugin data."
   },
+
   "formOption": {
     "message": "Form data",
     "description": "Option to clear saved form data."
   },
+
   "cookiesOption": {
     "message": "Cookies",
     "description": "Option to clear cookies."
   },
+
   "workerOption": {
     "message": "Service Workers",
     "description": "Option to clear service worker data."
+  },
+
+  "localStorageOption": {
+    "message": "Local Storage",
+    "description": "Option to clear Local Storage"
+  },
+
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "Option to clear IndexedDB"
   },
   
   "preferencesSavedMessage": {

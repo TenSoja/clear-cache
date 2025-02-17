@@ -89,6 +89,16 @@
     "description": "Opção de service workers."
   },
 
+  "localStorageOption": {
+    "message": "Armazenamento Local",
+    "description": "Opção para limpar o Armazenamento Local"
+  },
+  
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "Opção para limpar o IndexedDB"
+  },
+
   "preferencesSavedMessage": {
     "message": "As preferências foram salvas com sucesso.",
     "description": "Mensagem de notificação exibida após o usuário salvar as preferências."

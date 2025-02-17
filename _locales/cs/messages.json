@@ -89,6 +89,16 @@
     "description": "Možnost služeb pracovníků."
   },
 
+  "localStorageOption": {
+    "message": "Místní úložiště",
+    "description": "Možnost vymazání místního úložiště"
+  },
+
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "Možnost vymazání IndexedDB"
+  },
+
   "preferencesSavedMessage": {
     "message": "Nastavení byla úspěšně uložena.",
     "description": "Oznámení zobrazené po uložení nastavení uživatelem."

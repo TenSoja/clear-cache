@@ -89,6 +89,16 @@
     "description": "خيار خدمات العمال."
   },
 
+  "localStorageOption": {
+    "message": "التخزين المحلي",
+    "description": "خيار لمسح التخزين المحلي"
+  },
+  
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "خيار لمسح IndexedDB"
+  },
+
   "preferencesSavedMessage": {
     "message": "تم حفظ التفضيلات بنجاح.",
     "description": "رسالة الإشعار المعروضة بعد أن يقوم المستخدم بحفظ التفضيلات."
