@@ -86,13 +86,24 @@ function clearCache(storedSettings) {
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
       if (tabs.length > 0) {
         const currentTab = tabs[0];
-        const url = new URL(currentTab.url);
-        const origin = url.origin;
-        
-        // Clear data only for the current tab's origin
-        browser.browsingData.remove({
-          origins: [origin]
-        }, dataTypes).then(onCleared, onError);
+        try {
+          const url = new URL(currentTab.url);
+          const origin = url.origin;
+          
+          // Only proceed if we have a valid origin (not null)
+          if (origin && origin !== 'null') {
+            // Clear data only for the current tab's origin
+            browser.browsingData.remove({
+              origins: [origin]
+            }, dataTypes).then(onCleared, onError);
+          } else {
+            // For special URLs (about:, chrome:, etc.), fall back to clearing all data
+            browser.browsingData.remove({since: 0}, dataTypes).then(onCleared, onError);
+          }
+        } catch (e) {
+          // If URL parsing fails, fall back to clearing all data
+          browser.browsingData.remove({since: 0}, dataTypes).then(onCleared, onError);
+        }
       }
     }).catch(onError);
   } else {
