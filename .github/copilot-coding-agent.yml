@@ -1,30 +1,54 @@
-# Instructions for the Copilot Coding Agent in this Firefox addon repository
+# Copilot Agents configuration for this repository
 
 description: >
-  This repository contains a Firefox addon. Please follow Mozilla's guidelines and best practices for WebExtension development.
+  This repository uses multiple Copilot Agents to automate development, code review, and testing for a Firefox addon project.
 
-best_practices:
-  - Follow the official Mozilla guide: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
-  - Use only the necessary permissions in the manifest.json file
-  - Test the addon in Firefox Developer Edition before submitting PRs
-  - Document build and installation steps in the README.md
-  - Prioritize user security and privacy
+agents:
+  coding-agent:
+    description: >
+      Responsible for implementing features and bug fixes. Follows project coding standards and Mozilla WebExtension guidelines.
+    responsibilities:
+      - Create and update code as requested in issues or PRs
+      - Follow best practices for WebExtensions
+      - Only request necessary permissions in manifest.json
+      - Document changes clearly
+    exclusions:
+      - Do not review or approve pull requests
+      - Do not merge PRs
+
+  review-agent:
+    description: >
+      Responsible for reviewing code changes, suggesting improvements, and ensuring quality before merging.
+    responsibilities:
+      - Review all pull requests for code quality, security, and privacy
+      - Ensure all changes follow project guidelines
+      - Add comments and request changes if needed
+    exclusions:
+      - Do not write new features or bug fixes (unless minor)
+      - Do not merge PRs without approval from maintainers
+
+  testing-agent:
+    description: >
+      Responsible for running automated tests and reporting results.
+    responsibilities:
+      - Run unit and integration tests on all PRs
+      - Report test results in PR comments
+      - Suggest improvements to test coverage
+    exclusions:
+      - Do not modify application code
+      - Do not approve or merge PRs
 
 pull_request_guidelines:
-  - Clearly describe the changes in the pull request body
-  - Reference related issues in the PR
-  - All contributions should undergo code review
-  - Include automated tests whenever possible
+  - All PRs must be reviewed by the review-agent before merging
+  - All PRs must pass testing-agent checks
+  - Clear description and issue reference required
 
 focus_areas:
-  - manifest.json file
-  - Main scripts (background, content scripts)
-  - Integration with browser APIs
-  - Security and privacy considerations
-
-exclusions:
-  - Do not modify personal user configuration files
-  - Do not add external dependencies without approval
+  - manifest.json
+  - background scripts
+  - content scripts
+  - browser API integration
+  - security and privacy
 
 additional_instructions: >
-  Follow the existing code style and naming conventions in the project. If in doubt, consult the maintainers.
+  Collaborate respectfully. Consult maintainers for major changes. Keep documentation up to date.
