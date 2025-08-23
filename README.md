@@ -11,7 +11,7 @@ Often the work of a web developer can be hampered by the browser's cache, cleari
 The addon allows you to quickly clear your browser cache with a single command.
 
 ### Customize!
-You can customize what you clear and what happens after clearing the cache: reload the current tab and/or display a notification.
+You can customize what you clear and what happens after clearing the cache: reload the current tab and/or display a notification. You can also select the time period to clear data from (e.g., last 15 minutes, last hour, or all time).
 
 ## Development
 
@@ -38,6 +38,7 @@ You can customize what you clear and what happens after clearing the cache: relo
    - Click the Clear Cache icon in the toolbar
    - Or press F9 (default keyboard shortcut)
    - Access options via `about:addons` > Clear Cache > Preferences
+   - Try different time period options (All time, Last 15 minutes, Last hour, etc.)
 
 ### Testing in Firefox Developer Edition
 
@@ -47,8 +48,9 @@ Before submitting any changes, always test in [Firefox Developer Edition](https:
 2. Test basic functionality (click to clear cache)
 3. Test keyboard shortcut (F9)
 4. Test options page (customize settings)
-5. Check browser console for any errors
-6. Verify permissions are working correctly
+5. Test different time period selections (15 minutes, 1 hour, etc.)
+6. Check browser console for any errors
+7. Verify permissions are working correctly
 
 ### Project Structure
 
