@@ -102,5 +102,10 @@
   "preferencesSavedMessage": {
     "message": "Your preferences have been saved successfully.",
     "description": "Message displayed after the user saves their preferences."
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "Clear cache and reload page",
+    "description": "Context menu item to clear cache and reload the current page."
   }
 }

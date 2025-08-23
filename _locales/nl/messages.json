@@ -102,5 +102,10 @@
   "preferencesSavedMessage": {
     "message": "Voorkeuren zijn succesvol opgeslagen.",
     "description": "Melding die wordt weergegeven nadat de gebruiker de voorkeuren opslaat."
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "Cache wissen en pagina herladen",
+    "description": "Context menu item om cache te wissen en de huidige pagina te herladen."
   }
 }

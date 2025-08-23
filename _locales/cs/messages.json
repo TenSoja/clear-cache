@@ -102,5 +102,10 @@
   "preferencesSavedMessage": {
     "message": "Nastavení byla úspěšně uložena.",
     "description": "Oznámení zobrazené po uložení nastavení uživatelem."
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "Vymazat cache a znovu načíst stránku",
+    "description": "Položka kontextové nabídky pro vymazání cache a znovu načtení aktuální stránky."
   }
 }
