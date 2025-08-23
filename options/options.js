@@ -13,7 +13,8 @@ function storeSettings() {
   const settings = {
     dataTypes: getTypes(),
     reload: document.querySelector("#reload").checked,
-    notification: document.querySelector("#notification").checked
+    notification: document.querySelector("#notification").checked,
+    timePeriod: document.querySelector('input[name="timePeriod"]:checked')?.value || "all"
   };
 
   browser.storage.local.set(settings).then(() => {
@@ -54,6 +55,16 @@ function updateUI(restoredSettings) {
   checkboxes.forEach(item => {
     item.checked = restoredSettings.dataTypes?.includes(item.getAttribute("data-type")) || false;
   });
+
+  // Update time period radio buttons
+  const timePeriod = restoredSettings.timePeriod || "all";
+  const timePeriodRadio = document.querySelector(`input[name="timePeriod"][value="${timePeriod}"]`);
+  if (timePeriodRadio) {
+    timePeriodRadio.checked = true;
+  } else {
+    // Default to "all" if the stored value doesn't match any radio button
+    document.querySelector('input[name="timePeriod"][value="all"]').checked = true;
+  }
 }
 
 function onError(e) {
