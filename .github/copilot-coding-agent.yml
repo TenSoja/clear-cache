@@ -1,0 +1,30 @@
+# Instructions for the Copilot Coding Agent in this Firefox addon repository
+
+description: >
+  This repository contains a Firefox addon. Please follow Mozilla's guidelines and best practices for WebExtension development.
+
+best_practices:
+  - Follow the official Mozilla guide: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
+  - Use only the necessary permissions in the manifest.json file
+  - Test the addon in Firefox Developer Edition before submitting PRs
+  - Document build and installation steps in the README.md
+  - Prioritize user security and privacy
+
+pull_request_guidelines:
+  - Clearly describe the changes in the pull request body
+  - Reference related issues in the PR
+  - All contributions should undergo code review
+  - Include automated tests whenever possible
+
+focus_areas:
+  - manifest.json file
+  - Main scripts (background, content scripts)
+  - Integration with browser APIs
+  - Security and privacy considerations
+
+exclusions:
+  - Do not modify personal user configuration files
+  - Do not add external dependencies without approval
+
+additional_instructions: >
+  Follow the existing code style and naming conventions in the project. If in doubt, consult the maintainers.
