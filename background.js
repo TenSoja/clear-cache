@@ -123,14 +123,5 @@ browser.browserAction.onClicked.addListener(() => {
   gettingStoredSettings.then(clearCache, onError);
 });
 
-// Listen for keyboard events globally
-window.addEventListener("keydown", (event) => {
-  const gettingStoredSettings = browser.storage.local.get();
-  gettingStoredSettings.then((storedSettings) => {
-    const customKey = storedSettings.customKey || "F9";
-
-    if (event.key.toUpperCase() === customKey.toUpperCase()) {
-      clearCache(storedSettings);
-    }
-  }).catch(onError);
-});
+// Keyboard shortcuts are handled via manifest.json commands section
+// The F9 key is configured to trigger _execute_browser_action which calls the browserAction.onClicked handler above

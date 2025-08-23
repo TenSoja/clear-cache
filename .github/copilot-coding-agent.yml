@@ -1,0 +1,54 @@
+# Copilot Agents configuration for this repository
+
+description: >
+  This repository uses multiple Copilot Agents to automate development, code review, and testing for a Firefox addon project.
+
+agents:
+  coding-agent:
+    description: >
+      Responsible for implementing features and bug fixes. Follows project coding standards and Mozilla WebExtension guidelines.
+    responsibilities:
+      - Create and update code as requested in issues or PRs
+      - Follow best practices for WebExtensions
+      - Only request necessary permissions in manifest.json
+      - Document changes clearly
+    exclusions:
+      - Do not review or approve pull requests
+      - Do not merge PRs
+
+  review-agent:
+    description: >
+      Responsible for reviewing code changes, suggesting improvements, and ensuring quality before merging.
+    responsibilities:
+      - Review all pull requests for code quality, security, and privacy
+      - Ensure all changes follow project guidelines
+      - Add comments and request changes if needed
+    exclusions:
+      - Do not write new features or bug fixes (unless minor)
+      - Do not merge PRs without approval from maintainers
+
+  testing-agent:
+    description: >
+      Responsible for running automated tests and reporting results.
+    responsibilities:
+      - Run unit and integration tests on all PRs
+      - Report test results in PR comments
+      - Suggest improvements to test coverage
+    exclusions:
+      - Do not modify application code
+      - Do not approve or merge PRs
+
+pull_request_guidelines:
+  - All PRs must be reviewed by the review-agent before merging
+  - All PRs must pass testing-agent checks
+  - Clear description and issue reference required
+
+focus_areas:
+  - manifest.json
+  - background scripts
+  - content scripts
+  - browser API integration
+  - security and privacy
+
+additional_instructions: >
+  Collaborate respectfully. Consult maintainers for major changes. Keep documentation up to date.

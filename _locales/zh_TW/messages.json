@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "Clear Cache",
+    "description": "擴充功能名稱。"
+  },
+  "extensionDescription": {
+    "message": "點擊一次或按下 F9 鍵即可清除瀏覽器快取。",
+    "description": "擴充功能簡介。"
+  },
+  "notificationTitle": {
+    "message": "完成！",
+    "description": "清除快取後通知的標題。"
+  },
+  "notificationContent": {
+    "message": "快取已成功清除。",
+    "description": "通知內容，告知使用者快取已被清除。"
+  },
+  "preferencesHeader": {
+    "message": "偏好設定",
+    "description": "偏好設定頁面的標題。"
+  },
+  "preferencesTitle": {
+    "message": "清除後的操作：",
+    "description": "清除快取後可執行的操作標題。"
+  },
+  "reloadOption": {
+    "message": "重新載入目前分頁",
+    "description": "重新載入目前分頁的選項。"
+  },
+  "notificationOption": {
+    "message": "顯示通知",
+    "description": "啟用或停用通知的選項。"
+  },
+  "saveButton": {
+    "message": "儲存設定",
+    "description": "儲存按鈕文字。"
+  },
+  "optionsTitle": {
+    "message": "要清除的資料類型",
+    "description": "可清除資料類型的標題。"
+  },
+  "cacheOption": {
+    "message": "快取",
+    "description": "清除快取的選項。"
+  },
+  "downloadOption": {
+    "message": "下載記錄",
+    "description": "清除下載記錄的選項。"
+  },
+  "passwordsOption": {
+    "message": "密碼",
+    "description": "清除已儲存密碼的選項。"
+  },
+  "historyOption": {
+    "message": "瀏覽歷史",
+    "description": "清除瀏覽歷史的選項。"
+  },
+  "pluginOption": {
+    "message": "外掛資料",
+    "description": "清除外掛資料的選項。"
+  },
+  "formOption": {
+    "message": "表單資料",
+    "description": "清除已儲存表單資料的選項。"
+  },
+  "cookiesOption": {
+    "message": "Cookie",
+    "description": "清除 Cookie 的選項。"
+  },
+  "workerOption": {
+    "message": "Service Workers",
+    "description": "清除 Service Worker 資料的選項。"
+  },
+  "localStorageOption": {
+    "message": "本機儲存空間",
+    "description": "清除 Local Storage 的選項。"
+  },
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "清除 IndexedDB 的選項。"
+  },
+  "preferencesSavedMessage": {
+    "message": "您的設定已成功儲存。",
+    "description": "使用者儲存偏好設定後顯示的訊息。"
+  }
+}

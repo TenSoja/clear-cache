@@ -1,0 +1,87 @@
+{
+  "extensionName": {
+    "message": "Clear Cache",
+    "description": "插件名称。"
+  },
+  "extensionDescription": {
+    "message": "点击一次或按 F9 键即可清除浏览器缓存。",
+    "description": "插件概述。"
+  },
+  "notificationTitle": {
+    "message": "完成！",
+    "description": "清除缓存后通知的标题。"
+  },
+  "notificationContent": {
+    "message": "缓存已成功清除。",
+    "description": "通知内容，告知用户缓存已被清除。"
+  },
+  "preferencesHeader": {
+    "message": "偏好设置",
+    "description": "偏好设置页面的标题。"
+  },
+  "preferencesTitle": {
+    "message": "清除后操作：",
+    "description": "清除缓存后可执行的操作的标题。"
+  },
+  "reloadOption": {
+    "message": "重新加载当前标签页",
+    "description": "重新加载当前标签页的选项。"
+  },
+  "notificationOption": {
+    "message": "显示通知",
+    "description": "启用或禁用通知的选项。"
+  },
+  "saveButton": {
+    "message": "保存设置",
+    "description": "保存按钮文本。"
+  },
+  "optionsTitle": {
+    "message": "要清除的数据类型",
+    "description": "可清除数据类型的标题。"
+  },
+  "cacheOption": {
+    "message": "缓存",
+    "description": "清除缓存的选项。"
+  },
+  "downloadOption": {
+    "message": "下载记录",
+    "description": "清除下载记录的选项。"
+  },
+  "passwordsOption": {
+    "message": "密码",
+    "description": "清除已保存密码的选项。"
+  },
+  "historyOption": {
+    "message": "浏览历史",
+    "description": "清除浏览历史的选项。"
+  },
+  "pluginOption": {
+    "message": "插件数据",
+    "description": "清除插件数据的选项。"
+  },
+  "formOption": {
+    "message": "表单数据",
+    "description": "清除已保存表单数据的选项。"
+  },
+  "cookiesOption": {
+    "message": "Cookie",
+    "description": "清除 Cookie 的选项。"
+  },
+  "workerOption": {
+    "message": "Service Workers",
+    "description": "清除 Service Worker 数据的选项。"
+  },
+  "localStorageOption": {
+    "message": "本地存储",
+    "description": "清除 Local Storage 的选项。"
+  },
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "清除 IndexedDB 的选项。"
+  },
+  "preferencesSavedMessage": {
+    "message": "您的设置已成功保存。",
+    "description": "用户保存偏好设置后显示的消息。"
+  }
+}
+
