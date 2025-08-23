@@ -34,6 +34,11 @@
     "description": "Option to reload the currently active tab."
   },
 
+  "currentTabOnlyOption": {
+    "message": "Current tab only",
+    "description": "Option to clear data only for the current active tab."
+  },
+
   "notificationOption": {
     "message": "Show notification",
     "description": "Option to enable or disable notifications."

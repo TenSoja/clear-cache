@@ -13,7 +13,8 @@ function storeSettings() {
   const settings = {
     dataTypes: getTypes(),
     reload: document.querySelector("#reload").checked,
-    notification: document.querySelector("#notification").checked
+    notification: document.querySelector("#notification").checked,
+    currentTabOnly: document.querySelector("#currentTabOnly").checked
   };
 
   browser.storage.local.set(settings).then(() => {
@@ -45,9 +46,10 @@ or the default settings if the stored settings are empty.
 function updateUI(restoredSettings) {
   localizeOptions();
 
-  // Default values: true for reload and notification
+  // Default values: true for reload and notification, false for currentTabOnly
   document.querySelector("#reload").checked = restoredSettings.reload !== false;
   document.querySelector("#notification").checked = restoredSettings.notification !== false;
+  document.querySelector("#currentTabOnly").checked = restoredSettings.currentTabOnly === true;
 
   // Update checkboxes for data types
   const checkboxes = document.querySelectorAll(".data-types [type=checkbox]");

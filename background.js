@@ -7,7 +7,8 @@ const defaultSettings = {
   reload: true,
   notification: true,
   dataTypes: ["cache"],
-  customKey: "F9"
+  customKey: "F9",
+  currentTabOnly: false
 };
 
 /*
@@ -19,7 +20,8 @@ function checkStoredSettings(storedSettings) {
     storedSettings.notification == null ||
     storedSettings.reload == null ||
     storedSettings.dataTypes == null ||
-    storedSettings.customKey == null
+    storedSettings.customKey == null ||
+    storedSettings.currentTabOnly == null
   ) {
     browser.storage.local.set(defaultSettings);
   }
@@ -35,6 +37,7 @@ Function to clear cache based on stored settings.
 function clearCache(storedSettings) {
   const reload = storedSettings.reload;
   const notification = storedSettings.notification;
+  const currentTabOnly = storedSettings.currentTabOnly;
 
   /*
   Convert from an array of strings, representing data types,
@@ -66,10 +69,11 @@ function clearCache(storedSettings) {
         }).then(function() {});
       } else {
         var dataTypesString = Object.keys(dataTypes).join(", ");
+        var tabMessage = currentTabOnly ? " for current tab" : "";
         browser.notifications.create({
           "type": "basic",
           "title": "Clear Cache",
-          "message": `Cleared ${dataTypesString}.`,
+          "message": `Cleared ${dataTypesString}${tabMessage}.`,
           "iconUrl": browser.runtime.getURL('/icons/broom.svg')
         }).then(function() {});
       }
@@ -77,7 +81,24 @@ function clearCache(storedSettings) {
   }
 
   // Clear browsing data
-  browser.browsingData.remove({since: 0}, dataTypes).then(onCleared, onError);
+  if (currentTabOnly) {
+    // Get current active tab and clear data only for its origin
+    browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+      if (tabs.length > 0) {
+        const currentTab = tabs[0];
+        const url = new URL(currentTab.url);
+        const origin = url.origin;
+        
+        // Clear data only for the current tab's origin
+        browser.browsingData.remove({
+          origins: [origin]
+        }, dataTypes).then(onCleared, onError);
+      }
+    }).catch(onError);
+  } else {
+    // Clear all browsing data
+    browser.browsingData.remove({since: 0}, dataTypes).then(onCleared, onError);
+  }
 }
 
 // Error handling function

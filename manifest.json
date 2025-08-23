@@ -32,7 +32,8 @@
   "permissions": [
     "browsingData",
     "notifications",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "commands": {
     "_execute_browser_action": {
