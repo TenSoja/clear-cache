@@ -82,5 +82,10 @@
   "preferencesSavedMessage": {
     "message": "您的設定已成功儲存。",
     "description": "使用者儲存偏好設定後顯示的訊息。"
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "清除快取並重新載入頁面",
+    "description": "用於清除快取並重新載入目前頁面的內容功能表項目。"
   }
 }

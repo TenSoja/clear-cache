@@ -82,6 +82,11 @@
   "preferencesSavedMessage": {
     "message": "您的设置已成功保存。",
     "description": "用户保存偏好设置后显示的消息。"
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "清除缓存并重新加载页面",
+    "description": "用于清除缓存并重新加载当前页面的上下文菜单项。"
   }
 }
 

@@ -102,5 +102,10 @@
   "preferencesSavedMessage": {
     "message": "As preferências foram salvas com sucesso.",
     "description": "Mensagem de notificação exibida após o usuário salvar as preferências."
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "Limpar cache e recarregar página",
+    "description": "Item do menu de contexto para limpar cache e recarregar a página atual."
   }
 }

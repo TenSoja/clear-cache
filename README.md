@@ -10,8 +10,15 @@ Often the work of a web developer can be hampered by the browser's cache, cleari
 ## How?
 The addon allows you to quickly clear your browser cache with a single command.
 
+**Multiple ways to clear cache:**
+- **Click the extension icon** in the toolbar
+- **Press F9** (keyboard shortcut)
+- **Right-click the extension icon** and select "Clear cache and reload page" from the context menu
+
 ### Customize!
 You can customize what you clear and what happens after clearing the cache: reload the current tab and/or display a notification.
+
+**Note:** The context menu option "Clear cache and reload page" will always reload the current page regardless of your reload preference setting. This is useful when you don't want the reload option permanently enabled but occasionally need to reload after clearing cache.
 
 ## Development
 
@@ -37,6 +44,7 @@ You can customize what you clear and what happens after clearing the cache: relo
 3. **Test the extension:**
    - Click the Clear Cache icon in the toolbar
    - Or press F9 (default keyboard shortcut)
+   - Right-click the Clear Cache icon and select "Clear cache and reload page"
    - Access options via `about:addons` > Clear Cache > Preferences
 
 ### Testing in Firefox Developer Edition
@@ -46,9 +54,10 @@ Before submitting any changes, always test in [Firefox Developer Edition](https:
 1. Load the extension using the steps above
 2. Test basic functionality (click to clear cache)
 3. Test keyboard shortcut (F9)
-4. Test options page (customize settings)
-5. Check browser console for any errors
-6. Verify permissions are working correctly
+4. Test context menu (right-click extension icon)
+5. Test options page (customize settings)
+6. Check browser console for any errors
+7. Verify permissions are working correctly
 
 ### Project Structure
 
@@ -78,7 +87,7 @@ clear-cache/
 ### Security and Privacy
 
 This extension:
-- Only requests necessary permissions (`browsingData`, `notifications`, `storage`)
+- Only requests necessary permissions (`browsingData`, `contextMenus`, `notifications`, `storage`)
 - Stores preferences locally using the WebExtensions storage API
 - Does not collect or transmit any personal data
 - Follows Mozilla's security best practices
@@ -86,6 +95,7 @@ This extension:
 ### Permissions Explained
 
 - `browsingData`: Required to clear browser cache and other browsing data
+- `contextMenus`: Used to add right-click menu option on the extension icon
 - `notifications`: Used to show confirmation when cache is cleared
 - `storage`: Used to save user preferences locally
 
