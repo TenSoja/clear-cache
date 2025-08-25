@@ -102,5 +102,35 @@
   "preferencesSavedMessage": {
     "message": "Your preferences have been saved successfully.",
     "description": "Message displayed after the user saves their preferences."
+  },
+
+  "timePeriodTitle": {
+    "message": "Time period to clear",
+    "description": "Title for the time period selection section."
+  },
+
+  "timePeriodAll": {
+    "message": "All time",
+    "description": "Option to clear data from all time."
+  },
+
+  "timePeriod15min": {
+    "message": "Last 15 minutes",
+    "description": "Option to clear data from last 15 minutes."
+  },
+
+  "timePeriod1hour": {
+    "message": "Last hour",
+    "description": "Option to clear data from last hour."
+  },
+
+  "timePeriod24hours": {
+    "message": "Last 24 hours",
+    "description": "Option to clear data from last 24 hours."
+  },
+
+  "timePeriod1week": {
+    "message": "Last week",
+    "description": "Option to clear data from last week."
   }
 }
