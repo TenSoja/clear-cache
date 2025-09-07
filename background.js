@@ -1,66 +1,55 @@
-// https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/browsingData/removeCache
-
-/*
-Default settings. If there is nothing in storage, use these values.
-*/
+// Configurações padrão
 const defaultSettings = {
   reload: true,
   notification: true,
   dataTypes: ["cache"],
-  timePeriod: "all" // all, 15min, 1hour, 24hours, 1week
+  timePeriod: "all", // all, 15min, 1hour, 24hours, 1week
+  customKey: "F9",
+  currentTabOnly: false
 };
 
-/*
-On startup, check whether we have stored settings.
-If we don't, then store the default settings.
-*/
+// Verifica e salva configurações padrão se necessário
 function checkStoredSettings(storedSettings) {
   if (
     storedSettings.notification == null ||
     storedSettings.reload == null ||
     storedSettings.dataTypes == null ||
-    storedSettings.timePeriod == null
+    storedSettings.timePeriod == null ||
+    storedSettings.customKey == null ||
+    storedSettings.currentTabOnly == null
   ) {
     browser.storage.local.set(defaultSettings);
   }
 }
 
-// Fetch stored settings to check and set defaults if necessary
 const gettingStoredSettings = browser.storage.local.get();
 gettingStoredSettings.then(checkStoredSettings, onError);
 
-/*
-Function to clear cache based on stored settings.
-*/
 function clearCache(storedSettings) {
   const reload = storedSettings.reload;
   const notification = storedSettings.notification;
   const timePeriod = storedSettings.timePeriod || "all";
+  const currentTabOnly = storedSettings.currentTabOnly;
 
-  /*
-  Calculate the 'since' timestamp based on the selected time period
-  */
+  // Calcula o timestamp 'since' baseado no período selecionado
   function getSinceTimestamp(period) {
     const now = Date.now();
     switch (period) {
       case "15min":
-        return now - (15 * 60 * 1000); // 15 minutes in milliseconds
+        return now - (15 * 60 * 1000);
       case "1hour":
-        return now - (60 * 60 * 1000); // 1 hour in milliseconds
+        return now - (60 * 60 * 1000);
       case "24hours":
-        return now - (24 * 60 * 60 * 1000); // 24 hours in milliseconds
+        return now - (24 * 60 * 60 * 1000);
       case "1week":
-        return now - (7 * 24 * 60 * 60 * 1000); // 1 week in milliseconds
+        return now - (7 * 24 * 60 * 60 * 1000);
       case "all":
       default:
-        return 0; // Clear everything
+        return 0;
     }
   }
 
-  /*
-  Convert from an array of strings, representing data types,
-  to an object suitable for passing into browsingData.remove().
-  */
+  // Converte array de tipos em objeto para browsingData.remove
   function getTypes(selectedTypes) {
     var dataTypes = {};
     for (var item of selectedTypes) {
@@ -68,22 +57,20 @@ function clearCache(storedSettings) {
     }
     return dataTypes;
   }
-  
+
   const dataTypes = getTypes(storedSettings.dataTypes);
   const sinceTimestamp = getSinceTimestamp(timePeriod);
 
-  function onCleared() {
-    // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/reload
+  function onCleared(tabMessage = "") {
     if (reload) {
       browser.tabs.reload();
     }
-    // https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/notifications
     if (notification) {
       if (Object.keys(dataTypes).length === 0) {
         browser.notifications.create({
           "type": "basic",
           "title": "Clear Cache",
-          "message": "All data types have been disabled. Enable at least one data type in options.",
+          "message": "Todos os tipos de dados foram desabilitados. Ative pelo menos um nas opções.",
           "iconUrl": browser.runtime.getURL('/icons/broom.svg')
         }).then(function() {});
       } else {
@@ -92,46 +79,63 @@ function clearCache(storedSettings) {
         browser.notifications.create({
           "type": "basic",
           "title": "Clear Cache",
-          "message": `Cleared ${dataTypesString} from ${timeDescription}.`,
+          "message": `Limpo ${dataTypesString} ${tabMessage} de ${timeDescription}.`,
           "iconUrl": browser.runtime.getURL('/icons/broom.svg')
         }).then(function() {});
       }
     }
   }
 
-  /*
-  Get human-readable description of time period
-  */
+  // Retorna descrição legível do período
   function getTimeDescription(period) {
     switch (period) {
       case "15min":
-        return "last 15 minutes";
+        return "últimos 15 minutos";
       case "1hour":
-        return "last hour";
+        return "última hora";
       case "24hours":
-        return "last 24 hours";
+        return "últimas 24 horas";
       case "1week":
-        return "last week";
+        return "última semana";
       case "all":
       default:
-        return "all time";
+        return "todo o tempo";
     }
   }
 
-  // Clear browsing data
-  browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(onCleared, onError);
+  if (currentTabOnly) {
+    browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+      if (tabs.length > 0) {
+        const currentTab = tabs[0];
+        try {
+          const url = new URL(currentTab.url);
+          const origin = url.origin;
+          if (origin && origin !== 'null') {
+            browser.browsingData.remove({
+              origins: [origin],
+              since: sinceTimestamp
+            }, dataTypes).then(() => onCleared("(aba atual)"), onError);
+          } else {
+            browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
+          }
+        } catch (e) {
+          browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
+        }
+      }
+    }).catch(onError);
+  } else {
+    browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
+  }
 }
 
-// Error handling function
 function onError(error) {
   console.error(error);
 }
 
-// Handle the browser action click
+// Clique no ícone da extensão chama a limpeza
 browser.browserAction.onClicked.addListener(() => {
   const gettingStoredSettings = browser.storage.local.get();
   gettingStoredSettings.then(clearCache, onError);
 });
 
-// Keyboard shortcuts are handled via manifest.json commands section
-// The F9 key is configured to trigger _execute_browser_action which calls the browserAction.onClicked handler above
+// Atalhos de teclado são configurados via manifest.json

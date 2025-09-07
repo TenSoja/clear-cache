@@ -1,24 +1,20 @@
-/*
-Store the currently selected settings using browser.storage.local.
-*/
+// Armazena as configurações selecionadas
 function storeSettings() {
-  // Get the selected data types
   function getTypes() {
     return Array.from(document.querySelectorAll(".data-types [type=checkbox]"))
       .filter(item => item.checked)
       .map(item => item.getAttribute("data-type"));
   }
 
-  // Store all settings at once
   const settings = {
     dataTypes: getTypes(),
     reload: document.querySelector("#reload").checked,
     notification: document.querySelector("#notification").checked,
-    timePeriod: document.querySelector('input[name="timePeriod"]:checked')?.value || "all"
+    timePeriod: document.querySelector('input[name="timePeriod"]:checked')?.value || "all",
+    currentTabOnly: document.querySelector("#currentTabOnly").checked
   };
 
   browser.storage.local.set(settings).then(() => {
-    // Show notification after saving preferences
     browser.notifications.create({
       "type": "basic",
       "title": browser.i18n.getMessage('extensionName'),
@@ -28,41 +24,33 @@ function storeSettings() {
   }).catch(onError);
 }
 
-/*
-Internationalization of options page
-*/
+// Internacionalização da página de opções
 function localizeOptions() {
   document.querySelectorAll('[data-i18n]').forEach(obj => {
-      const tag = obj.getAttribute('data-i18n');
-      const message = browser.i18n.getMessage(tag.replace('__MSG_', ''));
-      if (message) obj.textContent = message;
+    const tag = obj.getAttribute('data-i18n');
+    const message = browser.i18n.getMessage(tag.replace('__MSG_', ''));
+    if (message) obj.textContent = message;
   });
 }
 
-/*
-Update the options UI with the settings values retrieved from storage,
-or the default settings if the stored settings are empty.
-*/
+// Atualiza a interface com os valores salvos ou padrão
 function updateUI(restoredSettings) {
   localizeOptions();
 
-  // Default values: true for reload and notification
   document.querySelector("#reload").checked = restoredSettings.reload !== false;
   document.querySelector("#notification").checked = restoredSettings.notification !== false;
+  document.querySelector("#currentTabOnly").checked = restoredSettings.currentTabOnly === true;
 
-  // Update checkboxes for data types
   const checkboxes = document.querySelectorAll(".data-types [type=checkbox]");
   checkboxes.forEach(item => {
     item.checked = restoredSettings.dataTypes?.includes(item.getAttribute("data-type")) || false;
   });
 
-  // Update time period radio buttons
   const timePeriod = restoredSettings.timePeriod || "all";
   const timePeriodRadio = document.querySelector(`input[name="timePeriod"][value="${timePeriod}"]`);
   if (timePeriodRadio) {
     timePeriodRadio.checked = true;
   } else {
-    // Default to "all" if the stored value doesn't match any radio button
     document.querySelector('input[name="timePeriod"][value="all"]').checked = true;
   }
 }
@@ -71,12 +59,8 @@ function onError(e) {
   console.error(e);
 }
 
-/*
-On opening the options page, fetch stored settings and update the UI with them.
-*/
+// Inicializa a interface ao abrir a página
 browser.storage.local.get().then(updateUI, onError);
 
-/*
-On clicking the save button, save the currently selected settings.
-*/
+// Salva configurações ao clicar no botão
 document.querySelector("#save-button").addEventListener("click", storeSettings);
