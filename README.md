@@ -1,4 +1,3 @@
-
 <!-- Firefox extension, cache cleaner, WebExtension, privacy, open source, browser, performance -->
 
 <p align="center">
@@ -15,7 +14,6 @@
 </p>
 
 <h1 align="center">Clear Cache</h1>
-
 <p align="center">Add-on to clear browser cache with a single click or via the F9 key.</p>
 <p align="center"><strong>📱 Now available on Firefox for Android!</strong></p>
 
@@ -182,6 +180,24 @@ clear-cache/
 
 Thanks to all contributors who helped improve this project!
 
+**Project Creator & Lead Developer:**
+- **Michel de Almeida Silva** ([@TenSoja](https://github.com/TenSoja)) - Creator & Primary Maintainer
+
+**Special Thanks to Contributors:**
+- **Heimen Stoffels** - Added Dutch translation
+- **zer0-x** - Added Arabic localization  
+- **Tomáš Beránek** - Added Czech language support
+- **medwuu** - Added Russian localization
+- **Ariel Xinyue Wang** - File contributions & improvements
+
+<a href="https://github.com/TenSoja/clear-cache/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=TenSoja/clear-cache" />
+</a>
+
+## 🤝 Contributors
+
+Thanks to all contributors who helped improve this project!
+
 Want to help? See the guide below!
 
 **Project Creator & Lead Developer:**
@@ -241,5 +257,5 @@ Your contribution helps maintain and improve this project for thousands of devel
 <blockquote>
 <strong>As we say in Brazil:</strong><br>
 <em>🧹 Diga onde você vai, que eu vou varrendo, varrendo, varrendo...</em><br>
-— Os Originais do Samba
+— Molejo
 </blockquote>
