@@ -1,92 +1,94 @@
 ---
-name: 🎯 Site-Specific Cleaning Feature
-about: Track development of targeted website data cleaning
-title: '[FEATURE] Site-Specific Cleaning Implementation'
+name: 🎯 Limpeza Específica por Site
+about: Acompanhar desenvolvimento de limpeza direcionada de dados de sites
+title: '[FUNCIONALIDADE] Implementação de Limpeza Específica por Site'
 labels: ['enhancement', 'feature', 'funding-goal']
 assignees: ['TenSoja']
 ---
 
-## 🎯 Feature Overview
-Implement site-specific data cleaning to allow users to clear cache, cookies, and storage for specific websites only.
+## 🎯 Visão Geral da Funcionalidade
+Implementar limpeza específica de dados por site para permitir que usuários limpem cache, cookies e armazenamento apenas de sites específicos.
 
-## 💰 Funding Goal
-**Target:** $30 on Buy Me a Coffee  
-**Current Progress:** [Link to Buy Me a Coffee page](https://www.buymeacoffee.com/tensoja)
+## 💰 Meta de Financiamento
+**Meta:** $30 no Buy Me a Coffee  
+**Progresso Atual:** https://www.buymeacoffee.com/tensoja
 
-## 📋 Implementation Tasks
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tensoja)
 
-### Phase 1: Core Infrastructure
-- [ ] Add site management UI to options page
-- [ ] Implement domain validation and parsing
-- [ ] Create site storage system (favorites/recents)
-- [ ] Add new permissions if needed (`tabs`, `activeTab`)
+## 📋 Tarefas de Implementação
 
-### Phase 2: Site-Specific Clearing
-- [ ] Implement domain-based filtering for `browsingData.remove()`
-- [ ] Add origin-specific data clearing
-- [ ] Support for wildcard domains (*.example.com)
-- [ ] Selective data types per site
+### Fase 1: Infraestrutura Central
+- [ ] Adicionar interface de gerenciamento de sites na página de opções
+- [ ] Implementar validação e análise de domínios
+- [ ] Criar sistema de armazenamento de sites (favoritos/recentes)
+- [ ] Adicionar novas permissões se necessário (`tabs`, `activeTab`)
 
-### Phase 3: Enhanced UX
-- [ ] Quick site selector in popup/context menu
-- [ ] Recently visited sites auto-suggestion
-- [ ] Favorite sites management
-- [ ] Site-specific clearing history
+### Fase 2: Limpeza Específica por Site
+- [ ] Implementar filtragem baseada em domínio para `browsingData.remove()`
+- [ ] Adicionar limpeza de dados específica por origem
+- [ ] Suporte para domínios curinga (*.example.com)
+- [ ] Tipos de dados seletivos por site
 
-### Phase 4: Advanced Features
-- [ ] Bulk site operations
-- [ ] Site grouping (dev, prod, test environments)
-- [ ] Export/import site lists
-- [ ] Statistics per site
+### Fase 3: UX Aprimorada
+- [ ] Seletor rápido de sites no popup/menu de contexto
+- [ ] Auto-sugestão de sites visitados recentemente
+- [ ] Gerenciamento de sites favoritos
+- [ ] Histórico de limpeza específica por site
 
-## 🎨 UI Mockup Ideas
+### Fase 4: Funcionalidades Avançadas
+- [ ] Operações em massa de sites
+- [ ] Agrupamento de sites (ambientes dev, prod, test)
+- [ ] Exportar/importar listas de sites
+- [ ] Estatísticas por site
 
-### Options Page Addition:
+## 🎨 Ideias de Mockup da Interface
+
+### Adição à Página de Opções:
 ```
 ┌─────────────────────────────────────┐
-│ Site-Specific Cleaning              │
+│ Limpeza Específica por Site         │
 ├─────────────────────────────────────┤
 │ ┌─────────────────────────────────┐ │
-│ │ Add Site: [example.com        ] │ │
-│ │          [+ Add]                │ │
+│ │ Adicionar Site: [example.com  ] │ │
+│ │                [+ Adicionar]    │ │
 │ └─────────────────────────────────┘ │
 │                                     │
-│ Favorite Sites:                     │
-│ • github.com        [Clear] [Edit]  │
-│ • localhost:3000    [Clear] [Edit]  │
-│ • stackoverflow.com [Clear] [Edit]  │
+│ Sites Favoritos:                    │
+│ • github.com        [Limpar] [Edit] │
+│ • localhost:3000    [Limpar] [Edit] │
+│ • stackoverflow.com [Limpar] [Edit] │
 │                                     │
-│ ☑ Show recent sites automatically   │
-│ ☑ Enable wildcard domains          │
+│ ☑ Mostrar sites recentes automaticamente │
+│ ☑ Habilitar domínios curinga        │
 └─────────────────────────────────────┘
 ```
 
-### Context Menu Addition:
+### Adição ao Menu de Contexto:
 ```
-Clear Cache
-├─ Clear cache and reload page
+Limpar Cache
+├─ Limpar cache e recarregar página
 ├─ ────────────────────────────
-├─ Clear for this site only
-└─ Site-specific options...
+├─ Limpar apenas este site
+└─ Opções específicas por site...
 ```
 
-## 🔧 Technical Implementation
+## 🔧 Implementação Técnica
 
-### New Files:
-- `js/site-manager.js` - Site management logic
-- `js/domain-utils.js` - Domain parsing utilities
-- `css/site-options.css` - Site-specific UI styling
+### Novos Arquivos:
+- `js/site-manager.js` - Lógica de gerenciamento de sites
+- `js/domain-utils.js` - Utilitários de análise de domínios
+- `css/site-options.css` - Estilização da interface específica por site
 
-### Modified Files:
-- `background.js` - Add site-specific clearing functions
-- `options/options.html` - Add site management UI
-- `options/options.js` - Site management interactions
-- `manifest.json` - Add required permissions
-- `_locales/*/messages.json` - Add new i18n strings
+### Arquivos Modificados:
+- `background.js` - Adicionar funções de limpeza específica por site
+- `options/options.html` - Adicionar interface de gerenciamento de sites
+- `options/options.js` - Interações de gerenciamento de sites
+- `manifest.json` - Adicionar permissões necessárias
+- `_locales/*/messages.json` - Adicionar novas strings de i18n
 
-### API Usage:
+### Uso da API:
 ```javascript
-// Clear data for specific origin
+// Limpar dados para origem específica
 browser.browsingData.remove({
   origins: ["https://example.com"]
 }, {
@@ -96,29 +98,29 @@ browser.browsingData.remove({
 });
 ```
 
-## 🧪 Testing Checklist
-- [ ] Domain validation works correctly
-- [ ] Wildcard domains function properly
-- [ ] Data clearing is truly site-specific
-- [ ] UI is intuitive and responsive
-- [ ] i18n works for all supported languages
-- [ ] No data loss for non-targeted sites
-- [ ] Performance impact is minimal
+## 🧪 Lista de Verificação de Testes
+- [ ] Validação de domínio funciona corretamente
+- [ ] Domínios curinga funcionam adequadamente
+- [ ] Limpeza de dados é verdadeiramente específica por site
+- [ ] Interface é intuitiva e responsiva
+- [ ] i18n funciona para todos os idiomas suportados
+- [ ] Sem perda de dados para sites não direcionados
+- [ ] Impacto na performance é mínimo
 
-## 📖 Documentation Updates
-- [ ] Update README with new feature
-- [ ] Add screenshots to options page
-- [ ] Update permissions explanation
-- [ ] Add troubleshooting section
+## 📖 Atualizações de Documentação
+- [ ] Atualizar README com nova funcionalidade
+- [ ] Adicionar capturas de tela à página de opções
+- [ ] Atualizar explicação de permissões
+- [ ] Adicionar seção de solução de problemas
 
-## 🎯 Acceptance Criteria
-- [ ] Users can add/remove favorite sites
-- [ ] Site-specific clearing works for cache, cookies, localStorage
-- [ ] UI is integrated seamlessly with existing options
-- [ ] Feature is fully internationalized
-- [ ] Zero impact on existing functionality
-- [ ] Performance remains optimal
+## 🎯 Critérios de Aceitação
+- [ ] Usuários podem adicionar/remover sites favoritos
+- [ ] Limpeza específica por site funciona para cache, cookies, localStorage
+- [ ] Interface está integrada perfeitamente com opções existentes
+- [ ] Funcionalidade está totalmente internacionalizada
+- [ ] Zero impacto na funcionalidade existente
+- [ ] Performance permanece otimizada
 
 ---
 
-**Note:** This feature will be implemented once the funding goal of $30 is reached on Buy Me a Coffee. Thank you for your support! 🙏
+**Nota:** Esta funcionalidade será implementada assim que a meta de financiamento de $30 for atingida no Buy Me a Coffee. Obrigado pelo seu apoio! 🙏
