@@ -108,4 +108,29 @@
     "message": "Limpar cache e recarregar página",
     "description": "Item do menu de contexto para limpar cache e recarregar a página atual."
   }
+    ,
+    "desc_15min": {
+      "message": "últimos 15 minutos",
+      "description": "Descrição para o período de 15 minutos."
+    },
+    "desc_1hour": {
+      "message": "última hora",
+      "description": "Descrição para o período de 1 hora."
+    },
+    "desc_24hours": {
+      "message": "últimas 24 horas",
+      "description": "Descrição para o período de 24 horas."
+    },
+    "desc_1week": {
+      "message": "última semana",
+      "description": "Descrição para o período de 1 semana."
+    },
+    "desc_all": {
+      "message": "todo o tempo",
+      "description": "Descrição para o período de todo o tempo."
+    },
+    "disabledTypesMessage": {
+      "message": "Todos os tipos de dados foram desabilitados. Ative pelo menos um nas opções.",
+      "description": "Notificação quando todos os tipos de dados estão desabilitados."
+    }
 }

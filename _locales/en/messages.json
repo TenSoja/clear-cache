@@ -112,5 +112,65 @@
   "contextMenuClearAndReload": {
     "message": "Clear cache and reload page",
     "description": "Context menu item to clear cache and reload the current page."
+  },
+
+  "timePeriodTitle": {
+    "message": "Time period to clear",
+    "description": "Title for the time period selection section."
+  },
+
+  "timePeriodAll": {
+    "message": "All time",
+    "description": "Option to clear data from all time."
+  },
+
+  "timePeriod15min": {
+    "message": "Last 15 minutes",
+    "description": "Option to clear data from last 15 minutes."
+  },
+
+  "timePeriod1hour": {
+    "message": "Last hour",
+    "description": "Option to clear data from last hour."
+  },
+
+  "timePeriod24hours": {
+    "message": "Last 24 hours",
+    "description": "Option to clear data from last 24 hours."
+  },
+
+  "timePeriod1week": {
+    "message": "Last week",
+    "description": "Option to clear data from last week."
+  },
+
+  "desc_15min": {
+    "message": "last 15 minutes",
+    "description": "Description for last 15 minutes period."
+  },
+
+  "desc_1hour": {
+    "message": "last hour",
+    "description": "Description for last hour period."
+  },
+
+  "desc_24hours": {
+    "message": "last 24 hours",
+    "description": "Description for last 24 hours period."
+  },
+
+  "desc_1week": {
+    "message": "last week",
+    "description": "Description for last week period."
+  },
+
+  "desc_all": {
+    "message": "all time",
+    "description": "Description for all time period."
+  },
+
+  "disabledTypesMessage": {
+    "message": "All data types have been disabled. Enable at least one data type in options.",
+    "description": "Notification when all data types are disabled."
   }
 }
