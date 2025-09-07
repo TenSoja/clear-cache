@@ -14,9 +14,7 @@
   <img src="icons/broom.svg" alt="Clear Cache Icon" width="160" height="160">
 </p>
 
-<p align="center">
-  <span style="font-size:2.5em;font-weight:bold;">Clear Cache</span>
-</p>
+<h1 align="center">Clear Cache</h1>
 
 <p align="center">Add-on to clear browser cache with a single click or via the F9 key.</p>
 <p align="center"><strong>📱 Now available on Firefox for Android!</strong></p>
