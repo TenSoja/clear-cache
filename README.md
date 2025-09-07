@@ -150,13 +150,24 @@ Thanks to all contributors who helped improve this project!
 
 ## 🛣️ Roadmap
 
+### 🎯 #1 Priority: Site-Specific Cleaning (Goal: $30 on Buy Me a Coffee)
+- [ ] **Site-specific cleaning** - Target specific websites for cache clearing
+  - [ ] Domain-based filtering (e.g., clear only github.com data)
+  - [ ] Selective data types per site (cache, cookies, localStorage)
+  - [ ] Favorite sites list for quick access
+  - [ ] Advanced site management interface
+
+*Always working on the #1 priority item first! Help us reach the $30 funding goal to unlock this game-changing feature.*
+
+### 🔮 Future Features
 - [ ] Chrome/Edge support
-- [ ] Advanced filtering options  
 - [ ] Scheduled automatic clearing
 - [ ] Integration with dev tools
 - [ ] Custom keyboard shortcuts
 - [ ] Dark theme for options page
 - [ ] Export/Import settings
+- [ ] Bulk site operations
+- [ ] Developer tools integration
 
 ## 📈 Usage Impact
 
@@ -167,6 +178,12 @@ This extension has helped thousands of developers save time by:
 - ⏰ Offering time-based clearing options
 
 ## Buy me a coffee
+
+**🎯 Support Site-Specific Cleaning!**  
+Help me reach the $30 goal to unlock **targeted data cleaning** - clear cache, cookies, and storage for specific websites only! Perfect for developers who need granular control.
+
+[Current Progress: See Buy Me a Coffee page](https://www.buymeacoffee.com/tensoja)
+
 I also ask for the support of those of you who follow the project, your contribution is very important.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tensoja)
