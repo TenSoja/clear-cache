@@ -160,6 +160,7 @@ Thanks to all contributors who helped improve this project!
 *Always working on the #1 priority item first! Help us reach the $30 funding goal to unlock this game-changing feature.*
 
 ### 🔮 Future Features
+- [ ] **Site-specific cleaning** - Target specific websites for cache clearing ([📋 Issue #24 - $30 funding goal](https://github.com/TenSoja/clear-cache/issues/24))
 - [ ] Chrome/Edge support
 - [ ] Scheduled automatic clearing
 - [ ] Integration with dev tools
@@ -182,9 +183,8 @@ This extension has helped thousands of developers save time by:
 **🎯 Support Site-Specific Cleaning!**  
 Help me reach the $30 goal to unlock **targeted data cleaning** - clear cache, cookies, and storage for specific websites only! Perfect for developers who need granular control.
 
-![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee) 
-
-[📈 Track Progress on GitHub Issue](https://github.com/TenSoja/clear-cache/issues)
+![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee)
+[📈 Track Progress on GitHub Issue](https://github.com/TenSoja/clear-cache/issues/24)
 
 I also ask for the support of those of you who follow the project, your contribution is very important.
 
