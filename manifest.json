@@ -1,6 +1,6 @@
 {
   "name": "__MSG_extensionName__",
-  "version": "4.3",
+  "version": "4.4",
   "manifest_version": 2,
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/TenSoja/clear-cache",
@@ -42,6 +42,14 @@
         "default": "F9"
       },
       "description": "Shortcut for Clear Cache"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "109.0"
+    },
+    "gecko_android": {
+      "strict_min_version": "113.0"
     }
   },
   "default_locale": "en"

@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/Firefox-Developer%20Edition-orange?logo=firefox-browser" alt="Firefox Developer Edition" />
+  <img src="https://img.shields.io/badge/Firefox-v4.4-orange?logo=firefox-browser" alt="Firefox v4.4" />
+  <img src="https://img.shields.io/badge/Version-4.4-blue?logo=mozilla" alt="Version 4.4" />
   <img src="https://img.shields.io/badge/WebExtensions-API-blue?logo=mozilla" alt="WebExtensions API" />
   <img src="https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript" alt="JavaScript ES6" />
   <img src="https://img.shields.io/badge/HTML5-%23E34F26?logo=html5&logoColor=white" alt="HTML5" />
@@ -8,6 +9,7 @@
 
 <h1 align="center">🧹 Clear Cache</h1>
 <p align="center">Add-on to clear browser cache with a single click or via the F9 key.</p>
+<p align="center"><strong>📱 Now available on Firefox for Android!</strong></p>
 
 <p align="center">
   <img src="https://img.shields.io/github/license/TenSoja/clear-cache" alt="License" />
@@ -28,6 +30,29 @@
 ✅ **Open Source** - Fully transparent code for security review  
 ✅ **Mozilla Verified** - Follows Mozilla's strict security guidelines
 
+## 🆕 What's New in v4.4
+
+### ⏰ Time Period Selection
+Choose exactly what timeframe to clear:
+- **15 minutes** - Clear recent browsing only
+- **1 hour** - Clear last hour of activity  
+- **24 hours** - Clear today's browsing
+- **1 week** - Clear weekly activity
+- **All time** - Traditional full cache clear
+
+### 🎯 Current Tab Only
+New precision clearing mode:
+- Clear data **only for the active tab**
+- Perfect for **developers** working on specific sites
+- Preserves other sites' data while testing
+- Uses origin-based filtering for targeted cleaning
+
+### 🎨 Enhanced Context Menu
+Right-click the extension icon for:
+- **Clear Cache & Reload** - One-click action that always reloads
+- Quick access to key functions
+- Streamlined workflow for power users
+
 ## ✨ Features
 
 - 🚀 **One-click cache clearing** - Clear cache instantly with toolbar button
@@ -42,24 +67,51 @@
 
 ## 🚀 Quick Start
 
-1. **Install** the extension from Firefox Add-ons store
+1. **Install** the extension from [Firefox Add-ons Store](https://addons.mozilla.org/pt-BR/firefox/addon/clearcache/)
 2. **Click** the broom icon in your toolbar
 3. **Customize** settings via right-click → Options
 4. **Use F9** for quick cache clearing
 
-> **Tip:** Right-click the extension icon for context menu options!
+> **💡 Tip:** Right-click the extension icon for context menu options!
 
+## 📸 Screenshots & Usage
 
-## What?
-Clear Cache is a Firefox extension that solves a common developer pain point: the tedious process of clearing browser cache. Instead of navigating through multiple menus, you get instant cache clearing with a single click or F9 key press.
+### 🎛️ Options Page - Complete Control
+Configure all aspects of cache clearing to fit your workflow:
 
-## How?
-The addon allows you to quickly clear your browser cache with a single command.
+![Options Page](docs/screenshots/options-page.png)
 
-### Customize!
-You can customize what you clear and what happens after clearing the cache: reload the current tab and/or display a notification. You can also select the time period to clear data from (e.g., last 15 minutes, last hour, or all time).
+*Configure data types, time periods, and behavior settings*
 
-## Development
+### ⏰ Time Period Selection (NEW in v4.4)
+Choose exactly what timeframe to clear:
+
+![Time Period Options](docs/screenshots/time-period.png)
+
+*Select from 15 minutes, 1 hour, 24 hours, 1 week, or all time*
+
+### 🎯 Current Tab Only (NEW in v4.4)
+Clear data only for the active tab:
+
+![Current Tab Only](docs/screenshots/current-tab-only.png)
+
+*Perfect for developers working on specific sites*
+
+### 🧹 Toolbar Integration
+Simple, clean interface:
+
+![Toolbar Button](docs/screenshots/toolbar-button.png)
+
+*One-click access from Firefox toolbar*
+
+### 🔔 Smart Notifications
+Get informed about what was cleared:
+
+![Smart Notification](docs/screenshots/smart-notification.png)
+
+*Shows what data types and time period were cleared*
+
+## 💻 Development
 
 ### Prerequisites
 - [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) (recommended for testing)
@@ -85,18 +137,6 @@ You can customize what you clear and what happens after clearing the cache: relo
    - Or press F9 (default keyboard shortcut)
    - Access options via `about:addons` > Clear Cache > Preferences
    - Try different time period options (All time, Last 15 minutes, Last hour, etc.)
-
-### Testing in Firefox Developer Edition
-
-Before submitting any changes, always test in [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/):
-
-1. Load the extension using the steps above
-2. Test basic functionality (click to clear cache)
-3. Test keyboard shortcut (F9)
-4. Test options page (customize settings)
-5. Test different time period selections (15 minutes, 1 hour, etc.)
-6. Check browser console for any errors
-7. Verify permissions are working correctly
 
 ### Project Structure
 
@@ -150,17 +190,15 @@ Thanks to all contributors who helped improve this project!
 
 ## 🛣️ Roadmap
 
-### 🎯 #1 Priority: Site-Specific Cleaning (Goal: $30 on Buy Me a Coffee)
-- [ ] **Site-specific cleaning** - Target specific websites for cache clearing
-  - [ ] Domain-based filtering (e.g., clear only github.com data)
-  - [ ] Selective data types per site (cache, cookies, localStorage)
-  - [ ] Favorite sites list for quick access
-  - [ ] Advanced site management interface
+### 🎯 #1 Priority: Site-Specific Cleaning
+**Goal: $30 on Buy Me a Coffee** - [📋 Track Progress on Issue #24](https://github.com/TenSoja/clear-cache/issues/24)
 
-*Always working on the #1 priority item first! Help us reach the $30 funding goal to unlock this game-changing feature.*
+- [ ] Domain-based filtering (e.g., clear only github.com data)
+- [ ] Selective data types per site (cache, cookies, localStorage)
+- [ ] Favorite sites list for quick access
+- [ ] Advanced site management interface
 
 ### 🔮 Future Features
-- [ ] **Site-specific cleaning** - Target specific websites for cache clearing ([📋 Issue #24 - $30 funding goal](https://github.com/TenSoja/clear-cache/issues/24))
 - [ ] Chrome/Edge support
 - [ ] Scheduled automatic clearing
 - [ ] Integration with dev tools
@@ -178,14 +216,12 @@ This extension has helped thousands of developers save time by:
 - 🎯 Providing granular control over what gets cleared
 - ⏰ Offering time-based clearing options
 
-## Buy me a coffee
+## ☕ Support the Project
 
-**🎯 Support Site-Specific Cleaning!**  
-Help me reach the $30 goal to unlock **targeted data cleaning** - clear cache, cookies, and storage for specific websites only! Perfect for developers who need granular control.
+**🎯 Help unlock Site-Specific Cleaning!**  
+Support the development of targeted data cleaning - clear cache, cookies, and storage for specific websites only!
 
-![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee)
-[📈 Track Progress on GitHub Issue](https://github.com/TenSoja/clear-cache/issues/24)
+[![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee)](https://github.com/TenSoja/clear-cache/issues/24)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/tensoja)
 
-I also ask for the support of those of you who follow the project, your contribution is very important.
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tensoja)
+Your contribution helps maintain and improve this project for thousands of developers worldwide. Thank you! 🙏
