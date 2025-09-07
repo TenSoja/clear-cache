@@ -182,7 +182,9 @@ This extension has helped thousands of developers save time by:
 **🎯 Support Site-Specific Cleaning!**  
 Help me reach the $30 goal to unlock **targeted data cleaning** - clear cache, cookies, and storage for specific websites only! Perfect for developers who need granular control.
 
-[Current Progress: See Buy Me a Coffee page](https://www.buymeacoffee.com/tensoja)
+![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee) 
+
+[📈 Track Progress on GitHub Issue](https://github.com/TenSoja/clear-cache/issues)
 
 I also ask for the support of those of you who follow the project, your contribution is very important.
 

@@ -11,9 +11,11 @@ Implementar limpeza específica de dados por site para permitir que usuários li
 
 ## 💰 Meta de Financiamento
 **Meta:** $30 no Buy Me a Coffee  
-**Progresso Atual:** https://www.buymeacoffee.com/tensoja
+**Progresso Atual:** ![Funding](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tensoja)
+
+> 📅 **Como acompanhar:** O progresso será atualizado manualmente nesta issue conforme recebemos doações. Comentários serão adicionados a cada marco atingido!
 
 ## 📋 Tarefas de Implementação
 
