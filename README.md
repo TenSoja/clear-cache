@@ -194,21 +194,6 @@ Thanks to all contributors who helped improve this project!
   <img src="https://contrib.rocks/image?repo=TenSoja/clear-cache" />
 </a>
 
-## 🤝 Contributors
-
-Thanks to all contributors who helped improve this project!
-
-Want to help? See the guide below!
-
-**Project Creator & Lead Developer:**
-- **Michel de Almeida Silva** ([@TenSoja](https://github.com/TenSoja)) - Creator & Primary Maintainer
-
-**Special Thanks to Contributors:**
-- **zer0-x** - Added Arabic localization  
-- **Tomáš Beránek** - Added Czech language support
-- **medwuu** - Added Russian localization
-- **Ariel Xinyue Wang** - File contributions & improvements
-
 <a href="https://github.com/TenSoja/clear-cache/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=TenSoja/clear-cache" />
 </a>
