@@ -1,3 +1,6 @@
+
+<!-- Firefox extension, cache cleaner, WebExtension, privacy, open source, browser, performance -->
+
 <p align="center">
   <img src="https://img.shields.io/badge/Firefox-v4.4-orange?logo=firefox-browser" alt="Firefox v4.4" />
   <img src="https://img.shields.io/badge/Version-4.4-blue?logo=mozilla" alt="Version 4.4" />
@@ -7,7 +10,14 @@
   <img src="https://img.shields.io/badge/CSS3-%231572B6?logo=css3&logoColor=white" alt="CSS3" />
 </p>
 
-<h1 align="center">🧹 Clear Cache</h1>
+<p align="center">
+  <img src="icons/broom.svg" alt="Clear Cache Icon" width="160" height="160">
+</p>
+
+<p align="center">
+  <span style="font-size:2.5em;font-weight:bold;">Clear Cache</span>
+</p>
+
 <p align="center">Add-on to clear browser cache with a single click or via the F9 key.</p>
 <p align="center"><strong>📱 Now available on Firefox for Android!</strong></p>
 
@@ -174,11 +184,12 @@ clear-cache/
 
 Thanks to all contributors who helped improve this project!
 
+Want to help? See the guide below!
+
 **Project Creator & Lead Developer:**
 - **Michel de Almeida Silva** ([@TenSoja](https://github.com/TenSoja)) - Creator & Primary Maintainer
 
 **Special Thanks to Contributors:**
-- **Heimen Stoffels** - Added Dutch translation
 - **zer0-x** - Added Arabic localization  
 - **Tomáš Beránek** - Added Czech language support
 - **medwuu** - Added Russian localization
@@ -223,5 +234,14 @@ Support the development of targeted data cleaning - clear cache, cookies, and st
 
 [![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee)](https://github.com/TenSoja/clear-cache/issues/24)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/tensoja)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/tensoja)
 
 Your contribution helps maintain and improve this project for thousands of developers worldwide. Thank you! 🙏
+
+---
+
+<blockquote>
+<strong>As we say in Brazil:</strong><br>
+<em>🧹 Diga onde você vai, que eu vou varrendo, varrendo, varrendo...</em><br>
+— Os Originais do Samba
+</blockquote>
