@@ -194,9 +194,6 @@ Thanks to all contributors who helped improve this project!
   <img src="https://contrib.rocks/image?repo=TenSoja/clear-cache" />
 </a>
 
-<a href="https://github.com/TenSoja/clear-cache/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=TenSoja/clear-cache" />
-</a>
 
 ## 🛣️ Roadmap
 
