@@ -225,12 +225,12 @@ This extension has helped thousands of developers save time by:
 
 ## ☕ Support the Project
 
-**🎯 Help unlock Site-Specific Cleaning!**  
-Support the development of targeted data cleaning - clear cache, cookies, and storage for specific websites only!
+**💝 Use the "❤️ Sponsor" button above** to support this project directly via Buy Me a Coffee!
+
+**🎯 Current Goal: Site-Specific Cleaning ($30)**  
+Help unlock targeted data cleaning - clear cache, cookies, and storage for specific websites only!
 
 [![Funding Progress](https://img.shields.io/badge/funding-$0%2F$30-red?style=for-the-badge&logo=buymeacoffee)](https://github.com/TenSoja/clear-cache/issues/24)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/tensoja)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/tensoja)
 
 Your contribution helps maintain and improve this project for thousands of developers worldwide. Thank you! 🙏
 
@@ -241,3 +241,10 @@ Your contribution helps maintain and improve this project for thousands of devel
 <em>🧹 Diga onde você vai, que eu vou varrendo, varrendo, varrendo...</em><br>
 — Molejo
 </blockquote>
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/TenSoja">Michel de Almeida Silva</a><br>
+  <sub>🇧🇷🌿 Amazon | 🧹 Cleaning the web, one cache at a time</sub>
+</p>
