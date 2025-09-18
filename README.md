@@ -175,6 +175,7 @@ clear-cache/
 - **`notifications`**: Used to show confirmation when cache is cleared  
 - **`storage`**: Used to save user preferences locally
 - **`contextMenus`**: Enables right-click menu options
+- **`tabs`**: Needed to detect the currently active tab when using the **"Current Tab Only"** option, so browsing data is cleared only for that site instead of the entire browser
 
 ## 🤝 Contributors
 
