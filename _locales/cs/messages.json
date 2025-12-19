@@ -33,6 +33,10 @@
     "message": "Znovu načíst aktivní kartu",
     "description": "Možnost znovu načíst kartu."
   },
+  "currentTabOnlyOption": {
+    "message": "Pouze aktuální karta",
+    "description": "Možnost vyčistit data pouze pro aktuální kartu."
+  },
 
   "notificationOption": {
     "message": "Zobrazit oznámení",
@@ -107,5 +111,64 @@
   "contextMenuClearAndReload": {
     "message": "Vymazat cache a znovu načíst stránku",
     "description": "Položka kontextové nabídky pro vymazání cache a znovu načtení aktuální stránky."
+  },
+
+  "timePeriodTitle": {
+    "message": "Časové období k vyčištění",
+    "description": "Název sekce výběru období."
+  },
+  "timePeriodAll": {
+    "message": "Za celou dobu",
+    "description": "Možnost vyčistit data za celou dobu."
+  },
+  "timePeriod15min": {
+    "message": "Posledních 15 minut",
+    "description": "Možnost vyčistit data z posledních 15 minut."
+  },
+  "timePeriod1hour": {
+    "message": "Poslední hodina",
+    "description": "Možnost vyčistit data z poslední hodiny."
+  },
+  "timePeriod24hours": {
+    "message": "Posledních 24 hodin",
+    "description": "Možnost vyčistit data z posledních 24 hodin."
+  },
+  "timePeriod1week": {
+    "message": "Poslední týden",
+    "description": "Možnost vyčistit data z posledního týdne."
+  },
+
+  "desc_15min": {
+    "message": "posledních 15 minut",
+    "description": "Popis období posledních 15 minut."
+  },
+  "desc_1hour": {
+    "message": "poslední hodina",
+    "description": "Popis období poslední hodiny."
+  },
+  "desc_24hours": {
+    "message": "posledních 24 hodin",
+    "description": "Popis období posledních 24 hodin."
+  },
+  "desc_1week": {
+    "message": "poslední týden",
+    "description": "Popis období posledního týdne."
+  },
+  "desc_all": {
+    "message": "za celou dobu",
+    "description": "Popis období za celou dobu."
+  },
+
+  "disabledTypesMessage": {
+    "message": "Všechny typy dat jsou vypnuté. V nastavení zapněte alespoň jeden typ.",
+    "description": "Upozornění, když jsou všechny typy dat vypnuté."
+  },
+  "unsupportedUrlMessage": {
+    "message": "Nelze vyčistit cache pro tento typ stránky (about:, file:// apod.). Zkuste vypnout 'Pouze aktuální karta'.",
+    "description": "Upozornění při čištění cache pro nepodporované protokoly."
+  },
+  "currentTabLabel": {
+    "message": "(aktuální karta)",
+    "description": "Štítek v oznámeních při čištění pouze aktuální karty."
   }
 }

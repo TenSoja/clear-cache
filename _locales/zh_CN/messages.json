@@ -27,6 +27,10 @@
     "message": "重新加载当前标签页",
     "description": "重新加载当前标签页的选项。"
   },
+  "currentTabOnlyOption": {
+    "message": "仅当前标签页",
+    "description": "仅清除当前标签页数据的选项。"
+  },
   "notificationOption": {
     "message": "显示通知",
     "description": "启用或禁用通知的选项。"
@@ -87,6 +91,65 @@
   "contextMenuClearAndReload": {
     "message": "清除缓存并重新加载页面",
     "description": "用于清除缓存并重新加载当前页面的上下文菜单项。"
+  },
+
+  "timePeriodTitle": {
+    "message": "要清除的时间范围",
+    "description": "时间范围选择部分的标题。"
+  },
+  "timePeriodAll": {
+    "message": "全部时间",
+    "description": "清除全部时间数据的选项。"
+  },
+  "timePeriod15min": {
+    "message": "过去 15 分钟",
+    "description": "清除过去 15 分钟数据的选项。"
+  },
+  "timePeriod1hour": {
+    "message": "过去 1 小时",
+    "description": "清除过去 1 小时数据的选项。"
+  },
+  "timePeriod24hours": {
+    "message": "过去 24 小时",
+    "description": "清除过去 24 小时数据的选项。"
+  },
+  "timePeriod1week": {
+    "message": "过去 1 周",
+    "description": "清除过去 1 周数据的选项。"
+  },
+
+  "desc_15min": {
+    "message": "过去 15 分钟",
+    "description": "15 分钟时间范围的描述。"
+  },
+  "desc_1hour": {
+    "message": "过去 1 小时",
+    "description": "1 小时时间范围的描述。"
+  },
+  "desc_24hours": {
+    "message": "过去 24 小时",
+    "description": "24 小时时间范围的描述。"
+  },
+  "desc_1week": {
+    "message": "过去 1 周",
+    "description": "1 周时间范围的描述。"
+  },
+  "desc_all": {
+    "message": "全部时间",
+    "description": "全部时间范围的描述。"
+  },
+
+  "disabledTypesMessage": {
+    "message": "所有数据类型已禁用。请在选项中至少启用一种。",
+    "description": "当所有数据类型被禁用时显示的通知。"
+  },
+  "unsupportedUrlMessage": {
+    "message": "无法清除此类页面的缓存（about:, file:// 等）。请尝试关闭“仅当前标签页”。",
+    "description": "尝试清除不支持的 URL 类型时的通知。"
+  },
+  "currentTabLabel": {
+    "message": "（当前标签页）",
+    "description": "仅清除当前标签页时通知中显示的标签。"
   }
 }
 

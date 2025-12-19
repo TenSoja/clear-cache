@@ -34,6 +34,11 @@
     "description": "Opção de recarregar a aba."
   },
 
+  "currentTabOnlyOption": {
+    "message": "Apenas aba atual",
+    "description": "Opção para limpar dados apenas da aba atual."
+  },
+
   "notificationOption": {
     "message": "Mostrar notificação",
     "description": "Opção para mostrar a notificação."
@@ -107,9 +112,39 @@
   "contextMenuClearAndReload": {
     "message": "Limpar cache e recarregar página",
     "description": "Item do menu de contexto para limpar cache e recarregar a página atual."
-  }
-    ,
-    "desc_15min": {
+  },
+
+  "timePeriodTitle": {
+    "message": "Período a limpar",
+    "description": "Título da seção de seleção de período."
+  },
+
+  "timePeriodAll": {
+    "message": "Todo o tempo",
+    "description": "Opção para limpar dados de todo o tempo."
+  },
+
+  "timePeriod15min": {
+    "message": "Últimos 15 minutos",
+    "description": "Opção para limpar dados dos últimos 15 minutos."
+  },
+
+  "timePeriod1hour": {
+    "message": "Última hora",
+    "description": "Opção para limpar dados da última hora."
+  },
+
+  "timePeriod24hours": {
+    "message": "Últimas 24 horas",
+    "description": "Opção para limpar dados das últimas 24 horas."
+  },
+
+  "timePeriod1week": {
+    "message": "Última semana",
+    "description": "Opção para limpar dados da última semana."
+  },
+
+  "desc_15min": {
       "message": "últimos 15 minutos",
       "description": "Descrição para o período de 15 minutos."
     },
@@ -132,5 +167,15 @@
     "disabledTypesMessage": {
       "message": "Todos os tipos de dados foram desabilitados. Ative pelo menos um nas opções.",
       "description": "Notificação quando todos os tipos de dados estão desabilitados."
+    },
+
+    "unsupportedUrlMessage": {
+      "message": "Não é possível limpar o cache deste tipo de página (about:, file://, etc). Desative a opção 'Apenas aba atual'.",
+      "description": "Notificação ao tentar limpar cache para URLs não suportadas."
+    },
+
+    "currentTabLabel": {
+      "message": "(aba atual)",
+      "description": "Rótulo exibido nas notificações ao limpar dados apenas da aba atual."
     }
 }

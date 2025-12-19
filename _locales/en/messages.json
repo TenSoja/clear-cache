@@ -172,5 +172,15 @@
   "disabledTypesMessage": {
     "message": "All data types have been disabled. Enable at least one data type in options.",
     "description": "Notification when all data types are disabled."
+  },
+
+  "unsupportedUrlMessage": {
+    "message": "Cannot clear cache for this page type (about:, file://, etc). Try disabling 'Current tab only' option.",
+    "description": "Notification when trying to clear cache for unsupported URL protocols."
+  },
+
+  "currentTabLabel": {
+    "message": "(current tab)",
+    "description": "Label shown in notifications when clearing data for current tab only."
   }
 }

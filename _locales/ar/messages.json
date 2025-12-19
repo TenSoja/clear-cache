@@ -33,6 +33,10 @@
     "message": "إعادة تحميل التبويب النشط",
     "description": "خيار إعادة تحميل التبويب."
   },
+  "currentTabOnlyOption": {
+    "message": "التبويب الحالي فقط",
+    "description": "خيار لمسح البيانات للتبويب الحالي فقط."
+  },
 
   "notificationOption": {
     "message": "عرض الإشعار",
@@ -107,5 +111,64 @@
   "contextMenuClearAndReload": {
     "message": "مسح التخزين المؤقت وإعادة تحميل الصفحة",
     "description": "عنصر القائمة السياقية لمسح التخزين المؤقت وإعادة تحميل الصفحة الحالية."
+  },
+
+  "timePeriodTitle": {
+    "message": "الفترة المراد تنظيفها",
+    "description": "عنوان قسم اختيار الفترة."
+  },
+  "timePeriodAll": {
+    "message": "كل الوقت",
+    "description": "خيار لمسح البيانات لكل الوقت."
+  },
+  "timePeriod15min": {
+    "message": "آخر 15 دقيقة",
+    "description": "خيار لمسح البيانات لآخر 15 دقيقة."
+  },
+  "timePeriod1hour": {
+    "message": "آخر ساعة",
+    "description": "خيار لمسح البيانات لآخر ساعة."
+  },
+  "timePeriod24hours": {
+    "message": "آخر 24 ساعة",
+    "description": "خيار لمسح البيانات لآخر 24 ساعة."
+  },
+  "timePeriod1week": {
+    "message": "آخر أسبوع",
+    "description": "خيار لمسح البيانات لآخر أسبوع."
+  },
+
+  "desc_15min": {
+    "message": "آخر 15 دقيقة",
+    "description": "وصف فترة 15 دقيقة."
+  },
+  "desc_1hour": {
+    "message": "آخر ساعة",
+    "description": "وصف فترة ساعة واحدة."
+  },
+  "desc_24hours": {
+    "message": "آخر 24 ساعة",
+    "description": "وصف فترة 24 ساعة."
+  },
+  "desc_1week": {
+    "message": "آخر أسبوع",
+    "description": "وصف فترة أسبوع واحد."
+  },
+  "desc_all": {
+    "message": "كل الوقت",
+    "description": "وصف فترة كل الوقت."
+  },
+
+  "disabledTypesMessage": {
+    "message": "تم تعطيل جميع أنواع البيانات. فعّل نوعًا واحدًا على الأقل في الخيارات.",
+    "description": "تنبيه عند تعطيل جميع أنواع البيانات."
+  },
+  "unsupportedUrlMessage": {
+    "message": "لا يمكن تنظيف ذاكرة التخزين المؤقت لهذا النوع من الصفحات (about:, file://، إلخ). جرّب تعطيل خيار 'التبويب الحالي فقط'.",
+    "description": "تنبيه عند محاولة تنظيف عناوين غير مدعومة."
+  },
+  "currentTabLabel": {
+    "message": "(التبويب الحالي)",
+    "description": "تسمية في الإشعار عند تنظيف التبويب الحالي فقط."
   }
 }

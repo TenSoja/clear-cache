@@ -5,20 +5,43 @@ const defaultSettings = {
   dataTypes: ["cache"],
   timePeriod: "all", // all, 15min, 1hour, 24hours, 1week
   customKey: "F9",
-  currentTabOnly: false
+  currentTabOnly: true
 };
 
-// Verifica e salva configurações padrão se necessário
+// Verifica e corrige configurações inválidas
 function checkStoredSettings(storedSettings) {
-  if (
-    storedSettings.notification == null ||
-    storedSettings.reload == null ||
-    storedSettings.dataTypes == null ||
-    storedSettings.timePeriod == null ||
-    storedSettings.customKey == null ||
-    storedSettings.currentTabOnly == null
-  ) {
-    browser.storage.local.set(defaultSettings);
+  let needsUpdate = false;
+  const correctedSettings = { ...storedSettings };
+
+  // Verifica cada configuração e corrige se inválida
+  if (typeof correctedSettings.notification !== 'boolean') {
+    correctedSettings.notification = defaultSettings.notification;
+    needsUpdate = true;
+  }
+  if (typeof correctedSettings.reload !== 'boolean') {
+    correctedSettings.reload = defaultSettings.reload;
+    needsUpdate = true;
+  }
+  if (!Array.isArray(correctedSettings.dataTypes)) {
+    correctedSettings.dataTypes = defaultSettings.dataTypes;
+    needsUpdate = true;
+  }
+  if (typeof correctedSettings.timePeriod !== 'string' ||
+      !['all', '15min', '1hour', '24hours', '1week'].includes(correctedSettings.timePeriod)) {
+    correctedSettings.timePeriod = defaultSettings.timePeriod;
+    needsUpdate = true;
+  }
+  if (typeof correctedSettings.customKey !== 'string') {
+    correctedSettings.customKey = defaultSettings.customKey;
+    needsUpdate = true;
+  }
+  if (typeof correctedSettings.currentTabOnly !== 'boolean') {
+    correctedSettings.currentTabOnly = defaultSettings.currentTabOnly;
+    needsUpdate = true;
+  }
+
+  if (needsUpdate) {
+    browser.storage.local.set(correctedSettings);
   }
 }
 
@@ -58,31 +81,38 @@ function clearCache(storedSettings) {
     return dataTypes;
   }
 
-  const dataTypes = getTypes(storedSettings.dataTypes);
+  const dataTypes = getTypes(storedSettings.dataTypes || []);
   const sinceTimestamp = getSinceTimestamp(timePeriod);
+
+  // Se nenhum tipo de dado foi selecionado, apenas notifica e retorna
+  if (Object.keys(dataTypes).length === 0) {
+    if (notification) {
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": browser.i18n.getMessage("disabledTypesMessage"),
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+    return;
+  }
 
   function onCleared(tabMessage = "") {
     if (reload) {
       browser.tabs.reload();
     }
     if (notification) {
-      if (Object.keys(dataTypes).length === 0) {
-        browser.notifications.create({
-          "type": "basic",
-          "title": browser.i18n.getMessage("extensionName"),
-          "message": browser.i18n.getMessage("disabledTypesMessage"),
-          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-        }).then(function() {});
-      } else {
-        var dataTypesString = Object.keys(dataTypes).join(", ");
-        var timeDescription = getTimeDescription(timePeriod);
-        browser.notifications.create({
-          "type": "basic",
-          "title": browser.i18n.getMessage("extensionName"),
-          "message": `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`,
-          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-        }).then(function() {});
-      }
+      var dataTypesString = Object.keys(dataTypes).join(", ");
+      var timeDescription = getTimeDescription(timePeriod);
+      var message = tabMessage
+        ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`
+        : `${dataTypesString} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`;
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": message,
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
     }
   }
 
@@ -103,23 +133,51 @@ function clearCache(storedSettings) {
     }
   }
 
+  // Protocolos que não suportam limpeza por hostname
+  const unsupportedProtocols = ['about:', 'file:', 'data:', 'blob:', 'moz-extension:', 'chrome:', 'javascript:'];
+
+  // Verifica se a URL é de um protocolo não suportado
+  function isUnsupportedUrl(urlString) {
+    return unsupportedProtocols.some(protocol => urlString.startsWith(protocol));
+  }
+
+  // Mostra notificação de erro para URLs não suportadas
+  function showUnsupportedUrlError() {
+    if (notification) {
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": browser.i18n.getMessage("unsupportedUrlMessage") || "Cannot clear cache for this page type. Try disabling 'Current tab only' option.",
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+  }
+
   if (currentTabOnly) {
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
       if (tabs.length > 0) {
         const currentTab = tabs[0];
+
+        // Verifica se URL existe e é suportada
+        if (!currentTab.url || isUnsupportedUrl(currentTab.url)) {
+          showUnsupportedUrlError();
+          return;
+        }
+
         try {
           const url = new URL(currentTab.url);
-          const origin = url.origin;
-          if (origin && origin !== 'null') {
+          const hostname = url.hostname;
+
+          if (hostname && hostname !== '') {
             browser.browsingData.remove({
-              origins: [origin],
+              hostnames: [hostname],
               since: sinceTimestamp
-            }, dataTypes).then(() => onCleared("(aba atual)"), onError);
+            }, dataTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
           } else {
-            browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
+            showUnsupportedUrlError();
           }
         } catch (e) {
-          browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
+          showUnsupportedUrlError();
         }
       }
     }).catch(onError);
@@ -144,38 +202,114 @@ browser.browserAction.onClicked.addListener(() => {
 function clearCacheAndReload(storedSettings) {
   function getTypes(selectedTypes) {
     var dataTypes = {};
-    for (var item of selectedTypes) {
+    for (var item of selectedTypes || []) {
       dataTypes[item] = true;
     }
     return dataTypes;
   }
-  
-  const dataTypes = getTypes(storedSettings.dataTypes);
-  const notification = storedSettings.notification;
 
-  function onCleared() {
-    browser.tabs.reload();
-    if (notification) {
-      if (Object.keys(dataTypes).length === 0) {
-        browser.notifications.create({
-          "type": "basic",
-          "title": browser.i18n.getMessage("extensionName"),
-          "message": browser.i18n.getMessage("disabledTypesMessage"),
-          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-        }).then(function() {});
-      } else {
-        var dataTypesString = Object.keys(dataTypes).join(", ");
-        browser.notifications.create({
-          "type": "basic",
-          "title": browser.i18n.getMessage("extensionName"),
-          "message": `${dataTypesString} ${browser.i18n.getMessage("contextMenuClearAndReload")}`,
-          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-        }).then(function() {});
-      }
+  // Calcula o timestamp 'since' baseado no período selecionado
+  function getSinceTimestamp(period) {
+    const now = Date.now();
+    switch (period) {
+      case "15min":
+        return now - (15 * 60 * 1000);
+      case "1hour":
+        return now - (60 * 60 * 1000);
+      case "24hours":
+        return now - (24 * 60 * 60 * 1000);
+      case "1week":
+        return now - (7 * 24 * 60 * 60 * 1000);
+      case "all":
+      default:
+        return 0;
     }
   }
 
-  browser.browsingData.remove({since: 0}, dataTypes).then(onCleared, onError);
+  const dataTypes = getTypes(storedSettings.dataTypes);
+  const notification = storedSettings.notification;
+  const currentTabOnly = storedSettings.currentTabOnly;
+  const timePeriod = storedSettings.timePeriod || "all";
+  const sinceTimestamp = getSinceTimestamp(timePeriod);
+
+  // Se nenhum tipo de dado foi selecionado, apenas notifica
+  if (Object.keys(dataTypes).length === 0) {
+    if (notification) {
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": browser.i18n.getMessage("disabledTypesMessage"),
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+    return;
+  }
+
+  // Protocolos que não suportam limpeza por hostname
+  const unsupportedProtocols = ['about:', 'file:', 'data:', 'blob:', 'moz-extension:', 'chrome:', 'javascript:'];
+
+  function isUnsupportedUrl(urlString) {
+    return unsupportedProtocols.some(protocol => urlString.startsWith(protocol));
+  }
+
+  function showUnsupportedUrlError() {
+    if (notification) {
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": browser.i18n.getMessage("unsupportedUrlMessage") || "Cannot clear cache for this page type. Try disabling 'Current tab only' option.",
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+  }
+
+  function onCleared(tabMessage = "") {
+    browser.tabs.reload();
+    if (notification) {
+      var dataTypesString = Object.keys(dataTypes).join(", ");
+      var message = tabMessage
+        ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("contextMenuClearAndReload")}`
+        : `${dataTypesString} ${browser.i18n.getMessage("contextMenuClearAndReload")}`;
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": message,
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+  }
+
+  if (currentTabOnly) {
+    browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+      if (tabs.length > 0) {
+        const currentTab = tabs[0];
+
+        // Verifica se URL existe e é suportada
+        if (!currentTab.url || isUnsupportedUrl(currentTab.url)) {
+          showUnsupportedUrlError();
+          return;
+        }
+
+        try {
+          const url = new URL(currentTab.url);
+          const hostname = url.hostname;
+
+          if (hostname && hostname !== '') {
+            browser.browsingData.remove({
+              hostnames: [hostname],
+              since: sinceTimestamp
+            }, dataTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
+          } else {
+            showUnsupportedUrlError();
+          }
+        } catch (e) {
+          showUnsupportedUrlError();
+        }
+      }
+    }).catch(onError);
+  } else {
+    browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
+  }
 }
 
 // Cria item de menu de contexto ao iniciar

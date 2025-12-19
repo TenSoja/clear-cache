@@ -30,8 +30,12 @@
   },
 
   "reloadOption": {
-    "message": "Herv laad actieve tabblad",
+    "message": "Herlaad actief tabblad",
     "description": "De optie om het tabblad opnieuw te laden."
+  },
+  "currentTabOnlyOption": {
+    "message": "Alleen huidige tabblad",
+    "description": "Optie om gegevens alleen voor het huidige tabblad te wissen."
   },
 
   "notificationOption": {
@@ -107,5 +111,64 @@
   "contextMenuClearAndReload": {
     "message": "Cache wissen en pagina herladen",
     "description": "Context menu item om cache te wissen en de huidige pagina te herladen."
+  },
+
+  "timePeriodTitle": {
+    "message": "Te wissen periode",
+    "description": "Titel van de periodekeuze."
+  },
+  "timePeriodAll": {
+    "message": "Alle tijd",
+    "description": "Optie om alle gegevens te wissen."
+  },
+  "timePeriod15min": {
+    "message": "Laatste 15 minuten",
+    "description": "Optie om gegevens van de laatste 15 minuten te wissen."
+  },
+  "timePeriod1hour": {
+    "message": "Laatste uur",
+    "description": "Optie om gegevens van het laatste uur te wissen."
+  },
+  "timePeriod24hours": {
+    "message": "Laatste 24 uur",
+    "description": "Optie om gegevens van de laatste 24 uur te wissen."
+  },
+  "timePeriod1week": {
+    "message": "Laatste week",
+    "description": "Optie om gegevens van de laatste week te wissen."
+  },
+
+  "desc_15min": {
+    "message": "laatste 15 minuten",
+    "description": "Beschrijving voor de periode van 15 minuten."
+  },
+  "desc_1hour": {
+    "message": "laatste uur",
+    "description": "Beschrijving voor de periode van 1 uur."
+  },
+  "desc_24hours": {
+    "message": "laatste 24 uur",
+    "description": "Beschrijving voor de periode van 24 uur."
+  },
+  "desc_1week": {
+    "message": "laatste week",
+    "description": "Beschrijving voor de periode van 1 week."
+  },
+  "desc_all": {
+    "message": "alle tijd",
+    "description": "Beschrijving voor de periode van alle tijd."
+  },
+
+  "disabledTypesMessage": {
+    "message": "Alle gegevenstypen zijn uitgeschakeld. Schakel minstens één type in bij de opties.",
+    "description": "Melding wanneer alle gegevenstypen zijn uitgeschakeld."
+  },
+  "unsupportedUrlMessage": {
+    "message": "Kan cache voor dit paginatype niet wissen (about:, file://, etc). Schakel 'Alleen huidige tabblad' uit.",
+    "description": "Melding bij het wissen van cache voor niet-ondersteunde URL's."
+  },
+  "currentTabLabel": {
+    "message": "(huidig tabblad)",
+    "description": "Label in meldingen bij wissen van alleen het huidige tabblad."
   }
 }

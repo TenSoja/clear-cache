@@ -27,6 +27,10 @@
     "message": "重新載入目前分頁",
     "description": "重新載入目前分頁的選項。"
   },
+  "currentTabOnlyOption": {
+    "message": "僅目前分頁",
+    "description": "僅清除目前分頁資料的選項。"
+  },
   "notificationOption": {
     "message": "顯示通知",
     "description": "啟用或停用通知的選項。"
@@ -87,5 +91,64 @@
   "contextMenuClearAndReload": {
     "message": "清除快取並重新載入頁面",
     "description": "用於清除快取並重新載入目前頁面的內容功能表項目。"
+  },
+
+  "timePeriodTitle": {
+    "message": "要清除的時間範圍",
+    "description": "時間範圍選擇區塊的標題。"
+  },
+  "timePeriodAll": {
+    "message": "全部時間",
+    "description": "清除全部時間資料的選項。"
+  },
+  "timePeriod15min": {
+    "message": "過去 15 分鐘",
+    "description": "清除過去 15 分鐘資料的選項。"
+  },
+  "timePeriod1hour": {
+    "message": "過去 1 小時",
+    "description": "清除過去 1 小時資料的選項。"
+  },
+  "timePeriod24hours": {
+    "message": "過去 24 小時",
+    "description": "清除過去 24 小時資料的選項。"
+  },
+  "timePeriod1week": {
+    "message": "過去 1 週",
+    "description": "清除過去 1 週資料的選項。"
+  },
+
+  "desc_15min": {
+    "message": "過去 15 分鐘",
+    "description": "15 分鐘時間範圍的描述。"
+  },
+  "desc_1hour": {
+    "message": "過去 1 小時",
+    "description": "1 小時時間範圍的描述。"
+  },
+  "desc_24hours": {
+    "message": "過去 24 小時",
+    "description": "24 小時時間範圍的描述。"
+  },
+  "desc_1week": {
+    "message": "過去 1 週",
+    "description": "1 週時間範圍的描述。"
+  },
+  "desc_all": {
+    "message": "全部時間",
+    "description": "全部時間範圍的描述。"
+  },
+
+  "disabledTypesMessage": {
+    "message": "已停用所有資料類型。請在選項中至少啟用一種。",
+    "description": "當所有資料類型都被停用時的通知。"
+  },
+  "unsupportedUrlMessage": {
+    "message": "無法清除此類頁面的快取（about:, file:// 等）。請嘗試關閉「僅目前分頁」。",
+    "description": "嘗試清除不支援的 URL 類型時的通知。"
+  },
+  "currentTabLabel": {
+    "message": "（目前分頁）",
+    "description": "僅清除目前分頁時通知中顯示的標籤。"
   }
 }

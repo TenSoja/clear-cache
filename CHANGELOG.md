@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.5] - 2025-12-19
+
+### 🐛 Fixed
+- **Critical Bug**: "Current tab only" option now works correctly. Was using Chrome's `origins` API parameter instead of Firefox's `hostnames`
+- **Context Menu timePeriod**: Context menu now respects the saved time period instead of always clearing "all time"
+- **Undefined URL Handling**: Fixed potential exception when `currentTab.url` is undefined
+- **CSS Selector**: Fixed `section.clear-options` to `fieldset.clear-options` to match HTML
+- **Notification Spacing**: Fixed double spaces in notification messages when not using current tab mode
+
+### 🔄 Changed
+- **Default Behavior**: `currentTabOnly` is now `true` by default. New installs will clear cache only for the active site, not globally
+
+### ✨ Added
+- **Unsupported URL Error**: Clear error message when trying to clear cache for special pages (`about:`, `file://`, `moz-extension://`, etc.) instead of silently falling back to global clearing
+- **Missing Translations**: Added `unsupportedUrlMessage` and other missing keys to pt_BR locale
+
+### 🛠️ Improved
+- **Settings Validation**: Robust type checking for all stored settings with automatic correction of invalid values
+- **Empty DataTypes Handling**: Early return when no data types are selected, avoiding unnecessary API calls
+- **Context Menu**: Now respects `currentTabOnly` setting instead of always clearing globally
+- **Internationalization**: "(aba atual)" label is now properly internationalized as `currentTabLabel`
+
+---
+
 ## [4.4.0] - 2025-09-07
 
 ### 🆕 Added

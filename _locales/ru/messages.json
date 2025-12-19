@@ -1,8 +1,9 @@
 {
   "extensionName": {
     "message": "Clear Cache",
-    "description": "Название расришения."
+    "description": "Название расширения."
   },
+
   "extensionDescription": {
     "message": "Очистите кэш Вашего браузера кликом или нажатием клавиши F9.",
     "description": "Описание расширения."
@@ -12,6 +13,7 @@
     "message": "Успех!",
     "description": "Заголовок уведомления после очистки кэша."
   },
+
   "notificationContent": {
     "message": "Кэш успешно очищен.",
     "description": "Информирует пользователя о том, что кэш успешно очищен."
@@ -21,6 +23,7 @@
     "message": "Настройки",
     "description": "Заголовок раздела \"Настройки\"."
   },
+
   "preferencesTitle": {
     "message": "После очистки:",
     "description": "Заголовок раздела \"После очистки\""
@@ -30,6 +33,12 @@
     "message": "Перезагрузить активную вкладку",
     "description": "Опция перезагрузки текущей вкладки."
   },
+
+  "currentTabOnlyOption": {
+    "message": "Только текущая вкладка",
+    "description": "Опция очистки данных только для текущей вкладки."
+  },
+
   "notificationOption": {
     "message": "Показать уведомления",
     "description": "Опция для показа/скрытия уведомлений."
@@ -49,37 +58,129 @@
     "message": "Кэш",
     "description": "Опция для очистки кэша."
   },
+
   "downloadOption": {
     "message": "Загрузки",
     "description": "Опция для очистки загрузок."
   },
+
   "passwordsOption": {
     "message": "Пароли",
-    "description": "Опция для очистки сохранённых парелей."
+    "description": "Опция для очистки сохранённых паролей."
   },
+
   "historyOption": {
     "message": "История",
     "description": "Опция для очистки истории браузера."
   },
+
   "pluginOption": {
     "message": "Данные расширений",
     "description": "Опция для очистки данных расширений."
   },
+
   "formOption": {
     "message": "Данные форм",
     "description": "Опция для очистки сохранённых данных форм."
   },
+
   "cookiesOption": {
     "message": "Файлы куки",
     "description": "Опция для очистки файлов куки."
   },
+
   "workerOption": {
     "message": "Сервис-воркеры",
     "description": "Опция для очистки данных сервис-воркеров."
   },
 
+  "localStorageOption": {
+    "message": "Локальное хранилище",
+    "description": "Опция для очистки локального хранилища."
+  },
+
+  "indexedDBOption": {
+    "message": "IndexedDB",
+    "description": "Опция для очистки IndexedDB."
+  },
+
   "preferencesSavedMessage": {
-    "message": "Настроки успешно сохранены.",
+    "message": "Настройки успешно сохранены.",
     "description": "Сообщение, выводящееся после сохранения настроек."
+  },
+
+  "contextMenuClearAndReload": {
+    "message": "Очистить кэш и перезагрузить страницу",
+    "description": "Пункт контекстного меню для очистки кэша и перезагрузки текущей страницы."
+  },
+
+  "timePeriodTitle": {
+    "message": "Период очистки",
+    "description": "Заголовок раздела выбора периода очистки."
+  },
+
+  "timePeriodAll": {
+    "message": "За всё время",
+    "description": "Опция очистки данных за всё время."
+  },
+
+  "timePeriod15min": {
+    "message": "Последние 15 минут",
+    "description": "Опция очистки данных за последние 15 минут."
+  },
+
+  "timePeriod1hour": {
+    "message": "Последний час",
+    "description": "Опция очистки данных за последний час."
+  },
+
+  "timePeriod24hours": {
+    "message": "Последние 24 часа",
+    "description": "Опция очистки данных за последние 24 часа."
+  },
+
+  "timePeriod1week": {
+    "message": "Последняя неделя",
+    "description": "Опция очистки данных за последнюю неделю."
+  },
+
+  "desc_15min": {
+    "message": "последние 15 минут",
+    "description": "Описание периода последних 15 минут."
+  },
+
+  "desc_1hour": {
+    "message": "последний час",
+    "description": "Описание периода последнего часа."
+  },
+
+  "desc_24hours": {
+    "message": "последние 24 часа",
+    "description": "Описание периода последних 24 часов."
+  },
+
+  "desc_1week": {
+    "message": "последняя неделя",
+    "description": "Описание периода последней недели."
+  },
+
+  "desc_all": {
+    "message": "за всё время",
+    "description": "Описание периода за всё время."
+  },
+
+  "disabledTypesMessage": {
+    "message": "Все типы данных отключены. Включите хотя бы один тип в настройках.",
+    "description": "Уведомление, когда все типы данных отключены."
+  },
+
+  "unsupportedUrlMessage": {
+    "message": "Невозможно очистить кэш для этого типа страницы (about:, file:// и т. д.). Отключите 'Только текущая вкладка'.",
+    "description": "Уведомление при попытке очистки кэша для неподдерживаемых протоколов."
+  },
+
+  "currentTabLabel": {
+    "message": "(текущая вкладка)",
+    "description": "Метка в уведомлениях при очистке только текущей вкладки."
   }
 }

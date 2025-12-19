@@ -13,9 +13,10 @@ h2 {
   font-weight: 300;
 }
 
-section.clear-options {
+fieldset.clear-options {
   padding: 0.5em 0;
   margin: 1em 0;
+  border: none;
 }
 
 label {
