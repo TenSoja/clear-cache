@@ -150,6 +150,17 @@
   "currentTabLabel": {
     "message": "（当前标签页）",
     "description": "仅清除当前标签页时通知中显示的标签。"
+  },
+  "currentTabOnlyWarning": {
+    "message": "⚠️ 仅适用于：Cookie、本地存储、IndexedDB、Service Workers",
+    "description": "启用「仅当前标签页」时显示的警告消息。"
+  },
+  "incompatibleTypesMessage": {
+    "message": "所选数据类型（缓存、历史记录等）无法针对单个站点清除。请禁用「仅当前标签页」或选择 Cookie/本地存储。",
+    "description": "尝试清除与「仅当前标签页」不兼容的数据类型时的通知。"
+  },
+  "partialClearMessage": {
+    "message": "注意：{types} 将被跳过（不支持单个站点）。",
+    "description": "由于「仅当前标签页」限制，某些数据类型被跳过时的通知。"
   }
 }
-

@@ -170,5 +170,17 @@
   "currentTabLabel": {
     "message": "(aktuální karta)",
     "description": "Štítek v oznámeních při čištění pouze aktuální karty."
+  },
+  "currentTabOnlyWarning": {
+    "message": "⚠️ Funguje pouze s: Cookies, Místní úložiště, IndexedDB, Service Workers",
+    "description": "Varovná zpráva při aktivaci 'Pouze aktuální karta'."
+  },
+  "incompatibleTypesMessage": {
+    "message": "Vybrané typy dat (mezipaměť, historie atd.) nelze vyčistit pro jeden web. Vypněte 'Pouze aktuální karta' nebo vyberte cookies/místní úložiště.",
+    "description": "Upozornění při pokusu o vyčištění nekompatibilních typů dat s 'Pouze aktuální karta'."
+  },
+  "partialClearMessage": {
+    "message": "Poznámka: {types} bude přeskočeno (nepodporováno pro jeden web).",
+    "description": "Upozornění, když jsou některé typy dat přeskočeny kvůli omezení 'Pouze aktuální karta'."
   }
 }

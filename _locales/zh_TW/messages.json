@@ -150,5 +150,17 @@
   "currentTabLabel": {
     "message": "（目前分頁）",
     "description": "僅清除目前分頁時通知中顯示的標籤。"
+  },
+  "currentTabOnlyWarning": {
+    "message": "⚠️ 僅適用於：Cookie、本機儲存空間、IndexedDB、Service Workers",
+    "description": "啟用「僅目前分頁」時顯示的警告訊息。"
+  },
+  "incompatibleTypesMessage": {
+    "message": "所選資料類型（快取、歷史記錄等）無法針對單一網站清除。請停用「僅目前分頁」或選擇 Cookie/本機儲存空間。",
+    "description": "嘗試清除與「僅目前分頁」不相容的資料類型時的通知。"
+  },
+  "partialClearMessage": {
+    "message": "注意：{types} 將被跳過（不支援單一網站）。",
+    "description": "由於「僅目前分頁」限制，某些資料類型被跳過時的通知。"
   }
 }

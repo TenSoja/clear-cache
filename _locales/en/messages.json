@@ -182,5 +182,20 @@
   "currentTabLabel": {
     "message": "(current tab)",
     "description": "Label shown in notifications when clearing data for current tab only."
+  },
+
+  "currentTabOnlyWarning": {
+    "message": "⚠️ Only works with: Cookies, Local Storage, IndexedDB, Service Workers",
+    "description": "Warning message shown when Current Tab Only is enabled."
+  },
+
+  "incompatibleTypesMessage": {
+    "message": "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage.",
+    "description": "Notification when trying to clear incompatible data types with Current Tab Only."
+  },
+
+  "partialClearMessage": {
+    "message": "Note: {types} will be skipped (not supported for single site).",
+    "description": "Notification when some data types are skipped due to Current Tab Only limitation."
   }
 }

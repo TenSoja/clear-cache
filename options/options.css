@@ -59,6 +59,23 @@ label:hover {
   outline: 3px solid #ADD8E6;
 }
 
+.warning {
+  font-size: 0.82em;
+  color: #664d03;
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 0 6px 6px 0;
+  padding: 0.75em 1em;
+  margin: 0.5em 0 0.5em 1em;
+  display: none;
+  line-height: 1.4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.warning.visible {
+  display: block;
+}
+
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   body {
@@ -80,5 +97,12 @@ label:hover {
 
   #save-button:focus {
     outline: 3px solid #5da6d9;
+  }
+
+  .warning {
+    color: #ffc107;
+    background-color: #332d1a;
+    border-left-color: #b38600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 }

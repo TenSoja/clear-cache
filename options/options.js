@@ -33,6 +33,17 @@ function localizeOptions() {
   });
 }
 
+// Mostra/esconde aviso do currentTabOnly
+function toggleCurrentTabOnlyWarning() {
+  const checkbox = document.querySelector("#currentTabOnly");
+  const warning = document.querySelector("#currentTabOnlyWarning");
+  if (checkbox.checked) {
+    warning.classList.add("visible");
+  } else {
+    warning.classList.remove("visible");
+  }
+}
+
 // Atualiza a interface com os valores salvos ou padrão
 function updateUI(restoredSettings) {
   localizeOptions();
@@ -53,6 +64,9 @@ function updateUI(restoredSettings) {
   } else {
     document.querySelector('input[name="timePeriod"][value="all"]').checked = true;
   }
+
+  // Atualiza visibilidade do aviso
+  toggleCurrentTabOnlyWarning();
 }
 
 function onError(e) {
@@ -64,3 +78,6 @@ browser.storage.local.get().then(updateUI, onError);
 
 // Salva configurações ao clicar no botão
 document.querySelector("#save-button").addEventListener("click", storeSettings);
+
+// Atualiza aviso ao mudar checkbox
+document.querySelector("#currentTabOnly").addEventListener("change", toggleCurrentTabOnlyWarning);

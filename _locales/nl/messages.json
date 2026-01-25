@@ -170,5 +170,17 @@
   "currentTabLabel": {
     "message": "(huidig tabblad)",
     "description": "Label in meldingen bij wissen van alleen het huidige tabblad."
+  },
+  "currentTabOnlyWarning": {
+    "message": "⚠️ Werkt alleen met: Cookies, Lokale opslag, IndexedDB, Service Workers",
+    "description": "Waarschuwing wanneer 'Alleen huidige tabblad' is ingeschakeld."
+  },
+  "incompatibleTypesMessage": {
+    "message": "De geselecteerde gegevenstypen (cache, geschiedenis, etc.) kunnen niet worden gewist voor één site. Schakel 'Alleen huidige tabblad' uit of selecteer cookies/lokale opslag.",
+    "description": "Melding bij het wissen van incompatibele gegevenstypen met 'Alleen huidige tabblad'."
+  },
+  "partialClearMessage": {
+    "message": "Let op: {types} worden overgeslagen (niet ondersteund voor één site).",
+    "description": "Melding wanneer sommige gegevenstypen worden overgeslagen vanwege de beperking van 'Alleen huidige tabblad'."
   }
 }

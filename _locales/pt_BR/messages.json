@@ -177,5 +177,20 @@
     "currentTabLabel": {
       "message": "(aba atual)",
       "description": "Rótulo exibido nas notificações ao limpar dados apenas da aba atual."
+    },
+
+    "currentTabOnlyWarning": {
+      "message": "⚠️ Funciona apenas com: Cookies, Armazenamento Local, IndexedDB, Service Workers",
+      "description": "Aviso exibido quando 'Apenas aba atual' está ativado."
+    },
+
+    "incompatibleTypesMessage": {
+      "message": "Os tipos selecionados (cache, histórico, etc.) não podem ser limpos para um único site. Desative 'Apenas aba atual' ou selecione cookies/localStorage.",
+      "description": "Notificação ao tentar limpar tipos incompatíveis com 'Apenas aba atual'."
+    },
+
+    "partialClearMessage": {
+      "message": "Nota: {types} serão ignorados (não suportado para site único).",
+      "description": "Notificação quando alguns tipos são ignorados devido à limitação do 'Apenas aba atual'."
     }
 }

@@ -54,6 +54,9 @@ function clearCache(storedSettings) {
   const timePeriod = storedSettings.timePeriod || "all";
   const currentTabOnly = storedSettings.currentTabOnly;
 
+  // Tipos de dados que suportam a opção 'hostnames' (limpeza por site)
+  const hostnamesSupportedTypes = ['cookies', 'indexedDB', 'localStorage', 'serviceWorkers'];
+
   // Calcula o timestamp 'since' baseado no período selecionado
   function getSinceTimestamp(period) {
     const now = Date.now();
@@ -154,6 +157,46 @@ function clearCache(storedSettings) {
   }
 
   if (currentTabOnly) {
+    // Separa tipos compatíveis e incompatíveis com hostnames
+    const selectedTypes = Object.keys(dataTypes);
+    const compatibleTypes = {};
+    const incompatibleTypes = {};
+
+    selectedTypes.forEach(type => {
+      if (hostnamesSupportedTypes.includes(type)) {
+        compatibleTypes[type] = true;
+      } else {
+        incompatibleTypes[type] = true;
+      }
+    });
+
+    const hasIncompatibleTypes = Object.keys(incompatibleTypes).length > 0;
+    const hasCompatibleTypes = Object.keys(compatibleTypes).length > 0;
+
+    // Se só tem tipos incompatíveis, avisa e não executa
+    if (hasIncompatibleTypes && !hasCompatibleTypes) {
+      if (notification) {
+        browser.notifications.create({
+          "type": "basic",
+          "title": browser.i18n.getMessage("extensionName"),
+          "message": browser.i18n.getMessage("incompatibleTypesMessage") || "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage.",
+          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+        });
+      }
+      return;
+    }
+
+    // Se tem tipos incompatíveis misturados com compatíveis, avisa quais serão ignorados
+    if (hasIncompatibleTypes && hasCompatibleTypes && notification) {
+      const ignoredTypes = Object.keys(incompatibleTypes).join(", ");
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": (browser.i18n.getMessage("partialClearMessage") || "Note: {types} will be skipped (not supported for single site).").replace("{types}", ignoredTypes),
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
       if (tabs.length > 0) {
         const currentTab = tabs[0];
@@ -169,10 +212,11 @@ function clearCache(storedSettings) {
           const hostname = url.hostname;
 
           if (hostname && hostname !== '') {
+            // Usa apenas os tipos compatíveis com hostnames
             browser.browsingData.remove({
               hostnames: [hostname],
               since: sinceTimestamp
-            }, dataTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
+            }, compatibleTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
           } else {
             showUnsupportedUrlError();
           }
@@ -200,6 +244,9 @@ browser.browserAction.onClicked.addListener(() => {
 
 // Função para limpar cache e sempre recarregar página (usado pelo menu de contexto)
 function clearCacheAndReload(storedSettings) {
+  // Tipos de dados que suportam a opção 'hostnames' (limpeza por site)
+  const hostnamesSupportedTypes = ['cookies', 'indexedDB', 'localStorage', 'serviceWorkers'];
+
   function getTypes(selectedTypes) {
     var dataTypes = {};
     for (var item of selectedTypes || []) {
@@ -280,6 +327,46 @@ function clearCacheAndReload(storedSettings) {
   }
 
   if (currentTabOnly) {
+    // Separa tipos compatíveis e incompatíveis com hostnames
+    const selectedTypes = Object.keys(dataTypes);
+    const compatibleTypes = {};
+    const incompatibleTypes = {};
+
+    selectedTypes.forEach(type => {
+      if (hostnamesSupportedTypes.includes(type)) {
+        compatibleTypes[type] = true;
+      } else {
+        incompatibleTypes[type] = true;
+      }
+    });
+
+    const hasIncompatibleTypes = Object.keys(incompatibleTypes).length > 0;
+    const hasCompatibleTypes = Object.keys(compatibleTypes).length > 0;
+
+    // Se só tem tipos incompatíveis, avisa e não executa
+    if (hasIncompatibleTypes && !hasCompatibleTypes) {
+      if (notification) {
+        browser.notifications.create({
+          "type": "basic",
+          "title": browser.i18n.getMessage("extensionName"),
+          "message": browser.i18n.getMessage("incompatibleTypesMessage") || "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage.",
+          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+        });
+      }
+      return;
+    }
+
+    // Se tem tipos incompatíveis misturados com compatíveis, avisa quais serão ignorados
+    if (hasIncompatibleTypes && hasCompatibleTypes && notification) {
+      const ignoredTypes = Object.keys(incompatibleTypes).join(", ");
+      browser.notifications.create({
+        "type": "basic",
+        "title": browser.i18n.getMessage("extensionName"),
+        "message": (browser.i18n.getMessage("partialClearMessage") || "Note: {types} will be skipped (not supported for single site).").replace("{types}", ignoredTypes),
+        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
+      });
+    }
+
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
       if (tabs.length > 0) {
         const currentTab = tabs[0];
@@ -295,10 +382,11 @@ function clearCacheAndReload(storedSettings) {
           const hostname = url.hostname;
 
           if (hostname && hostname !== '') {
+            // Usa apenas os tipos compatíveis com hostnames
             browser.browsingData.remove({
               hostnames: [hostname],
               since: sinceTimestamp
-            }, dataTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
+            }, compatibleTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
           } else {
             showUnsupportedUrlError();
           }
