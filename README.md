@@ -8,7 +8,7 @@
 <p align="center">Clear browser cache with a single click or F9 key.</p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Firefox-v4.5-orange?logo=firefox-browser" alt="Firefox v4.5" />
+  <img src="https://img.shields.io/badge/Firefox-v4.7-orange?logo=firefox-browser" alt="Firefox v4.7" />
   <img src="https://img.shields.io/github/license/TenSoja/clear-cache" alt="License" />
   <img src="https://img.shields.io/badge/Firefox-58k%20users-orange?logo=firefox-browser" alt="Firefox Users" />
   <img src="https://img.shields.io/badge/Rating-4.4%2F5-green?logo=mozilla" alt="Rating" />
@@ -21,19 +21,34 @@
 
 ---
 
-## 🆕 What's New in v4.5
+## 🆕 What's New in v4.7
 
-### 🐛 Bug Fixes
-- **"Current Tab Only" now works** - Fixed critical bug using wrong API
-- **Context menu respects time period** - No longer always clears "all time"
-- **Better error handling** - Fixed potential crashes with undefined URLs
-- **CSS/i18n fixes** - Proper styling and internationalized labels
+### 🐛 Critical Bug Fixes
+- **Fixed "Current Tab Only" clearing ALL data globally** - Now correctly clears only the current site's data
+- **Resolved Firefox Beta freezing issue** - Fixed crash when clicking extension or saving settings (#30)
 
-### 🎯 New Default Behavior
-**By default, cache is now cleared only for the current tab** - more intuitive for developers working on specific sites.
+### ⚠️ Important API Limitations (Now Documented)
+Due to Firefox API restrictions, when using "Current Tab Only":
+- ✅ **Works correctly**: Cookies, Local Storage, IndexedDB, Service Workers
+- ❌ **Still clears globally**: Cache, History, Downloads, Form Data, Passwords
 
-### ⚠️ Unsupported URL Handling
-Special pages (`about:`, `file://`, `moz-extension://`) now show a clear error message.
+### 🎨 UX Improvements
+- **Warning messages in Options** - Clear visual indicators when "Current Tab Only" is enabled
+- **Better user awareness** - Notifications explain which data types were affected
+- **Updated translations** - New warning messages in all 8 languages
+
+---
+
+<details>
+<summary>📜 Previous Releases</summary>
+
+### v4.5 Highlights
+- Fixed "Current Tab Only" API usage
+- Context menu now respects time period settings
+- Better error handling for special URLs
+- Improved CSS and i18n
+
+</details>
 
 ---
 
@@ -42,7 +57,7 @@ Special pages (`about:`, `file://`, `moz-extension://`) now show a clear error m
 | Feature | Description |
 |---------|-------------|
 | 🚀 **One-click clearing** | Click toolbar icon or press F9 |
-| 🎯 **Current tab only** | Clear data only for active site (default) |
+| 🎯 **Current tab only** | Clear data only for active site (cookies, storage, etc.) |
 | ⏰ **Time periods** | 15min, 1hour, 24hours, 1week, or all time |
 | 🎨 **Selective clearing** | Cache, cookies, history, localStorage, etc. |
 | 🔄 **Auto-reload** | Reload page after clearing (configurable) |
