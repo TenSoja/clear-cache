@@ -41,7 +41,7 @@ function checkStoredSettings(storedSettings) {
   }
 
   if (needsUpdate) {
-    browser.storage.local.set(correctedSettings);
+    browser.storage.local.set(correctedSettings).catch(onError);
   }
 }
 

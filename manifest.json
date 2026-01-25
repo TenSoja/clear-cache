@@ -1,6 +1,6 @@
 {
   "name": "__MSG_extensionName__",
-  "version": "4.5",
+  "version": "4.6.2",
   "manifest_version": 2,
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/TenSoja/clear-cache",
@@ -20,8 +20,7 @@
   },
 
   "options_ui": {
-	"page": "options/options.html",
-	"browser_style": true
+	"page": "options/options.html"
   },
 
   "browser_action": {
@@ -46,7 +45,11 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "strict_min_version": "109.0"
+      "id": "clearcache@michel.de.almeida",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     },
     "gecko_android": {
       "strict_min_version": "113.0"
