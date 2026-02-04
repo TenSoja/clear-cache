@@ -28,12 +28,17 @@
     "description": "重新載入目前分頁的選項。"
   },
   "currentTabOnlyOption": {
-    "message": "僅目前分頁",
-    "description": "僅清除目前分頁資料的選項。"
+    "message": "僅網站資料（cookies/storage）",
+    "description": "僅清除目前分頁網站資料的選項。"
   },
   "notificationOption": {
     "message": "顯示通知",
     "description": "啟用或停用通知的選項。"
+  },
+
+  "debugOption": {
+    "message": "啟用除錯日誌",
+    "description": "啟用主控台除錯日誌的選項。"
   },
   "saveButton": {
     "message": "儲存設定",
@@ -152,7 +157,7 @@
     "description": "僅清除目前分頁時通知中顯示的標籤。"
   },
   "currentTabOnlyWarning": {
-    "message": "⚠️ 僅適用於：Cookie、本機儲存空間、IndexedDB、Service Workers",
+    "message": "⚠️ 在 Firefox 中快取一律為全域清除。此選項僅影響：Cookie、本機儲存空間、IndexedDB、Service Workers",
     "description": "啟用「僅目前分頁」時顯示的警告訊息。"
   },
   "incompatibleTypesMessage": {

@@ -34,13 +34,18 @@
     "description": "Možnost znovu načíst kartu."
   },
   "currentTabOnlyOption": {
-    "message": "Pouze aktuální karta",
-    "description": "Možnost vyčistit data pouze pro aktuální kartu."
+    "message": "Pouze data webu (cookies/storage)",
+    "description": "Možnost vyčistit data webu pouze pro aktuální kartu."
   },
 
   "notificationOption": {
     "message": "Zobrazit oznámení",
     "description": "Možnost zobrazit oznámení."
+  },
+
+  "debugOption": {
+    "message": "Povolit ladicí logy",
+    "description": "Možnost zapnout ladicí logy v konzoli."
   },
 
   "saveButton": {
@@ -172,7 +177,7 @@
     "description": "Štítek v oznámeních při čištění pouze aktuální karty."
   },
   "currentTabOnlyWarning": {
-    "message": "⚠️ Funguje pouze s: Cookies, Místní úložiště, IndexedDB, Service Workers",
+    "message": "⚠️ Cache je ve Firefoxu vždy globální. Tato volba ovlivňuje pouze: Cookies, Místní úložiště, IndexedDB, Service Workers",
     "description": "Varovná zpráva při aktivaci 'Pouze aktuální karta'."
   },
   "incompatibleTypesMessage": {

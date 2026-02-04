@@ -34,13 +34,18 @@
     "description": "De optie om het tabblad opnieuw te laden."
   },
   "currentTabOnlyOption": {
-    "message": "Alleen huidige tabblad",
-    "description": "Optie om gegevens alleen voor het huidige tabblad te wissen."
+    "message": "Alleen sitegegevens (cookies/storage)",
+    "description": "Optie om sitegegevens alleen voor het huidige tabblad te wissen."
   },
 
   "notificationOption": {
     "message": "Toon melding",
     "description": "De optie om de melding te tonen."
+  },
+
+  "debugOption": {
+    "message": "Debuglogs inschakelen",
+    "description": "Optie om debuglogs in de console te tonen."
   },
 
   "saveButton": {
@@ -172,7 +177,7 @@
     "description": "Label in meldingen bij wissen van alleen het huidige tabblad."
   },
   "currentTabOnlyWarning": {
-    "message": "⚠️ Werkt alleen met: Cookies, Lokale opslag, IndexedDB, Service Workers",
+    "message": "⚠️ Cache is in Firefox altijd globaal. Deze optie heeft alleen effect op: Cookies, Lokale opslag, IndexedDB, Service Workers",
     "description": "Waarschuwing wanneer 'Alleen huidige tabblad' is ingeschakeld."
   },
   "incompatibleTypesMessage": {

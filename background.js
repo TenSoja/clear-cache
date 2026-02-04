@@ -5,8 +5,11 @@ const defaultSettings = {
   dataTypes: ["cache"],
   timePeriod: "all", // all, 15min, 1hour, 24hours, 1week
   customKey: "F9",
-  currentTabOnly: true
+  currentTabOnly: false,
+  debug: false
 };
+
+const NOTIFICATION_ICON_URL = browser.runtime.getURL("icons/broom-32.png");
 
 // Verifica e corrige configurações inválidas
 function checkStoredSettings(storedSettings) {
@@ -39,20 +42,75 @@ function checkStoredSettings(storedSettings) {
     correctedSettings.currentTabOnly = defaultSettings.currentTabOnly;
     needsUpdate = true;
   }
+  if (typeof correctedSettings.debug !== 'boolean') {
+    correctedSettings.debug = defaultSettings.debug;
+    needsUpdate = true;
+  }
 
   if (needsUpdate) {
     browser.storage.local.set(correctedSettings).catch(onError);
   }
 }
 
-const gettingStoredSettings = browser.storage.local.get();
+const gettingStoredSettings = browser.storage.local.get(defaultSettings);
 gettingStoredSettings.then(checkStoredSettings, onError);
+
+function logDebug(storedSettings, ...args) {
+  if (storedSettings && storedSettings.debug) {
+    console.info("[Clear Cache]", ...args);
+  }
+}
+
+function showNotification(storedSettings, message) {
+  logDebug(storedSettings, "notify", message);
+  if (!browser.notifications || !browser.notifications.create) {
+    return Promise.resolve();
+  }
+  return browser.notifications.create({
+    type: "basic",
+    title: browser.i18n.getMessage("extensionName"),
+    message,
+    iconUrl: NOTIFICATION_ICON_URL
+  }).then(
+    id => {
+      logDebug(storedSettings, "notify created", id);
+      return id;
+    },
+    error => {
+      logDebug(storedSettings, "notify error", error);
+      onError(error);
+    }
+  );
+}
+
+function setBadgeWarning() {
+  if (browser.browserAction && browser.browserAction.setBadgeText) {
+    browser.browserAction.setBadgeText({ text: "!" }).catch(onError);
+    browser.browserAction.setBadgeBackgroundColor({ color: "#d9534f" }).catch(onError);
+    setTimeout(() => {
+      browser.browserAction.setBadgeText({ text: "" }).catch(onError);
+    }, 6000);
+  }
+}
+
+function clearBadge() {
+  if (browser.browserAction && browser.browserAction.setBadgeText) {
+    browser.browserAction.setBadgeText({ text: "" }).catch(onError);
+  }
+}
 
 function clearCache(storedSettings) {
   const reload = storedSettings.reload;
   const notification = storedSettings.notification;
   const timePeriod = storedSettings.timePeriod || "all";
   const currentTabOnly = storedSettings.currentTabOnly;
+  logDebug(storedSettings, "clearCache start", {
+    reload,
+    notification,
+    timePeriod,
+    currentTabOnly,
+    dataTypes: storedSettings.dataTypes
+  });
 
   // Tipos de dados que suportam a opção 'hostnames' (limpeza por site)
   const hostnamesSupportedTypes = ['cookies', 'indexedDB', 'localStorage', 'serviceWorkers'];
@@ -89,18 +147,16 @@ function clearCache(storedSettings) {
 
   // Se nenhum tipo de dado foi selecionado, apenas notifica e retorna
   if (Object.keys(dataTypes).length === 0) {
+    logDebug(storedSettings, "no data types selected");
     if (notification) {
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": browser.i18n.getMessage("disabledTypesMessage"),
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(storedSettings, browser.i18n.getMessage("disabledTypesMessage"));
     }
     return;
   }
 
   function onCleared(tabMessage = "") {
+    logDebug(storedSettings, "cleared", { tabMessage });
+    clearBadge();
     if (reload) {
       browser.tabs.reload();
     }
@@ -110,12 +166,7 @@ function clearCache(storedSettings) {
       var message = tabMessage
         ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`
         : `${dataTypesString} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`;
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": message,
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(storedSettings, message);
     }
   }
 
@@ -147,12 +198,11 @@ function clearCache(storedSettings) {
   // Mostra notificação de erro para URLs não suportadas
   function showUnsupportedUrlError() {
     if (notification) {
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": browser.i18n.getMessage("unsupportedUrlMessage") || "Cannot clear cache for this page type. Try disabling 'Current tab only' option.",
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(
+        storedSettings,
+        browser.i18n.getMessage("unsupportedUrlMessage") ||
+          "Cannot clear cache for this page type. Try disabling 'Current tab only' option."
+      );
     }
   }
 
@@ -172,16 +222,21 @@ function clearCache(storedSettings) {
 
     const hasIncompatibleTypes = Object.keys(incompatibleTypes).length > 0;
     const hasCompatibleTypes = Object.keys(compatibleTypes).length > 0;
+    logDebug(storedSettings, "currentTabOnly split", {
+      compatibleTypes,
+      incompatibleTypes
+    });
 
     // Se só tem tipos incompatíveis, avisa e não executa
     if (hasIncompatibleTypes && !hasCompatibleTypes) {
+      logDebug(storedSettings, "blocked: only incompatible types with currentTabOnly");
+      setBadgeWarning();
       if (notification) {
-        browser.notifications.create({
-          "type": "basic",
-          "title": browser.i18n.getMessage("extensionName"),
-          "message": browser.i18n.getMessage("incompatibleTypesMessage") || "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage.",
-          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-        });
+        showNotification(
+          storedSettings,
+          browser.i18n.getMessage("incompatibleTypesMessage") ||
+            "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage."
+        );
       }
       return;
     }
@@ -189,12 +244,11 @@ function clearCache(storedSettings) {
     // Se tem tipos incompatíveis misturados com compatíveis, avisa quais serão ignorados
     if (hasIncompatibleTypes && hasCompatibleTypes && notification) {
       const ignoredTypes = Object.keys(incompatibleTypes).join(", ");
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": (browser.i18n.getMessage("partialClearMessage") || "Note: {types} will be skipped (not supported for single site).").replace("{types}", ignoredTypes),
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(
+        storedSettings,
+        (browser.i18n.getMessage("partialClearMessage") || "Note: {types} will be skipped (not supported for single site).")
+          .replace("{types}", ignoredTypes)
+      );
     }
 
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
@@ -203,6 +257,7 @@ function clearCache(storedSettings) {
 
         // Verifica se URL existe e é suportada
         if (!currentTab.url || isUnsupportedUrl(currentTab.url)) {
+          logDebug(storedSettings, "unsupported url", currentTab.url);
           showUnsupportedUrlError();
           return;
         }
@@ -210,9 +265,15 @@ function clearCache(storedSettings) {
         try {
           const url = new URL(currentTab.url);
           const hostname = url.hostname;
+          logDebug(storedSettings, "current tab hostname", hostname);
 
           if (hostname && hostname !== '') {
             // Usa apenas os tipos compatíveis com hostnames
+            logDebug(storedSettings, "browsingData.remove hostnames", {
+              hostnames: [hostname],
+              since: sinceTimestamp,
+              types: compatibleTypes
+            });
             browser.browsingData.remove({
               hostnames: [hostname],
               since: sinceTimestamp
@@ -226,17 +287,22 @@ function clearCache(storedSettings) {
       }
     }).catch(onError);
   } else {
+    logDebug(storedSettings, "clearing globally");
+    logDebug(storedSettings, "browsingData.remove global", {
+      since: sinceTimestamp,
+      types: dataTypes
+    });
     browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
   }
 }
 
 function onError(error) {
-  console.error(error);
+  console.error("[Clear Cache]", error);
 }
 
 // Clique no ícone da extensão chama a limpeza
 browser.browserAction.onClicked.addListener(() => {
-  const gettingStoredSettings = browser.storage.local.get();
+  const gettingStoredSettings = browser.storage.local.get(defaultSettings);
   gettingStoredSettings.then(clearCache, onError);
 });
 
@@ -246,6 +312,12 @@ browser.browserAction.onClicked.addListener(() => {
 function clearCacheAndReload(storedSettings) {
   // Tipos de dados que suportam a opção 'hostnames' (limpeza por site)
   const hostnamesSupportedTypes = ['cookies', 'indexedDB', 'localStorage', 'serviceWorkers'];
+  logDebug(storedSettings, "clearCacheAndReload start", {
+    notification: storedSettings.notification,
+    timePeriod: storedSettings.timePeriod,
+    currentTabOnly: storedSettings.currentTabOnly,
+    dataTypes: storedSettings.dataTypes
+  });
 
   function getTypes(selectedTypes) {
     var dataTypes = {};
@@ -281,13 +353,9 @@ function clearCacheAndReload(storedSettings) {
 
   // Se nenhum tipo de dado foi selecionado, apenas notifica
   if (Object.keys(dataTypes).length === 0) {
+    logDebug(storedSettings, "no data types selected");
     if (notification) {
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": browser.i18n.getMessage("disabledTypesMessage"),
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(storedSettings, browser.i18n.getMessage("disabledTypesMessage"));
     }
     return;
   }
@@ -301,28 +369,24 @@ function clearCacheAndReload(storedSettings) {
 
   function showUnsupportedUrlError() {
     if (notification) {
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": browser.i18n.getMessage("unsupportedUrlMessage") || "Cannot clear cache for this page type. Try disabling 'Current tab only' option.",
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(
+        storedSettings,
+        browser.i18n.getMessage("unsupportedUrlMessage") ||
+          "Cannot clear cache for this page type. Try disabling 'Current tab only' option."
+      );
     }
   }
 
   function onCleared(tabMessage = "") {
+    logDebug(storedSettings, "clearCacheAndReload cleared", { tabMessage });
+    clearBadge();
     browser.tabs.reload();
     if (notification) {
       var dataTypesString = Object.keys(dataTypes).join(", ");
       var message = tabMessage
         ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("contextMenuClearAndReload")}`
         : `${dataTypesString} ${browser.i18n.getMessage("contextMenuClearAndReload")}`;
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": message,
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(storedSettings, message);
     }
   }
 
@@ -342,16 +406,21 @@ function clearCacheAndReload(storedSettings) {
 
     const hasIncompatibleTypes = Object.keys(incompatibleTypes).length > 0;
     const hasCompatibleTypes = Object.keys(compatibleTypes).length > 0;
+    logDebug(storedSettings, "currentTabOnly split", {
+      compatibleTypes,
+      incompatibleTypes
+    });
 
     // Se só tem tipos incompatíveis, avisa e não executa
     if (hasIncompatibleTypes && !hasCompatibleTypes) {
+      logDebug(storedSettings, "blocked: only incompatible types with currentTabOnly");
+      setBadgeWarning();
       if (notification) {
-        browser.notifications.create({
-          "type": "basic",
-          "title": browser.i18n.getMessage("extensionName"),
-          "message": browser.i18n.getMessage("incompatibleTypesMessage") || "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage.",
-          "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-        });
+        showNotification(
+          storedSettings,
+          browser.i18n.getMessage("incompatibleTypesMessage") ||
+            "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage."
+        );
       }
       return;
     }
@@ -359,12 +428,11 @@ function clearCacheAndReload(storedSettings) {
     // Se tem tipos incompatíveis misturados com compatíveis, avisa quais serão ignorados
     if (hasIncompatibleTypes && hasCompatibleTypes && notification) {
       const ignoredTypes = Object.keys(incompatibleTypes).join(", ");
-      browser.notifications.create({
-        "type": "basic",
-        "title": browser.i18n.getMessage("extensionName"),
-        "message": (browser.i18n.getMessage("partialClearMessage") || "Note: {types} will be skipped (not supported for single site).").replace("{types}", ignoredTypes),
-        "iconUrl": browser.runtime.getURL('/icons/broom.svg')
-      });
+      showNotification(
+        storedSettings,
+        (browser.i18n.getMessage("partialClearMessage") || "Note: {types} will be skipped (not supported for single site).")
+          .replace("{types}", ignoredTypes)
+      );
     }
 
     browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
@@ -373,6 +441,7 @@ function clearCacheAndReload(storedSettings) {
 
         // Verifica se URL existe e é suportada
         if (!currentTab.url || isUnsupportedUrl(currentTab.url)) {
+          logDebug(storedSettings, "unsupported url", currentTab.url);
           showUnsupportedUrlError();
           return;
         }
@@ -380,9 +449,15 @@ function clearCacheAndReload(storedSettings) {
         try {
           const url = new URL(currentTab.url);
           const hostname = url.hostname;
+          logDebug(storedSettings, "current tab hostname", hostname);
 
           if (hostname && hostname !== '') {
             // Usa apenas os tipos compatíveis com hostnames
+            logDebug(storedSettings, "browsingData.remove hostnames", {
+              hostnames: [hostname],
+              since: sinceTimestamp,
+              types: compatibleTypes
+            });
             browser.browsingData.remove({
               hostnames: [hostname],
               since: sinceTimestamp
@@ -396,21 +471,32 @@ function clearCacheAndReload(storedSettings) {
       }
     }).catch(onError);
   } else {
+    logDebug(storedSettings, "clearing globally");
+    logDebug(storedSettings, "browsingData.remove global", {
+      since: sinceTimestamp,
+      types: dataTypes
+    });
     browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
   }
 }
 
 // Cria item de menu de contexto ao iniciar
-browser.contextMenus.create({
-  id: "clear-cache-and-reload",
-  title: browser.i18n.getMessage("contextMenuClearAndReload"),
-  contexts: ["browser_action"]
-});
+if (browser.contextMenus && browser.contextMenus.create) {
+  try {
+    browser.contextMenus.create({
+      id: "clear-cache-and-reload",
+      title: browser.i18n.getMessage("contextMenuClearAndReload"),
+      contexts: ["browser_action"]
+    });
+  } catch (error) {
+    onError(error);
+  }
+}
 
 // Lida com clique no menu de contexto
 browser.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "clear-cache-and-reload") {
-    const gettingStoredSettings = browser.storage.local.get();
+    const gettingStoredSettings = browser.storage.local.get(defaultSettings);
     gettingStoredSettings.then(clearCacheAndReload, onError);
   }
 });

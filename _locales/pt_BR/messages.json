@@ -35,13 +35,18 @@
   },
 
   "currentTabOnlyOption": {
-    "message": "Apenas aba atual",
-    "description": "Opção para limpar dados apenas da aba atual."
+    "message": "Apenas dados do site (cookies/storage)",
+    "description": "Opção para limpar apenas dados do site na aba atual."
   },
 
   "notificationOption": {
     "message": "Mostrar notificação",
     "description": "Opção para mostrar a notificação."
+  },
+
+  "debugOption": {
+    "message": "Ativar logs de debug",
+    "description": "Opção para ativar logs de depuração no console."
   },
 
   "saveButton": {
@@ -180,7 +185,7 @@
     },
 
     "currentTabOnlyWarning": {
-      "message": "⚠️ Funciona apenas com: Cookies, Armazenamento Local, IndexedDB, Service Workers",
+      "message": "⚠️ Cache é sempre global no Firefox. Esta opção só afeta: Cookies, Armazenamento Local, IndexedDB, Service Workers",
       "description": "Aviso exibido quando 'Apenas aba atual' está ativado."
     },
 

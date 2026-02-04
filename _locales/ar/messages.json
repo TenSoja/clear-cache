@@ -34,13 +34,18 @@
     "description": "خيار إعادة تحميل التبويب."
   },
   "currentTabOnlyOption": {
-    "message": "التبويب الحالي فقط",
-    "description": "خيار لمسح البيانات للتبويب الحالي فقط."
+    "message": "بيانات الموقع فقط (cookies/storage)",
+    "description": "خيار لمسح بيانات الموقع للتبويب الحالي فقط."
   },
 
   "notificationOption": {
     "message": "عرض الإشعار",
     "description": "خيار لعرض الإشعار."
+  },
+
+  "debugOption": {
+    "message": "تمكين سجلات التصحيح",
+    "description": "خيار لتمكين سجلات التصحيح في وحدة التحكم."
   },
 
   "saveButton": {
@@ -172,7 +177,7 @@
     "description": "تسمية في الإشعار عند تنظيف التبويب الحالي فقط."
   },
   "currentTabOnlyWarning": {
-    "message": "⚠️ يعمل فقط مع: الكوكيز، التخزين المحلي، IndexedDB، خدمات العمال",
+    "message": "⚠️ يتم مسح الكاش عالميًا دائمًا في Firefox. يؤثر هذا الخيار فقط على: الكوكيز، التخزين المحلي، IndexedDB، خدمات العمال",
     "description": "رسالة تحذير عند تفعيل 'التبويب الحالي فقط'."
   },
   "incompatibleTypesMessage": {

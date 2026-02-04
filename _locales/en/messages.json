@@ -35,13 +35,18 @@
   },
 
   "currentTabOnlyOption": {
-    "message": "Current tab only",
-    "description": "Option to clear data only for the current active tab."
+    "message": "Site data only (cookies/storage)",
+    "description": "Option to clear site data only for the current active tab."
   },
 
   "notificationOption": {
     "message": "Show notification",
     "description": "Option to enable or disable notifications."
+  },
+
+  "debugOption": {
+    "message": "Enable debug logs",
+    "description": "Option to enable console debug logging."
   },
   
   "saveButton": {
@@ -185,7 +190,7 @@
   },
 
   "currentTabOnlyWarning": {
-    "message": "⚠️ Only works with: Cookies, Local Storage, IndexedDB, Service Workers",
+    "message": "⚠️ Cache is always global in Firefox. This option only affects: Cookies, Local Storage, IndexedDB, Service Workers",
     "description": "Warning message shown when Current Tab Only is enabled."
   },
 

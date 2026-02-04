@@ -35,13 +35,18 @@
   },
 
   "currentTabOnlyOption": {
-    "message": "Только текущая вкладка",
-    "description": "Опция очистки данных только для текущей вкладки."
+    "message": "Только данные сайта (cookies/storage)",
+    "description": "Опция очистки данных сайта только для текущей вкладки."
   },
 
   "notificationOption": {
     "message": "Показать уведомления",
     "description": "Опция для показа/скрытия уведомлений."
+  },
+
+  "debugOption": {
+    "message": "Включить отладочные логи",
+    "description": "Опция для включения отладочных логов в консоли."
   },
 
   "saveButton": {
@@ -184,7 +189,7 @@
     "description": "Метка в уведомлениях при очистке только текущей вкладки."
   },
   "currentTabOnlyWarning": {
-    "message": "⚠️ Работает только с: Cookies, Локальное хранилище, IndexedDB, Service Workers",
+    "message": "⚠️ Кэш в Firefox всегда очищается глобально. Эта опция влияет только на: Cookies, Локальное хранилище, IndexedDB, Service Workers",
     "description": "Предупреждение при включении 'Только текущая вкладка'."
   },
   "incompatibleTypesMessage": {
