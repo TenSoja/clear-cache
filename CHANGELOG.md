@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.8] - 2026-02-04
+
+### 🐛 Fixed
+- **Options i18n**: Fixed localization of options labels
+- **Empty settings race**: Default settings are now applied on first click
+
+### 🔄 Changed
+- **Default behavior**: "Site data only" is now OFF by default (global cache clearing)
+- **Options label**: Renamed to "Site data only (cookies/storage)" to reflect API limits
+- **Icons**: Switched toolbar and notification icons to PNG variants for stability
+- **Minimum Firefox versions**: Desktop 140+ and Android 142+ (AMO requirement for data_collection_permissions)
+
+### ✨ Added
+- **Blocked action badge**: Shows `!` on the toolbar icon when action can't run
+- **Debug mode**: Optional console logs for troubleshooting
+- **Options guard**: Prevents invalid site-only selections by enforcing compatible types
+
+---
+
+## [4.7] - 2026-01-25
+
+### 🐛 Fixed
+- **Current tab only**: Prevented clearing all data globally when site-only is enabled
+
+### ✨ Added
+- **Options warning**: Clarified which data types are supported for site-only mode
+
+### ⚠️ Known Issues
+- **Firefox Beta freeze (148.0b6+)**: Reported UI hang when clicking the toolbar icon or saving Options in Firefox Beta (Windows 11). Still under investigation.
+
+---
+
 ## [4.5] - 2025-12-19
 
 ### 🐛 Fixed
