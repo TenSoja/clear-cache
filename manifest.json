@@ -1,16 +1,16 @@
 {
   "name": "__MSG_extensionName__",
-  "version": "4.7",
+  "version": "4.8",
   "manifest_version": 2,
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/TenSoja/clear-cache",
   "author": "TenSoja",
   "icons": {
-    "16": "icons/broom.svg",
-    "32": "icons/broom.svg",
-    "48": "icons/broom.svg",
-    "96": "icons/broom.svg",
-    "128": "icons/broom.svg"
+    "16": "icons/broom-16.png",
+    "32": "icons/broom-32.png",
+    "48": "icons/broom-48.png",
+    "96": "icons/broom-96.png",
+    "128": "icons/broom-128.png"
   },
 
   "background": {
@@ -24,7 +24,10 @@
   },
 
   "browser_action": {
-  	"default_icon": "icons/broom.svg",
+  	"default_icon": {
+      "16": "icons/broom-16.png",
+      "32": "icons/broom-32.png"
+    },
     "default_title": "Clear Cache"
   },
 
@@ -46,13 +49,13 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "clearcache@michel.de.almeida",
-      "strict_min_version": "109.0",
+      "strict_min_version": "140.0",
       "data_collection_permissions": {
         "required": ["none"]
       }
     },
     "gecko_android": {
-      "strict_min_version": "113.0"
+      "strict_min_version": "142.0"
     }
   },
   "default_locale": "en"
