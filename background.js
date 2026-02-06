@@ -6,8 +6,16 @@ const defaultSettings = {
   timePeriod: "all", // all, 15min, 1hour, 24hours, 1week
   customKey: "F9",
   currentTabOnly: false,
-  debug: false
+  debug: false,
+  lastMigrationVersion: ""
 };
+
+const HOSTNAME_SUPPORTED_TYPES = new Set([
+  "cookies",
+  "indexedDB",
+  "localStorage",
+  "serviceWorkers"
+]);
 
 const NOTIFICATION_ICON_URL = browser.runtime.getURL("icons/broom-32.png");
 
@@ -45,6 +53,25 @@ function checkStoredSettings(storedSettings) {
   if (typeof correctedSettings.debug !== 'boolean') {
     correctedSettings.debug = defaultSettings.debug;
     needsUpdate = true;
+  }
+  if (typeof correctedSettings.lastMigrationVersion !== 'string') {
+    correctedSettings.lastMigrationVersion = defaultSettings.lastMigrationVersion;
+    needsUpdate = true;
+  }
+
+  // Migration: avoid "site-only + cache-only" silent no-op for legacy users
+  if (correctedSettings.lastMigrationVersion !== "4.9") {
+    const dataTypes = Array.isArray(correctedSettings.dataTypes) ? correctedSettings.dataTypes : [];
+    const onlyIncompatible =
+      correctedSettings.currentTabOnly === true &&
+      dataTypes.length > 0 &&
+      dataTypes.every(type => !HOSTNAME_SUPPORTED_TYPES.has(type));
+
+    if (onlyIncompatible) {
+      correctedSettings.currentTabOnly = false;
+      correctedSettings.lastMigrationVersion = "4.9";
+      needsUpdate = true;
+    }
   }
 
   if (needsUpdate) {
@@ -145,23 +172,43 @@ function clearCache(storedSettings) {
   const dataTypes = getTypes(storedSettings.dataTypes || []);
   const sinceTimestamp = getSinceTimestamp(timePeriod);
 
-  // Se nenhum tipo de dado foi selecionado, apenas notifica e retorna
-  if (Object.keys(dataTypes).length === 0) {
-    logDebug(storedSettings, "no data types selected");
-    if (notification) {
-      showNotification(storedSettings, browser.i18n.getMessage("disabledTypesMessage"));
+  function filterPermittedTypes(typesObj) {
+    if (!browser.browsingData || !browser.browsingData.settings) {
+      return Promise.resolve(typesObj);
     }
-    return;
+    return browser.browsingData.settings().then(settings => {
+      const permitted = settings.dataRemovalPermitted || settings.dataToRemove || {};
+      const filtered = {};
+      for (const type of Object.keys(typesObj)) {
+        if (permitted[type] !== false) {
+          filtered[type] = true;
+        }
+      }
+      return filtered;
+    }).catch(() => typesObj);
   }
 
-  function onCleared(tabMessage = "") {
+  return filterPermittedTypes(dataTypes).then(filteredTypes => {
+    const effectiveTypes = filteredTypes;
+
+    // Se nenhum tipo de dado foi selecionado, apenas notifica e retorna
+    if (Object.keys(effectiveTypes).length === 0) {
+      logDebug(storedSettings, "no data types selected");
+      if (notification) {
+        showNotification(storedSettings, browser.i18n.getMessage("disabledTypesMessage"));
+      }
+      setBadgeWarning();
+      return;
+    }
+
+  function onCleared(tabMessage = "", usedTypes = effectiveTypes) {
     logDebug(storedSettings, "cleared", { tabMessage });
     clearBadge();
     if (reload) {
-      browser.tabs.reload();
+      browser.tabs.reload().catch(onError);
     }
     if (notification) {
-      var dataTypesString = Object.keys(dataTypes).join(", ");
+      var dataTypesString = Object.keys(usedTypes).join(", ");
       var timeDescription = getTimeDescription(timePeriod);
       var message = tabMessage
         ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`
@@ -196,7 +243,7 @@ function clearCache(storedSettings) {
   }
 
   // Mostra notificação de erro para URLs não suportadas
-  function showUnsupportedUrlError() {
+function showUnsupportedUrlError() {
     if (notification) {
       showNotification(
         storedSettings,
@@ -204,11 +251,12 @@ function clearCache(storedSettings) {
           "Cannot clear cache for this page type. Try disabling 'Current tab only' option."
       );
     }
+    setBadgeWarning();
   }
 
-  if (currentTabOnly) {
+    if (currentTabOnly) {
     // Separa tipos compatíveis e incompatíveis com hostnames
-    const selectedTypes = Object.keys(dataTypes);
+      const selectedTypes = Object.keys(effectiveTypes);
     const compatibleTypes = {};
     const incompatibleTypes = {};
 
@@ -251,7 +299,7 @@ function clearCache(storedSettings) {
       );
     }
 
-    browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+      browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
       if (tabs.length > 0) {
         const currentTab = tabs[0];
 
@@ -277,23 +325,29 @@ function clearCache(storedSettings) {
             browser.browsingData.remove({
               hostnames: [hostname],
               since: sinceTimestamp
-            }, compatibleTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
+            }, compatibleTypes).then(
+              () => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)", compatibleTypes),
+              onError
+            );
           } else {
             showUnsupportedUrlError();
           }
         } catch (e) {
           showUnsupportedUrlError();
         }
+      } else {
+        setBadgeWarning();
       }
     }).catch(onError);
-  } else {
-    logDebug(storedSettings, "clearing globally");
-    logDebug(storedSettings, "browsingData.remove global", {
-      since: sinceTimestamp,
-      types: dataTypes
-    });
-    browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
-  }
+    } else {
+      logDebug(storedSettings, "clearing globally");
+      logDebug(storedSettings, "browsingData.remove global", {
+        since: sinceTimestamp,
+        types: effectiveTypes
+      });
+      browser.browsingData.remove({since: sinceTimestamp}, effectiveTypes).then(() => onCleared("", effectiveTypes), onError);
+    }
+  }).catch(onError);
 }
 
 function onError(error) {
@@ -303,7 +357,10 @@ function onError(error) {
 // Clique no ícone da extensão chama a limpeza
 browser.browserAction.onClicked.addListener(() => {
   const gettingStoredSettings = browser.storage.local.get(defaultSettings);
-  gettingStoredSettings.then(clearCache, onError);
+  gettingStoredSettings.then(settings => {
+    logDebug(settings, "trigger: browserAction.onClicked");
+    return clearCache(settings);
+  }, onError);
 });
 
 // Atalhos de teclado são configurados via manifest.json
@@ -351,14 +408,34 @@ function clearCacheAndReload(storedSettings) {
   const timePeriod = storedSettings.timePeriod || "all";
   const sinceTimestamp = getSinceTimestamp(timePeriod);
 
-  // Se nenhum tipo de dado foi selecionado, apenas notifica
-  if (Object.keys(dataTypes).length === 0) {
-    logDebug(storedSettings, "no data types selected");
-    if (notification) {
-      showNotification(storedSettings, browser.i18n.getMessage("disabledTypesMessage"));
+  function filterPermittedTypes(typesObj) {
+    if (!browser.browsingData || !browser.browsingData.settings) {
+      return Promise.resolve(typesObj);
     }
-    return;
+    return browser.browsingData.settings().then(settings => {
+      const permitted = settings.dataRemovalPermitted || settings.dataToRemove || {};
+      const filtered = {};
+      for (const type of Object.keys(typesObj)) {
+        if (permitted[type] !== false) {
+          filtered[type] = true;
+        }
+      }
+      return filtered;
+    }).catch(() => typesObj);
   }
+
+  return filterPermittedTypes(dataTypes).then(filteredTypes => {
+    const effectiveTypes = filteredTypes;
+
+    // Se nenhum tipo de dado foi selecionado, apenas notifica
+    if (Object.keys(effectiveTypes).length === 0) {
+      logDebug(storedSettings, "no data types selected");
+      if (notification) {
+        showNotification(storedSettings, browser.i18n.getMessage("disabledTypesMessage"));
+      }
+      setBadgeWarning();
+      return;
+    }
 
   // Protocolos que não suportam limpeza por hostname
   const unsupportedProtocols = ['about:', 'file:', 'data:', 'blob:', 'moz-extension:', 'chrome:', 'javascript:'];
@@ -375,14 +452,15 @@ function clearCacheAndReload(storedSettings) {
           "Cannot clear cache for this page type. Try disabling 'Current tab only' option."
       );
     }
+    setBadgeWarning();
   }
 
-  function onCleared(tabMessage = "") {
+  function onCleared(tabMessage = "", usedTypes = effectiveTypes) {
     logDebug(storedSettings, "clearCacheAndReload cleared", { tabMessage });
     clearBadge();
-    browser.tabs.reload();
+    browser.tabs.reload().catch(onError);
     if (notification) {
-      var dataTypesString = Object.keys(dataTypes).join(", ");
+      var dataTypesString = Object.keys(usedTypes).join(", ");
       var message = tabMessage
         ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("contextMenuClearAndReload")}`
         : `${dataTypesString} ${browser.i18n.getMessage("contextMenuClearAndReload")}`;
@@ -390,9 +468,9 @@ function clearCacheAndReload(storedSettings) {
     }
   }
 
-  if (currentTabOnly) {
+    if (currentTabOnly) {
     // Separa tipos compatíveis e incompatíveis com hostnames
-    const selectedTypes = Object.keys(dataTypes);
+      const selectedTypes = Object.keys(effectiveTypes);
     const compatibleTypes = {};
     const incompatibleTypes = {};
 
@@ -435,7 +513,7 @@ function clearCacheAndReload(storedSettings) {
       );
     }
 
-    browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+      browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
       if (tabs.length > 0) {
         const currentTab = tabs[0];
 
@@ -461,23 +539,29 @@ function clearCacheAndReload(storedSettings) {
             browser.browsingData.remove({
               hostnames: [hostname],
               since: sinceTimestamp
-            }, compatibleTypes).then(() => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"), onError);
+            }, compatibleTypes).then(
+              () => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)", compatibleTypes),
+              onError
+            );
           } else {
             showUnsupportedUrlError();
           }
         } catch (e) {
           showUnsupportedUrlError();
         }
+      } else {
+        setBadgeWarning();
       }
     }).catch(onError);
-  } else {
-    logDebug(storedSettings, "clearing globally");
-    logDebug(storedSettings, "browsingData.remove global", {
-      since: sinceTimestamp,
-      types: dataTypes
-    });
-    browser.browsingData.remove({since: sinceTimestamp}, dataTypes).then(() => onCleared(""), onError);
-  }
+    } else {
+      logDebug(storedSettings, "clearing globally");
+      logDebug(storedSettings, "browsingData.remove global", {
+        since: sinceTimestamp,
+        types: effectiveTypes
+      });
+      browser.browsingData.remove({since: sinceTimestamp}, effectiveTypes).then(() => onCleared("", effectiveTypes), onError);
+    }
+  }).catch(onError);
 }
 
 // Cria item de menu de contexto ao iniciar
@@ -494,9 +578,14 @@ if (browser.contextMenus && browser.contextMenus.create) {
 }
 
 // Lida com clique no menu de contexto
-browser.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "clear-cache-and-reload") {
-    const gettingStoredSettings = browser.storage.local.get(defaultSettings);
-    gettingStoredSettings.then(clearCacheAndReload, onError);
-  }
-});
+if (browser.contextMenus && browser.contextMenus.onClicked) {
+  browser.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === "clear-cache-and-reload") {
+      const gettingStoredSettings = browser.storage.local.get(defaultSettings);
+      gettingStoredSettings.then(settings => {
+        logDebug(settings, "trigger: contextMenus.onClicked");
+        return clearCacheAndReload(settings);
+      }, onError);
+    }
+  });
+}
