@@ -8,7 +8,7 @@
 <p align="center">Clear browser cache with a single click or F9 key.</p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Firefox-v4.8-orange?logo=firefox-browser" alt="Firefox v4.8" />
+  <img src="https://img.shields.io/badge/Firefox-v4.9-orange?logo=firefox-browser" alt="Firefox v4.9" />
   <img src="https://img.shields.io/github/license/TenSoja/clear-cache" alt="License" />
   <img src="https://img.shields.io/badge/Firefox-58k%20users-orange?logo=firefox-browser" alt="Firefox Users" />
   <img src="https://img.shields.io/badge/Rating-4.4%2F5-green?logo=mozilla" alt="Rating" />
@@ -21,7 +21,7 @@
 
 ---
 
-## 🆕 What's New in v4.8
+## 🆕 What's New in v4.9
 
 ### 🐛 Critical Bug Fixes
 - **Fixed options i18n** - Correctly loads localized labels in the options page

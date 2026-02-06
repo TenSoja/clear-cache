@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [4.8] - 2026-02-04
+## [4.9] - 2026-02-06
 
 ### 🐛 Fixed
 - **Options i18n**: Fixed localization of options labels
