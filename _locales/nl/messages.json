@@ -39,8 +39,8 @@
   },
 
   "notificationOption": {
-    "message": "Toon melding",
-    "description": "De optie om de melding te tonen."
+    "message": "Toon foutmeldingen",
+    "description": "De optie om fout- en waarschuwingsmeldingen te tonen."
   },
 
   "debugOption": {
@@ -167,6 +167,10 @@
   "disabledTypesMessage": {
     "message": "Alle gegevenstypen zijn uitgeschakeld. Schakel minstens één type in bij de opties.",
     "description": "Melding wanneer alle gegevenstypen zijn uitgeschakeld."
+  },
+  "operationFailedMessage": {
+    "message": "Clear Cache kon de gevraagde actie niet voltooien.",
+    "description": "Wordt getoond wanneer een kritieke browser-API-aanroep mislukt."
   },
   "unsupportedUrlMessage": {
     "message": "Kan cache voor dit paginatype niet wissen (about:, file://, etc). Schakel 'Alleen huidige tabblad' uit.",

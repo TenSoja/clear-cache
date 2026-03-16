@@ -110,6 +110,37 @@ function showNotification(storedSettings, message) {
   );
 }
 
+function getErrorMessage(error) {
+  if (!error) {
+    return "";
+  }
+  if (typeof error === "string") {
+    return error;
+  }
+  if (typeof error.message === "string") {
+    return error.message;
+  }
+  return String(error);
+}
+
+function reportFailure(storedSettings, error, fallbackMessage) {
+  onError(error);
+  setBadgeWarning();
+
+  if (!storedSettings || storedSettings.notification === false) {
+    return Promise.resolve();
+  }
+
+  const baseMessage =
+    fallbackMessage ||
+    browser.i18n.getMessage("operationFailedMessage") ||
+    "Clear Cache failed.";
+  const errorMessage = getErrorMessage(error);
+  const message = errorMessage ? `${baseMessage} ${errorMessage}` : baseMessage;
+
+  return showNotification(storedSettings, message);
+}
+
 function setBadgeWarning() {
   if (browser.browserAction && browser.browserAction.setBadgeText) {
     browser.browserAction.setBadgeText({ text: "!" }).catch(onError);
@@ -201,36 +232,11 @@ function clearCache(storedSettings) {
       return;
     }
 
-  function onCleared(tabMessage = "", usedTypes = effectiveTypes) {
+  function onCleared(tabMessage = "") {
     logDebug(storedSettings, "cleared", { tabMessage });
     clearBadge();
     if (reload) {
       browser.tabs.reload().catch(onError);
-    }
-    if (notification) {
-      var dataTypesString = Object.keys(usedTypes).join(", ");
-      var timeDescription = getTimeDescription(timePeriod);
-      var message = tabMessage
-        ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`
-        : `${dataTypesString} ${browser.i18n.getMessage("notificationContent")} (${timeDescription})`;
-      showNotification(storedSettings, message);
-    }
-  }
-
-  // Retorna descrição internacionalizada do período
-  function getTimeDescription(period) {
-    switch (period) {
-      case "15min":
-        return browser.i18n.getMessage("desc_15min");
-      case "1hour":
-        return browser.i18n.getMessage("desc_1hour");
-      case "24hours":
-        return browser.i18n.getMessage("desc_24hours");
-      case "1week":
-        return browser.i18n.getMessage("desc_1week");
-      case "all":
-      default:
-        return browser.i18n.getMessage("desc_all");
     }
   }
 
@@ -326,8 +332,8 @@ function showUnsupportedUrlError() {
               hostnames: [hostname],
               since: sinceTimestamp
             }, compatibleTypes).then(
-              () => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)", compatibleTypes),
-              onError
+              () => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"),
+              error => reportFailure(storedSettings, error)
             );
           } else {
             showUnsupportedUrlError();
@@ -338,16 +344,19 @@ function showUnsupportedUrlError() {
       } else {
         setBadgeWarning();
       }
-    }).catch(onError);
+    }).catch(error => reportFailure(storedSettings, error));
     } else {
       logDebug(storedSettings, "clearing globally");
       logDebug(storedSettings, "browsingData.remove global", {
         since: sinceTimestamp,
         types: effectiveTypes
       });
-      browser.browsingData.remove({since: sinceTimestamp}, effectiveTypes).then(() => onCleared("", effectiveTypes), onError);
+      browser.browsingData.remove({since: sinceTimestamp}, effectiveTypes).then(
+        () => onCleared(""),
+        error => reportFailure(storedSettings, error)
+      );
     }
-  }).catch(onError);
+  }).catch(error => reportFailure(storedSettings, error));
 }
 
 function onError(error) {
@@ -360,7 +369,7 @@ browser.browserAction.onClicked.addListener(() => {
   gettingStoredSettings.then(settings => {
     logDebug(settings, "trigger: browserAction.onClicked");
     return clearCache(settings);
-  }, onError);
+  }, error => reportFailure(defaultSettings, error));
 });
 
 // Atalhos de teclado são configurados via manifest.json
@@ -455,17 +464,10 @@ function clearCacheAndReload(storedSettings) {
     setBadgeWarning();
   }
 
-  function onCleared(tabMessage = "", usedTypes = effectiveTypes) {
+  function onCleared(tabMessage = "") {
     logDebug(storedSettings, "clearCacheAndReload cleared", { tabMessage });
     clearBadge();
     browser.tabs.reload().catch(onError);
-    if (notification) {
-      var dataTypesString = Object.keys(usedTypes).join(", ");
-      var message = tabMessage
-        ? `${dataTypesString} ${tabMessage} ${browser.i18n.getMessage("contextMenuClearAndReload")}`
-        : `${dataTypesString} ${browser.i18n.getMessage("contextMenuClearAndReload")}`;
-      showNotification(storedSettings, message);
-    }
   }
 
     if (currentTabOnly) {
@@ -540,8 +542,8 @@ function clearCacheAndReload(storedSettings) {
               hostnames: [hostname],
               since: sinceTimestamp
             }, compatibleTypes).then(
-              () => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)", compatibleTypes),
-              onError
+              () => onCleared(browser.i18n.getMessage("currentTabLabel") || "(current tab)"),
+              error => reportFailure(storedSettings, error)
             );
           } else {
             showUnsupportedUrlError();
@@ -552,16 +554,19 @@ function clearCacheAndReload(storedSettings) {
       } else {
         setBadgeWarning();
       }
-    }).catch(onError);
+    }).catch(error => reportFailure(storedSettings, error));
     } else {
       logDebug(storedSettings, "clearing globally");
       logDebug(storedSettings, "browsingData.remove global", {
         since: sinceTimestamp,
         types: effectiveTypes
       });
-      browser.browsingData.remove({since: sinceTimestamp}, effectiveTypes).then(() => onCleared("", effectiveTypes), onError);
+      browser.browsingData.remove({since: sinceTimestamp}, effectiveTypes).then(
+        () => onCleared(""),
+        error => reportFailure(storedSettings, error)
+      );
     }
-  }).catch(onError);
+  }).catch(error => reportFailure(storedSettings, error));
 }
 
 // Cria item de menu de contexto ao iniciar
@@ -585,7 +590,7 @@ if (browser.contextMenus && browser.contextMenus.onClicked) {
       gettingStoredSettings.then(settings => {
         logDebug(settings, "trigger: contextMenus.onClicked");
         return clearCacheAndReload(settings);
-      }, onError);
+      }, error => reportFailure(defaultSettings, error));
     }
   });
 }

@@ -66,7 +66,7 @@ Due to Firefox API restrictions, when using "Site data only (cookies/storage)":
 | ⏰ **Time periods** | 15min, 1hour, 24hours, 1week, or all time |
 | 🎨 **Selective clearing** | Cache, cookies, history, localStorage, etc. |
 | 🔄 **Auto-reload** | Reload page after clearing (configurable) |
-| 🔔 **Notifications** | Confirmation of what was cleared |
+| 🔔 **Notifications** | Warns only when clearing fails or needs attention |
 | 🌍 **8 languages** | EN, PT-BR, RU, AR, CS, NL, ZH-CN, ZH-TW |
 
 ---
@@ -100,7 +100,7 @@ When you install and click without configuring:
 | Scope | All sites | Clears cache globally |
 | Time period | All time | Clears entire cache globally |
 | Auto-reload | Yes | Refreshes page after clearing |
-| Notification | Yes | Shows confirmation |
+| Failure notifications | Yes | Warns when clearing cannot complete |
 
 ---
 
@@ -134,7 +134,7 @@ clear-cache/
 | `browsingData` | Clear cache and browsing data |
 | `tabs` | Detect current tab for site-specific clearing |
 | `storage` | Save user preferences |
-| `notifications` | Show clearing confirmation |
+| `notifications` | Show failure and warning notifications |
 | `contextMenus` | Right-click menu options |
 
 ---

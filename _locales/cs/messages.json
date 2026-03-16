@@ -39,8 +39,8 @@
   },
 
   "notificationOption": {
-    "message": "Zobrazit oznámení",
-    "description": "Možnost zobrazit oznámení."
+    "message": "Zobrazovat oznámení o chybách",
+    "description": "Možnost zobrazit oznámení o chybách a varováních."
   },
 
   "debugOption": {
@@ -167,6 +167,10 @@
   "disabledTypesMessage": {
     "message": "Všechny typy dat jsou vypnuté. V nastavení zapněte alespoň jeden typ.",
     "description": "Upozornění, když jsou všechny typy dat vypnuté."
+  },
+  "operationFailedMessage": {
+    "message": "Clear Cache nemohl dokončit požadovanou akci.",
+    "description": "Zobrazeno při selhání kritického volání API prohlížeče."
   },
   "unsupportedUrlMessage": {
     "message": "Nelze vyčistit cache pro tento typ stránky (about:, file:// apod.). Zkuste vypnout 'Pouze aktuální karta'.",

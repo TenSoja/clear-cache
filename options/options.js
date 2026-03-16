@@ -7,34 +7,10 @@ const DEFAULT_SETTINGS = {
   debug: false
 };
 
-const NOTIFICATION_ICON_URL = browser.runtime.getURL("icons/broom-32.png");
-
 function logDebugOptions(settings, ...args) {
   if (settings && settings.debug) {
     console.info("[Clear Cache][Options]", ...args);
   }
-}
-
-function showOptionsNotification(settings, message) {
-  logDebugOptions(settings, "notify", message);
-  if (!browser.notifications || !browser.notifications.create) {
-    return Promise.resolve();
-  }
-  return browser.notifications.create({
-    "type": "basic",
-    "title": browser.i18n.getMessage('extensionName'),
-    "message": message,
-    "iconUrl": NOTIFICATION_ICON_URL
-  }).then(
-    id => {
-      logDebugOptions(settings, "notify created", id);
-      return id;
-    },
-    error => {
-      logDebugOptions(settings, "notify error", error);
-      onError(error);
-    }
-  );
 }
 
 const HOSTNAME_SUPPORTED_TYPES = new Set([
@@ -93,11 +69,7 @@ function storeSettings() {
     debug: document.querySelector("#debug").checked
   };
 
-  browser.storage.local.set(settings).then(() => {
-    if (settings.notification) {
-      showOptionsNotification(settings, browser.i18n.getMessage('preferencesSavedMessage'));
-    }
-  }).catch(onError);
+  browser.storage.local.set(settings).catch(onError);
 }
 
 // Internacionalização da página de opções

@@ -32,8 +32,8 @@
     "description": "仅清除当前标签页站点数据的选项。"
   },
   "notificationOption": {
-    "message": "显示通知",
-    "description": "启用或禁用通知的选项。"
+    "message": "显示失败通知",
+    "description": "启用或禁用失败和警告通知的选项。"
   },
 
   "debugOption": {
@@ -147,6 +147,10 @@
   "disabledTypesMessage": {
     "message": "所有数据类型已禁用。请在选项中至少启用一种。",
     "description": "当所有数据类型被禁用时显示的通知。"
+  },
+  "operationFailedMessage": {
+    "message": "Clear Cache 无法完成请求的操作。",
+    "description": "当关键浏览器 API 调用失败时显示。"
   },
   "unsupportedUrlMessage": {
     "message": "无法清除此类页面的缓存（about:, file:// 等）。请尝试关闭“仅当前标签页”。",

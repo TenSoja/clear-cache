@@ -40,8 +40,8 @@
   },
 
   "notificationOption": {
-    "message": "Show notification",
-    "description": "Option to enable or disable notifications."
+    "message": "Show failure notifications",
+    "description": "Option to enable or disable failure and warning notifications."
   },
 
   "debugOption": {
@@ -177,6 +177,11 @@
   "disabledTypesMessage": {
     "message": "All data types have been disabled. Enable at least one data type in options.",
     "description": "Notification when all data types are disabled."
+  },
+
+  "operationFailedMessage": {
+    "message": "Clear Cache could not complete the requested action.",
+    "description": "Shown when a critical browser API call fails."
   },
 
   "unsupportedUrlMessage": {

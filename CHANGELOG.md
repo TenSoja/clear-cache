@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### 🔄 Changed
+- **Notifications**: Successful cache clears are now silent; notifications are reserved for failures and warnings
+
+### 🛠️ Improved
+- **Error handling**: Critical cache-clearing API failures now surface a user-facing error notification instead of only logging to the console
+
 ## [4.9] - 2026-02-06
 
 ### 🐛 Fixed

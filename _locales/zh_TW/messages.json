@@ -32,8 +32,8 @@
     "description": "僅清除目前分頁網站資料的選項。"
   },
   "notificationOption": {
-    "message": "顯示通知",
-    "description": "啟用或停用通知的選項。"
+    "message": "顯示失敗通知",
+    "description": "啟用或停用失敗與警告通知的選項。"
   },
 
   "debugOption": {
@@ -147,6 +147,10 @@
   "disabledTypesMessage": {
     "message": "已停用所有資料類型。請在選項中至少啟用一種。",
     "description": "當所有資料類型都被停用時的通知。"
+  },
+  "operationFailedMessage": {
+    "message": "Clear Cache 無法完成要求的動作。",
+    "description": "當關鍵瀏覽器 API 呼叫失敗時顯示。"
   },
   "unsupportedUrlMessage": {
     "message": "無法清除此類頁面的快取（about:, file:// 等）。請嘗試關閉「僅目前分頁」。",

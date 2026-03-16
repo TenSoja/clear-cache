@@ -40,8 +40,8 @@
   },
 
   "notificationOption": {
-    "message": "Mostrar notificação",
-    "description": "Opção para mostrar a notificação."
+    "message": "Mostrar notificações de falha",
+    "description": "Opção para mostrar notificações de falhas e avisos."
   },
 
   "debugOption": {
@@ -172,6 +172,11 @@
     "disabledTypesMessage": {
       "message": "Todos os tipos de dados foram desabilitados. Ative pelo menos um nas opções.",
       "description": "Notificação quando todos os tipos de dados estão desabilitados."
+    },
+
+    "operationFailedMessage": {
+      "message": "O Clear Cache não conseguiu concluir a ação solicitada.",
+      "description": "Exibida quando uma chamada crítica da API do navegador falha."
     },
 
     "unsupportedUrlMessage": {
