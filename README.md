@@ -8,7 +8,7 @@
 <p align="center">Clear browser cache with a single click or F9 key.</p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Firefox-v4.9-orange?logo=firefox-browser" alt="Firefox v4.9" />
+  <img src="https://img.shields.io/badge/Firefox-v4.10-orange?logo=firefox-browser" alt="Firefox v4.10" />
   <img src="https://img.shields.io/github/license/TenSoja/clear-cache" alt="License" />
   <img src="https://img.shields.io/badge/Firefox-58k%20users-orange?logo=firefox-browser" alt="Firefox Users" />
   <img src="https://img.shields.io/badge/Rating-4.4%2F5-green?logo=mozilla" alt="Rating" />
@@ -21,11 +21,21 @@
 
 ---
 
-## 🆕 What's New in v4.9
+## 🆕 What's New in v4.10
 
-### 🐛 Critical Bug Fixes
-- **Fixed options i18n** - Correctly loads localized labels in the options page
-- **Fixed empty settings race** - Default settings are now applied on first click
+### 🐛 Android Fixes
+- **Fixed cache clearing on Firefox Android** - Avoids an Android-specific `browsingData.settings()` issue and clears the selected data types directly.
+- **Improved Android options page** - Preferences now use the available screen width with larger, touch-friendly controls.
+
+### 🔔 Notification Behavior
+- **Less noise** - Successful clears are silent; notifications are reserved for failures and warnings.
+
+### 🛠️ Error Handling
+- **Visible failures** - Critical cache-clearing API failures now show a user-facing notification instead of only logging to the console.
+
+### v4.9 Highlights
+- **Fixed options i18n** - Correctly loads localized labels in the options page.
+- **Fixed empty settings race** - Default settings are now applied on first click.
 
 ### ⚠️ Important API Limitations (Now Documented)
 Due to Firefox API restrictions, when using "Site data only (cookies/storage)":

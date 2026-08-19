@@ -4,11 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [4.10] - 2026-08-19
+
+### 🐛 Fixed
+- **Firefox Android cache clearing**: Clear selected data types directly instead of pre-filtering through `browsingData.settings()`, which could prevent cache clearing from completing on Android.
+- **Android options layout**: Added a mobile-friendly options page layout with proper viewport scaling, larger controls, and full-width save action.
+
 ### 🔄 Changed
-- **Notifications**: Successful cache clears are now silent; notifications are reserved for failures and warnings
+- **Notifications**: Successful cache clears are now silent; notifications are reserved for failures and warnings.
 
 ### 🛠️ Improved
-- **Error handling**: Critical cache-clearing API failures now surface a user-facing error notification instead of only logging to the console
+- **Error handling**: Critical cache-clearing API failures now surface a user-facing error notification instead of only logging to the console.
+
+---
 
 ## [4.9] - 2026-02-06
 
