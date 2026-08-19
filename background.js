@@ -203,24 +203,8 @@ function clearCache(storedSettings) {
   const dataTypes = getTypes(storedSettings.dataTypes || []);
   const sinceTimestamp = getSinceTimestamp(timePeriod);
 
-  function filterPermittedTypes(typesObj) {
-    if (!browser.browsingData || !browser.browsingData.settings) {
-      return Promise.resolve(typesObj);
-    }
-    return browser.browsingData.settings().then(settings => {
-      const permitted = settings.dataRemovalPermitted || settings.dataToRemove || {};
-      const filtered = {};
-      for (const type of Object.keys(typesObj)) {
-        if (permitted[type] !== false) {
-          filtered[type] = true;
-        }
-      }
-      return filtered;
-    }).catch(() => typesObj);
-  }
-
-  return filterPermittedTypes(dataTypes).then(filteredTypes => {
-    const effectiveTypes = filteredTypes;
+  return Promise.resolve().then(() => {
+    const effectiveTypes = dataTypes;
 
     // Se nenhum tipo de dado foi selecionado, apenas notifica e retorna
     if (Object.keys(effectiveTypes).length === 0) {
@@ -417,24 +401,8 @@ function clearCacheAndReload(storedSettings) {
   const timePeriod = storedSettings.timePeriod || "all";
   const sinceTimestamp = getSinceTimestamp(timePeriod);
 
-  function filterPermittedTypes(typesObj) {
-    if (!browser.browsingData || !browser.browsingData.settings) {
-      return Promise.resolve(typesObj);
-    }
-    return browser.browsingData.settings().then(settings => {
-      const permitted = settings.dataRemovalPermitted || settings.dataToRemove || {};
-      const filtered = {};
-      for (const type of Object.keys(typesObj)) {
-        if (permitted[type] !== false) {
-          filtered[type] = true;
-        }
-      }
-      return filtered;
-    }).catch(() => typesObj);
-  }
-
-  return filterPermittedTypes(dataTypes).then(filteredTypes => {
-    const effectiveTypes = filteredTypes;
+  return Promise.resolve().then(() => {
+    const effectiveTypes = dataTypes;
 
     // Se nenhum tipo de dado foi selecionado, apenas notifica
     if (Object.keys(effectiveTypes).length === 0) {
