@@ -153,7 +153,7 @@
     "description": "当关键浏览器 API 调用失败时显示。"
   },
   "unsupportedUrlMessage": {
-    "message": "无法清除此类页面的缓存（about:, file:// 等）。请尝试关闭“仅当前标签页”。",
+    "message": "无法清除此类页面的缓存（about:, file:// 等）。请尝试关闭“仅站点数据”。",
     "description": "尝试清除不支持的 URL 类型时的通知。"
   },
   "currentTabLabel": {
@@ -162,14 +162,14 @@
   },
   "currentTabOnlyWarning": {
     "message": "⚠️ 在 Firefox 中缓存始终为全局清除。此选项仅影响：Cookie、本地存储、IndexedDB、Service Workers",
-    "description": "启用「仅当前标签页」时显示的警告消息。"
+    "description": "启用“仅站点数据”时显示的警告消息。"
   },
   "incompatibleTypesMessage": {
-    "message": "所选数据类型（缓存、历史记录等）无法针对单个站点清除。请禁用「仅当前标签页」或选择 Cookie/本地存储。",
-    "description": "尝试清除与「仅当前标签页」不兼容的数据类型时的通知。"
+    "message": "所选数据类型（缓存、历史记录等）无法针对单个站点清除。请禁用“仅站点数据”或选择 Cookie/本地存储。",
+    "description": "尝试清除与“仅站点数据”不兼容的数据类型时的通知。"
   },
   "partialClearMessage": {
     "message": "注意：{types} 将被跳过（不支持单个站点）。",
-    "description": "由于「仅当前标签页」限制，某些数据类型被跳过时的通知。"
+    "description": "由于“仅站点数据”限制，某些数据类型被跳过时的通知。"
   }
 }

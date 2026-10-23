@@ -153,7 +153,7 @@
     "description": "當關鍵瀏覽器 API 呼叫失敗時顯示。"
   },
   "unsupportedUrlMessage": {
-    "message": "無法清除此類頁面的快取（about:, file:// 等）。請嘗試關閉「僅目前分頁」。",
+    "message": "無法清除此類頁面的快取（about:, file:// 等）。請嘗試關閉「僅網站資料」。",
     "description": "嘗試清除不支援的 URL 類型時的通知。"
   },
   "currentTabLabel": {
@@ -162,14 +162,14 @@
   },
   "currentTabOnlyWarning": {
     "message": "⚠️ 在 Firefox 中快取一律為全域清除。此選項僅影響：Cookie、本機儲存空間、IndexedDB、Service Workers",
-    "description": "啟用「僅目前分頁」時顯示的警告訊息。"
+    "description": "啟用「僅網站資料」時顯示的警告訊息。"
   },
   "incompatibleTypesMessage": {
-    "message": "所選資料類型（快取、歷史記錄等）無法針對單一網站清除。請停用「僅目前分頁」或選擇 Cookie/本機儲存空間。",
-    "description": "嘗試清除與「僅目前分頁」不相容的資料類型時的通知。"
+    "message": "所選資料類型（快取、歷史記錄等）無法針對單一網站清除。請停用「僅網站資料」或選擇 Cookie/本機儲存空間。",
+    "description": "嘗試清除與「僅網站資料」不相容的資料類型時的通知。"
   },
   "partialClearMessage": {
     "message": "注意：{types} 將被跳過（不支援單一網站）。",
-    "description": "由於「僅目前分頁」限制，某些資料類型被跳過時的通知。"
+    "description": "由於「僅網站資料」限制，某些資料類型被跳過時的通知。"
   }
 }
