@@ -185,7 +185,7 @@
   },
 
   "unsupportedUrlMessage": {
-    "message": "Cannot clear cache for this page type (about:, file://, etc). Try disabling 'Current tab only' option.",
+    "message": "Cannot clear cache for this page type (about:, file://, etc). Try disabling 'Site data only' option.",
     "description": "Notification when trying to clear cache for unsupported URL protocols."
   },
 
@@ -196,16 +196,16 @@
 
   "currentTabOnlyWarning": {
     "message": "⚠️ Cache is always global in Firefox. This option only affects: Cookies, Local Storage, IndexedDB, Service Workers",
-    "description": "Warning message shown when Current Tab Only is enabled."
+    "description": "Warning message shown when 'Site data only' is enabled."
   },
 
   "incompatibleTypesMessage": {
-    "message": "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage.",
-    "description": "Notification when trying to clear incompatible data types with Current Tab Only."
+    "message": "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Site data only' or select cookies/localStorage.",
+    "description": "Notification when trying to clear incompatible data types with 'Site data only'."
   },
 
   "partialClearMessage": {
     "message": "Note: {types} will be skipped (not supported for single site).",
-    "description": "Notification when some data types are skipped due to Current Tab Only limitation."
+    "description": "Notification when some data types are skipped due to 'Site data only' limitation."
   }
 }

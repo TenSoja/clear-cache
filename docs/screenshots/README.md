@@ -28,7 +28,7 @@ Este arquivo contém instruções detalhadas para tirar cada screenshot necessá
 **Como tirar:**
 1. Na página de opções
 2. **ROLE ATÉ:** A seção "After clearing"
-3. **MARQUE:** A opção "Current tab only"
+3. **MARQUE:** A opção "Site data only (cookies/storage)"
 4. **CAPTURE:** Essa seção mostrando a opção marcada
 5. **INCLUA:** As outras opções (reload, notification) para contexto
 

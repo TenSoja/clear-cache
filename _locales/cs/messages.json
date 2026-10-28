@@ -173,7 +173,7 @@
     "description": "Zobrazeno při selhání kritického volání API prohlížeče."
   },
   "unsupportedUrlMessage": {
-    "message": "Nelze vyčistit cache pro tento typ stránky (about:, file:// apod.). Zkuste vypnout 'Pouze aktuální karta'.",
+    "message": "Nelze vyčistit cache pro tento typ stránky (about:, file:// apod.). Zkuste vypnout 'Pouze data webu'.",
     "description": "Upozornění při čištění cache pro nepodporované protokoly."
   },
   "currentTabLabel": {
@@ -182,14 +182,14 @@
   },
   "currentTabOnlyWarning": {
     "message": "⚠️ Cache je ve Firefoxu vždy globální. Tato volba ovlivňuje pouze: Cookies, Místní úložiště, IndexedDB, Service Workers",
-    "description": "Varovná zpráva při aktivaci 'Pouze aktuální karta'."
+    "description": "Varovná zpráva při aktivaci 'Pouze data webu'."
   },
   "incompatibleTypesMessage": {
-    "message": "Vybrané typy dat (mezipaměť, historie atd.) nelze vyčistit pro jeden web. Vypněte 'Pouze aktuální karta' nebo vyberte cookies/místní úložiště.",
-    "description": "Upozornění při pokusu o vyčištění nekompatibilních typů dat s 'Pouze aktuální karta'."
+    "message": "Vybrané typy dat (mezipaměť, historie atd.) nelze vyčistit pro jeden web. Vypněte 'Pouze data webu' nebo vyberte cookies/místní úložiště.",
+    "description": "Upozornění při pokusu o vyčištění nekompatibilních typů dat s 'Pouze data webu'."
   },
   "partialClearMessage": {
     "message": "Poznámka: {types} bude přeskočeno (nepodporováno pro jeden web).",
-    "description": "Upozornění, když jsou některé typy dat přeskočeny kvůli omezení 'Pouze aktuální karta'."
+    "description": "Upozornění, když jsou některé typy dat přeskočeny kvůli omezení 'Pouze data webu'."
   }
 }

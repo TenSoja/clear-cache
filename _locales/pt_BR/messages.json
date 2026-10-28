@@ -180,7 +180,7 @@
     },
 
     "unsupportedUrlMessage": {
-      "message": "Não é possível limpar o cache deste tipo de página (about:, file://, etc). Desative a opção 'Apenas aba atual'.",
+      "message": "Não é possível limpar o cache deste tipo de página (about:, file://, etc). Desative a opção 'Apenas dados do site'.",
       "description": "Notificação ao tentar limpar cache para URLs não suportadas."
     },
 
@@ -191,16 +191,16 @@
 
     "currentTabOnlyWarning": {
       "message": "⚠️ Cache é sempre global no Firefox. Esta opção só afeta: Cookies, Armazenamento Local, IndexedDB, Service Workers",
-      "description": "Aviso exibido quando 'Apenas aba atual' está ativado."
+      "description": "Aviso exibido quando 'Apenas dados do site' está ativado."
     },
 
     "incompatibleTypesMessage": {
-      "message": "Os tipos selecionados (cache, histórico, etc.) não podem ser limpos para um único site. Desative 'Apenas aba atual' ou selecione cookies/localStorage.",
-      "description": "Notificação ao tentar limpar tipos incompatíveis com 'Apenas aba atual'."
+      "message": "Os tipos selecionados (cache, histórico, etc.) não podem ser limpos para um único site. Desative 'Apenas dados do site' ou selecione cookies/localStorage.",
+      "description": "Notificação ao tentar limpar tipos incompatíveis com 'Apenas dados do site'."
     },
 
     "partialClearMessage": {
       "message": "Nota: {types} serão ignorados (não suportado para site único).",
-      "description": "Notificação quando alguns tipos são ignorados devido à limitação do 'Apenas aba atual'."
+      "description": "Notificação quando alguns tipos são ignorados devido à limitação do 'Apenas dados do site'."
     }
 }

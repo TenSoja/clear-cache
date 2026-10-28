@@ -173,7 +173,7 @@
     "description": "Wordt getoond wanneer een kritieke browser-API-aanroep mislukt."
   },
   "unsupportedUrlMessage": {
-    "message": "Kan cache voor dit paginatype niet wissen (about:, file://, etc). Schakel 'Alleen huidige tabblad' uit.",
+    "message": "Kan cache voor dit paginatype niet wissen (about:, file://, etc). Schakel 'Alleen sitegegevens' uit.",
     "description": "Melding bij het wissen van cache voor niet-ondersteunde URL's."
   },
   "currentTabLabel": {
@@ -182,14 +182,14 @@
   },
   "currentTabOnlyWarning": {
     "message": "⚠️ Cache is in Firefox altijd globaal. Deze optie heeft alleen effect op: Cookies, Lokale opslag, IndexedDB, Service Workers",
-    "description": "Waarschuwing wanneer 'Alleen huidige tabblad' is ingeschakeld."
+    "description": "Waarschuwing wanneer 'Alleen sitegegevens' is ingeschakeld."
   },
   "incompatibleTypesMessage": {
-    "message": "De geselecteerde gegevenstypen (cache, geschiedenis, etc.) kunnen niet worden gewist voor één site. Schakel 'Alleen huidige tabblad' uit of selecteer cookies/lokale opslag.",
-    "description": "Melding bij het wissen van incompatibele gegevenstypen met 'Alleen huidige tabblad'."
+    "message": "De geselecteerde gegevenstypen (cache, geschiedenis, etc.) kunnen niet worden gewist voor één site. Schakel 'Alleen sitegegevens' uit of selecteer cookies/lokale opslag.",
+    "description": "Melding bij het wissen van incompatibele gegevenstypen met 'Alleen sitegegevens'."
   },
   "partialClearMessage": {
     "message": "Let op: {types} worden overgeslagen (niet ondersteund voor één site).",
-    "description": "Melding wanneer sommige gegevenstypen worden overgeslagen vanwege de beperking van 'Alleen huidige tabblad'."
+    "description": "Melding wanneer sommige gegevenstypen worden overgeslagen vanwege de beperking van 'Alleen sitegegevens'."
   }
 }
