@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### 🐛 Fixed
+- **Site data only cookies**: Cookies stored for the parent domain (e.g. `.example.com` while on `www.example.com`) are now cleared too, so logins kept there no longer survive ([#38](https://github.com/TenSoja/clear-cache/issues/38)). Other data types still target only the tab's hostname.
+
 ## [4.10] - 2026-08-19
 
 ### 🐛 Fixed
