@@ -238,7 +238,7 @@ function showUnsupportedUrlError() {
       showNotification(
         storedSettings,
         browser.i18n.getMessage("unsupportedUrlMessage") ||
-          "Cannot clear cache for this page type. Try disabling 'Current tab only' option."
+          "Cannot clear cache for this page type. Try disabling 'Site data only' option."
       );
     }
     setBadgeWarning();
@@ -273,7 +273,7 @@ function showUnsupportedUrlError() {
         showNotification(
           storedSettings,
           browser.i18n.getMessage("incompatibleTypesMessage") ||
-            "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage."
+            "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Site data only' or select cookies/localStorage."
         );
       }
       return;
@@ -426,7 +426,7 @@ function clearCacheAndReload(storedSettings) {
       showNotification(
         storedSettings,
         browser.i18n.getMessage("unsupportedUrlMessage") ||
-          "Cannot clear cache for this page type. Try disabling 'Current tab only' option."
+          "Cannot clear cache for this page type. Try disabling 'Site data only' option."
       );
     }
     setBadgeWarning();
@@ -467,7 +467,7 @@ function clearCacheAndReload(storedSettings) {
         showNotification(
           storedSettings,
           browser.i18n.getMessage("incompatibleTypesMessage") ||
-            "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Current tab only' or select cookies/localStorage."
+            "The selected data types (cache, history, etc.) cannot be cleared for a single site. Disable 'Site data only' or select cookies/localStorage."
         );
       }
       return;
